@@ -2,13 +2,19 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Altan Company | Fanex Fan Yetkili Bayii</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Altan Company | Fanex Fan Yetkili Bayii | Endüstriyel Havalandırma</title>
 <meta name="description" content="Altan Company - Fanex Fan Yetkili Bayii. Hücreli Fanlar, Duman Tahliye Fanları, Radyal Salyangoz Fanlar ve daha fazlası. Güçlü Havalandırma, Uygun Fiyat, Hızlı Teslim.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --red: #C0222A;
   --red-dark: #8B1219;
@@ -28,15 +34,16 @@
   --body-font: 'Source Sans 3', sans-serif;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: var(--body-font);
   color: var(--dark-text);
   background: var(--white);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* PROMO BAR */
@@ -51,6 +58,8 @@ body {
   letter-spacing: 1px;
   text-transform: uppercase;
   animation: pulse-bg 3s ease-in-out infinite;
+  position: relative;
+  z-index: 10;
 }
 @keyframes pulse-bg {
   0%,100%{background:var(--red);}
@@ -173,33 +182,51 @@ nav {
   border-bottom-color: var(--red);
 }
 
-/* HERO */
+/* ========== HERO (VIDEO VERSIYONU) ========== */
 .hero {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 40%, var(--steel) 100%);
-  padding: 80px 24px;
   position: relative;
   overflow: hidden;
+  padding: 80px 24px;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
 }
-.hero::before {
-  content: '';
+
+/* VIDEO */
+.hero-video {
   position: absolute;
-  top: -50%;
-  right: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(59,126,200,0.15) 0%, transparent 70%);
-  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  filter: brightness(0.4) contrast(1.1);
+  animation: zoomVideo 20s ease-in-out infinite alternate;
 }
-.hero::after {
-  content: '';
+
+@keyframes zoomVideo {
+  from { transform: translate(-50%, -50%) scale(1); }
+  to { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* DARK OVERLAY (premium hissi) */
+.hero-overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--red) 0%, var(--red-light) 50%, var(--red) 100%);
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(14,26,43,0.85),
+    rgba(14,26,43,0.6)
+  );
+  z-index: 1;
 }
+
+/* İçerik üstte kalsın */
 .hero-inner {
+  position: relative;
+  z-index: 2;
   max-width: 1280px;
   margin: 0 auto;
   display: grid;
@@ -207,6 +234,7 @@ nav {
   gap: 60px;
   align-items: center;
 }
+
 .hero-badge {
   display: inline-block;
   background: var(--red);
@@ -286,6 +314,7 @@ nav {
   background: rgba(255,255,255,0.1);
   border-radius: 8px;
   overflow: hidden;
+  margin-top: 36px;
 }
 .hero-stat {
   background: rgba(255,255,255,0.05);
@@ -508,7 +537,6 @@ nav {
 }
 .btn-call:hover { border-color: var(--navy); background: var(--navy); color: var(--white); }
 
-/* SHOW MORE */
 .show-more-wrap { text-align: center; margin-top: 32px; }
 .btn-show-more {
   display: inline-flex;
@@ -776,7 +804,7 @@ footer strong { color: rgba(255,255,255,0.8); }
   .products-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: 1fr 1fr; }
-  .hero { padding: 40px 20px; }
+  .hero { padding: 40px 20px; min-height: auto; }
   .hero-stats { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 480px) {
@@ -846,8 +874,12 @@ footer strong { color: rgba(255,255,255,0.8); }
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO (VIDEO EKLENDİ) -->
 <section class="hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="fan.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div>
       <div class="hero-badge">
@@ -879,32 +911,30 @@ footer strong { color: rgba(255,255,255,0.8); }
           <span class="inline-lang" data-inline-lang="de">Jetzt Anrufen</span>
         </a>
       </div>
-      <div style="margin-top:36px;">
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <span class="stat-num">500+</span>
-            <span class="stat-label">
-              <span class="inline-lang lang-active" data-inline-lang="tr">Ürün Çeşidi</span>
-              <span class="inline-lang" data-inline-lang="en">Product Types</span>
-              <span class="inline-lang" data-inline-lang="de">Produktarten</span>
-            </span>
-          </div>
-          <div class="hero-stat">
-            <span class="stat-num">%25</span>
-            <span class="stat-label">
-              <span class="inline-lang lang-active" data-inline-lang="tr">İndirim</span>
-              <span class="inline-lang" data-inline-lang="en">Discount</span>
-              <span class="inline-lang" data-inline-lang="de">Rabatt</span>
-            </span>
-          </div>
-          <div class="hero-stat">
-            <span class="stat-num">7/24</span>
-            <span class="stat-label">
-              <span class="inline-lang lang-active" data-inline-lang="tr">Destek</span>
-              <span class="inline-lang" data-inline-lang="en">Support</span>
-              <span class="inline-lang" data-inline-lang="de">Support</span>
-            </span>
-          </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="stat-num">500+</span>
+          <span class="stat-label">
+            <span class="inline-lang lang-active" data-inline-lang="tr">Ürün Çeşidi</span>
+            <span class="inline-lang" data-inline-lang="en">Product Types</span>
+            <span class="inline-lang" data-inline-lang="de">Produktarten</span>
+          </span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-num">%25</span>
+          <span class="stat-label">
+            <span class="inline-lang lang-active" data-inline-lang="tr">İndirim</span>
+            <span class="inline-lang" data-inline-lang="en">Discount</span>
+            <span class="inline-lang" data-inline-lang="de">Rabatt</span>
+          </span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-num">7/24</span>
+          <span class="stat-label">
+            <span class="inline-lang lang-active" data-inline-lang="tr">Destek</span>
+            <span class="inline-lang" data-inline-lang="en">Support</span>
+            <span class="inline-lang" data-inline-lang="de">Support</span>
+          </span>
         </div>
       </div>
     </div>
@@ -976,451 +1006,57 @@ footer strong { color: rgba(255,255,255,0.8); }
       </h2>
     </div>
     <div class="why-grid">
-      <div class="why-card">
-        <div class="why-icon why-icon-1">🏆</div>
-        <div class="why-title">
-          <span class="inline-lang lang-active" data-inline-lang="tr">Yetkili Bayi</span>
-          <span class="inline-lang" data-inline-lang="en">Authorized Dealer</span>
-          <span class="inline-lang" data-inline-lang="de">Autorisierter Händler</span>
-        </div>
-        <div class="why-text">
-          <span class="inline-lang lang-active" data-inline-lang="tr">Fanex'in resmi yetkili bayii olarak orijinal ürün garantisi sunuyoruz</span>
-          <span class="inline-lang" data-inline-lang="en">As Fanex's official authorized dealer, we offer original product warranty</span>
-          <span class="inline-lang" data-inline-lang="de">Als offizieller Fanex-Händler bieten wir originale Produktgarantie</span>
-        </div>
-      </div>
-      <div class="why-card">
-        <div class="why-icon why-icon-2">💰</div>
-        <div class="why-title">
-          <span class="inline-lang lang-active" data-inline-lang="tr">Uygun Fiyat</span>
-          <span class="inline-lang" data-inline-lang="en">Affordable Price</span>
-          <span class="inline-lang" data-inline-lang="de">Günstiger Preis</span>
-        </div>
-        <div class="why-text">
-          <span class="inline-lang lang-active" data-inline-lang="tr">Tüm ürünlerde %25 indirim, rekabetçi fiyat politikamız ile tasarruf edin</span>
-          <span class="inline-lang" data-inline-lang="en">Save with 25% discount on all products and our competitive pricing policy</span>
-          <span class="inline-lang" data-inline-lang="de">Sparen Sie mit 25% Rabatt auf alle Produkte und unserer wettbewerbsfähigen Preispolitik</span>
-        </div>
-      </div>
-      <div class="why-card">
-        <div class="why-icon why-icon-3">🚀</div>
-        <div class="why-title">
-          <span class="inline-lang lang-active" data-inline-lang="tr">Hızlı Teslim</span>
-          <span class="inline-lang" data-inline-lang="en">Fast Delivery</span>
-          <span class="inline-lang" data-inline-lang="de">Schnelle Lieferung</span>
-        </div>
-        <div class="why-text">
-          <span class="inline-lang lang-active" data-inline-lang="tr">Zamanında teslimat garantisiyle projelerinizi aksatmadan tamamlayın</span>
-          <span class="inline-lang" data-inline-lang="en">Complete your projects without interruption with our on-time delivery guarantee</span>
-          <span class="inline-lang" data-inline-lang="de">Schließen Sie Ihre Projekte ohne Unterbrechung mit unserer pünktlichen Liefergarantie ab</span>
-        </div>
-      </div>
-      <div class="why-card">
-        <div class="why-icon why-icon-4">📞</div>
-        <div class="why-title">
-          <span class="inline-lang lang-active" data-inline-lang="tr">7/24 Destek</span>
-          <span class="inline-lang" data-inline-lang="en">24/7 Support</span>
-          <span class="inline-lang" data-inline-lang="de">24/7 Support</span>
-        </div>
-        <div class="why-text">
-          <span class="inline-lang lang-active" data-inline-lang="tr">Uzman ekibimizle her an yanınızdayız, sorularınızı anında yanıtlıyoruz</span>
-          <span class="inline-lang" data-inline-lang="en">Our expert team is always with you, answering your questions instantly</span>
-          <span class="inline-lang" data-inline-lang="de">Unser Expertenteam steht Ihnen jederzeit zur Seite und beantwortet Ihre Fragen sofort</span>
-        </div>
-      </div>
+      <div class="why-card"><div class="why-icon why-icon-1">🏆</div><div class="why-title"><span class="inline-lang lang-active" data-inline-lang="tr">Yetkili Bayi</span><span class="inline-lang" data-inline-lang="en">Authorized Dealer</span><span class="inline-lang" data-inline-lang="de">Autorisierter Händler</span></div><div class="why-text"><span class="inline-lang lang-active" data-inline-lang="tr">Fanex'in resmi yetkili bayii olarak orijinal ürün garantisi sunuyoruz</span><span class="inline-lang" data-inline-lang="en">As Fanex's official authorized dealer, we offer original product warranty</span><span class="inline-lang" data-inline-lang="de">Als offizieller Fanex-Händler bieten wir originale Produktgarantie</span></div></div>
+      <div class="why-card"><div class="why-icon why-icon-2">💰</div><div class="why-title"><span class="inline-lang lang-active" data-inline-lang="tr">Uygun Fiyat</span><span class="inline-lang" data-inline-lang="en">Affordable Price</span><span class="inline-lang" data-inline-lang="de">Günstiger Preis</span></div><div class="why-text"><span class="inline-lang lang-active" data-inline-lang="tr">Tüm ürünlerde %25 indirim, rekabetçi fiyat politikamız ile tasarruf edin</span><span class="inline-lang" data-inline-lang="en">Save with 25% discount on all products and our competitive pricing policy</span><span class="inline-lang" data-inline-lang="de">Sparen Sie mit 25% Rabatt auf alle Produkte und unserer wettbewerbsfähigen Preispolitik</span></div></div>
+      <div class="why-card"><div class="why-icon why-icon-3">🚀</div><div class="why-title"><span class="inline-lang lang-active" data-inline-lang="tr">Hızlı Teslim</span><span class="inline-lang" data-inline-lang="en">Fast Delivery</span><span class="inline-lang" data-inline-lang="de">Schnelle Lieferung</span></div><div class="why-text"><span class="inline-lang lang-active" data-inline-lang="tr">Zamanında teslimat garantisiyle projelerinizi aksatmadan tamamlayın</span><span class="inline-lang" data-inline-lang="en">Complete your projects without interruption with our on-time delivery guarantee</span><span class="inline-lang" data-inline-lang="de">Schließen Sie Ihre Projekte ohne Unterbrechung mit unserer pünktlichen Liefergarantie ab</span></div></div>
+      <div class="why-card"><div class="why-icon why-icon-4">📞</div><div class="why-title"><span class="inline-lang lang-active" data-inline-lang="tr">7/24 Destek</span><span class="inline-lang" data-inline-lang="en">24/7 Support</span><span class="inline-lang" data-inline-lang="de">24/7 Support</span></div><div class="why-text"><span class="inline-lang lang-active" data-inline-lang="tr">Uzman ekibimizle her an yanınızdayız, sorularınızı anında yanıtlıyoruz</span><span class="inline-lang" data-inline-lang="en">Our expert team is always with you, answering your questions instantly</span><span class="inline-lang" data-inline-lang="de">Unser Expertenteam steht Ihnen jederzeit zur Seite und beantwortet Ihre Fragen sofort</span></div></div>
     </div>
   </div>
 </section>
-
-<!-- PRODUCT SECTIONS -->
-
-<!-- Helper macro function for product cards via JS will be used -->
-<!-- Products are rendered by JS -->
 
 <div id="products-container"></div>
 
 <!-- CONTACT -->
 <section class="contact-section" id="iletisim">
   <div class="container">
-    <div class="section-header">
-      <div class="section-tag">
-        <span class="inline-lang lang-active" data-inline-lang="tr">İletişim</span>
-        <span class="inline-lang" data-inline-lang="en">Contact</span>
-        <span class="inline-lang" data-inline-lang="de">Kontakt</span>
-      </div>
-      <h2 class="section-title">
-        <span class="inline-lang lang-active" data-inline-lang="tr">Fiyat Teklifi <span>Alın</span></span>
-        <span class="inline-lang" data-inline-lang="en">Get a <span>Quote</span></span>
-        <span class="inline-lang" data-inline-lang="de">Angebot <span>Anfordern</span></span>
-      </h2>
-      <span class="section-divider"></span>
-    </div>
+    <div class="section-header"><div class="section-tag"><span class="inline-lang lang-active" data-inline-lang="tr">İletişim</span><span class="inline-lang" data-inline-lang="en">Contact</span><span class="inline-lang" data-inline-lang="de">Kontakt</span></div><h2 class="section-title"><span class="inline-lang lang-active" data-inline-lang="tr">Fiyat Teklifi <span>Alın</span></span><span class="inline-lang" data-inline-lang="en">Get a <span>Quote</span></span><span class="inline-lang" data-inline-lang="de">Angebot <span>Anfordern</span></span></h2><span class="section-divider"></span></div>
     <div class="contact-grid">
-      <div class="contact-info">
-        <h3>
-          <span class="inline-lang lang-active" data-inline-lang="tr">Bize Ulaşın</span>
-          <span class="inline-lang" data-inline-lang="en">Reach Us</span>
-          <span class="inline-lang" data-inline-lang="de">Kontaktieren Sie Uns</span>
-        </h3>
-        <div class="contact-item">
-          <div class="contact-item-icon">📱</div>
-          <div>
-            <div class="contact-item-label">WhatsApp</div>
-            <a href="https://wa.me/905422140132" class="contact-item-val">+90 542 214 01 32</a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">📞</div>
-          <div>
-            <div class="contact-item-label">
-              <span class="inline-lang lang-active" data-inline-lang="tr">Telefon</span>
-              <span class="inline-lang" data-inline-lang="en">Phone</span>
-              <span class="inline-lang" data-inline-lang="de">Telefon</span>
-            </div>
-            <a href="tel:+905422140132" class="contact-item-val">+90 542 214 01 32</a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">🌐</div>
-          <div>
-            <div class="contact-item-label">Web</div>
-            <a href="https://www.altancompany.com/" class="contact-item-val">www.altancompany.com</a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">👍</div>
-          <div>
-            <div class="contact-item-label">Facebook</div>
-            <a href="https://www.facebook.com/altancompany" class="contact-item-val" target="_blank">Altan Company</a>
-          </div>
-        </div>
+      <div class="contact-info"><h3><span class="inline-lang lang-active" data-inline-lang="tr">Bize Ulaşın</span><span class="inline-lang" data-inline-lang="en">Reach Us</span><span class="inline-lang" data-inline-lang="de">Kontaktieren Sie Uns</span></h3>
+        <div class="contact-item"><div class="contact-item-icon">📱</div><div><div class="contact-item-label">WhatsApp</div><a href="https://wa.me/905422140132" class="contact-item-val">+90 542 214 01 32</a></div></div>
+        <div class="contact-item"><div class="contact-item-icon">📞</div><div><div class="contact-item-label"><span class="inline-lang lang-active" data-inline-lang="tr">Telefon</span><span class="inline-lang" data-inline-lang="en">Phone</span><span class="inline-lang" data-inline-lang="de">Telefon</span></div><a href="tel:+905422140132" class="contact-item-val">+90 542 214 01 32</a></div></div>
+        <div class="contact-item"><div class="contact-item-icon">🌐</div><div><div class="contact-item-label">Web</div><a href="https://www.altancompany.com/" class="contact-item-val">www.altancompany.com</a></div></div>
+        <div class="contact-item"><div class="contact-item-icon">👍</div><div><div class="contact-item-label">Facebook</div><a href="https://www.facebook.com/altancompany" class="contact-item-val" target="_blank">Altan Company</a></div></div>
       </div>
-      <div>
-        <div class="contact-cta-block">
-          <h3>
-            <span class="inline-lang lang-active" data-inline-lang="tr">Hemen Fiyat Teklifi Alın!</span>
-            <span class="inline-lang" data-inline-lang="en">Get Your Quote Now!</span>
-            <span class="inline-lang" data-inline-lang="de">Jetzt Angebot Anfordern!</span>
-          </h3>
-          <p>
-            <span class="inline-lang lang-active" data-inline-lang="tr">İhtiyacınız olan ürün için WhatsApp veya telefon ile bize ulaşın. Uzman ekibimiz en kısa sürede fiyat teklifi sunacaktır.</span>
-            <span class="inline-lang" data-inline-lang="en">Contact us via WhatsApp or phone for the product you need. Our expert team will provide a price quote in the shortest time.</span>
-            <span class="inline-lang" data-inline-lang="de">Kontaktieren Sie uns per WhatsApp oder Telefon für das Produkt, das Sie benötigen. Unser Expertenteam erstellt Ihnen so schnell wie möglich ein Angebot.</span>
-          </p>
-          <div class="contact-cta-btns">
-            <a href="https://wa.me/905422140132?text=Merhaba,%20fiyat%20teklifi%20almak%20istiyorum" class="btn-cta-wa">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              WhatsApp
-            </a>
-            <a href="tel:+905422140132" class="btn-cta-call">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-              +90 542 214 01 32
-            </a>
-            <a href="https://www.facebook.com/altancompany" class="btn-cta-fb" target="_blank">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-              Facebook
-            </a>
-          </div>
-        </div>
-      </div>
+      <div><div class="contact-cta-block"><h3><span class="inline-lang lang-active" data-inline-lang="tr">Hemen Fiyat Teklifi Alın!</span><span class="inline-lang" data-inline-lang="en">Get Your Quote Now!</span><span class="inline-lang" data-inline-lang="de">Jetzt Angebot Anfordern!</span></h3><p><span class="inline-lang lang-active" data-inline-lang="tr">İhtiyacınız olan ürün için WhatsApp veya telefon ile bize ulaşın. Uzman ekibimiz en kısa sürede fiyat teklifi sunacaktır.</span><span class="inline-lang" data-inline-lang="en">Contact us via WhatsApp or phone for the product you need. Our expert team will provide a price quote in the shortest time.</span><span class="inline-lang" data-inline-lang="de">Kontaktieren Sie uns per WhatsApp oder Telefon für das Produkt, das Sie benötigen. Unser Expertenteam erstellt Ihnen so schnell wie möglich ein Angebot.</span></p><div class="contact-cta-btns"><a href="https://wa.me/905422140132?text=Merhaba,%20fiyat%20teklifi%20almak%20istiyorum" class="btn-cta-wa"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a><a href="tel:+905422140132" class="btn-cta-call"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+90 542 214 01 32</a><a href="https://www.facebook.com/altancompany" class="btn-cta-fb" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook</a></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div>
-    <strong>Altan Company</strong> | Fanex Fan Yetkili Bayii<br>
-    <a href="tel:+905422140132">+90 542 214 01 32</a> &nbsp;|&nbsp;
-    <a href="https://www.altancompany.com/">www.altancompany.com</a> &nbsp;|&nbsp;
-    <a href="https://www.facebook.com/altancompany" target="_blank">Facebook</a>
-    <br><br>
-    © 2025 Altan Company. Tüm hakları saklıdır.
-  </div>
-</footer>
+<footer><div><strong>Altan Company</strong> | Fanex Fan Yetkili Bayii<br><a href="tel:+905422140132">+90 542 214 01 32</a> &nbsp;|&nbsp;<a href="https://www.altancompany.com/">www.altancompany.com</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/altancompany" target="_blank">Facebook</a><br><br>© 2025 Altan Company. Tüm hakları saklıdır.</div></footer>
 
-<!-- STICKY BUTTONS -->
-<div class="sticky-cta">
-  <a href="https://wa.me/905422140132?text=Merhaba,%20fiyat%20teklifi%20almak%20istiyorum" class="sticky-btn sticky-wa">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    <span class="sticky-tooltip">WhatsApp</span>
-  </a>
-  <a href="tel:+905422140132" class="sticky-btn sticky-call">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-    <span class="sticky-tooltip">Ara</span>
-  </a>
-</div>
+<div class="sticky-cta"><a href="https://wa.me/905422140132?text=Merhaba,%20fiyat%20teklifi%20almak%20istiyorum" class="sticky-btn sticky-wa"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span class="sticky-tooltip">WhatsApp</span></a><a href="tel:+905422140132" class="sticky-btn sticky-call"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span class="sticky-tooltip">Ara</span></a></div>
 
 <script>
 const WA = 'https://wa.me/905422140132?text=';
 const TEL = 'tel:+905422140132';
-
-const translations = {
-  tr: {
-    orderWa: 'Sipariş Ver',
-    callBtn: 'Ara',
-    quoteTxt: 'Fiyat Teklifi',
-    showMore: 'Daha Fazla Göster',
-    showLess: 'Daha Az Göster',
-    badge: '%25 İndirim',
-  },
-  en: {
-    orderWa: 'Order Now',
-    callBtn: 'Call',
-    quoteTxt: 'Get Quote',
-    showMore: 'Show More',
-    showLess: 'Show Less',
-    badge: '25% Off',
-  },
-  de: {
-    orderWa: 'Bestellen',
-    callBtn: 'Anrufen',
-    quoteTxt: 'Angebot',
-    showMore: 'Mehr Anzeigen',
-    showLess: 'Weniger Anzeigen',
-    badge: '25% Rabatt',
-  }
-};
-
+const translations = { tr: { orderWa: 'Sipariş Ver', callBtn: 'Ara', quoteTxt: 'Fiyat Teklifi', showMore: 'Daha Fazla Göster', showLess: 'Daha Az Göster', badge: '%25 İndirim' }, en: { orderWa: 'Order Now', callBtn: 'Call', quoteTxt: 'Get Quote', showMore: 'Show More', showLess: 'Show Less', badge: '25% Off' }, de: { orderWa: 'Bestellen', callBtn: 'Anrufen', quoteTxt: 'Angebot', showMore: 'Mehr Anzeigen', showLess: 'Weniger Anzeigen', badge: '25% Rabatt' } };
 const categories = [
-  {
-    id: 'hucreli',
-    names: { tr: 'Hücreli Fanlar', en: 'Cell Fans', de: 'Zellenventilatoren' },
-    products: [
-      { name: 'FHV-SK Serisi Öne Eğimli Sık Kanatlı Hücreli Vantilatörler', img: 'https://www.altancompany.com/images/hucreli1.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety: Your Reliable Partner in Fire and Ventilation Solutions.', de: 'Hohe Leistung, Maximale Sicherheit: Ihr zuverlässiger Partner für Brand- und Lüftungslösungen.' } },
-      { name: 'FHV-SY Serisi Geriye Eğimli Seyrek Kanatlı Hücreli Vantilatörler', img: 'https://www.altancompany.com/images/hucreli2.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety: Your Reliable Partner in Fire and Ventilation Solutions.', de: 'Hohe Leistung, Maximale Sicherheit: Ihr zuverlässiger Partner für Brand- und Lüftungslösungen.' } },
-      { name: 'FHS Serisi Kabinli Seyrek Kanatlı Mutfak Egzoz Fanlar', img: 'https://www.altancompany.com/images/hucreli3.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety: Your Reliable Partner in Fire and Ventilation Solutions.', de: 'Hohe Leistung, Maximale Sicherheit: Ihr zuverlässiger Partner für Brand- und Lüftungslösungen.' } },
-      { name: 'FMEF Serisi Kabinli Seyrek Kanatlı Yağ Filtresiz Mutfak Egzoz Fanları', img: 'https://www.altancompany.com/images/hucreli4.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FPH Serisi Harici Motorlu Tek Cidarlı Akustik İzoleli Hücreli Fan', img: 'https://www.altancompany.com/images/hucreli5.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FPH-F Serisi Harici Motorlu Çift Cidarlı Filtreli Hücreli Fan', img: 'https://www.altancompany.com/images/hucreli6.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FBHS Serisi Elektrostatik Filtreli Bacasız Havalandırma Santrali', img: 'https://www.altancompany.com/images/hucreli7.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FDBK Serisi Kabinli Yangın Duman Egzoz ve Basınçlandırma Aspiratörleri', img: 'https://www.altancompany.com/images/hucreli8.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-    ]
-  },
-  {
-    id: 'santraller',
-    names: { tr: 'Santraller', en: 'Centrals', de: 'Zentralen' },
-    products: [
-      { name: 'FSFM Serisi Sığınak Filtre Modülü', img: 'https://www.altancompany.com/images/santraller1.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FKSF-P Serisi Kanal Tipi Sığınak Havalandırma Fanları', img: 'https://www.altancompany.com/images/santraller2.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FHSF-R Serisi Çift Cidarlı Sığınak Santrali – Radyal Fanlı', img: 'https://www.altancompany.com/images/santraller3.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-    ]
-  },
-  {
-    id: 'radyal',
-    names: { tr: 'Radyal Salyangoz Fanlar', en: 'Radial Snail Fans', de: 'Radiale Schneckenventilatoren' },
-    products: [
-      { name: 'FBSY Serisi Öne Eğimli Seyrek Kanatlı Alçak Basınçlı Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal1.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FBO Serisi Orta Basınçlı Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal2.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FBK Serisi Yüksek Basınçlı Körük Fanlar', img: 'https://www.altancompany.com/images/radyal3.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FMK-A Serisi Kare Tip Alçak Basınçlı Seyrek Kanatlı Fanlar', img: 'https://www.altancompany.com/images/radyal4.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FGS Serisi Geriye Eğik Alçak Basınçlı Konikli Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal5.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FAGS-T Serisi Trifaze Alüminyum Döküm Gövdeli Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal6.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FAGS-M Serisi Monofaze Alüminyum Döküm Gövdeli Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal7.webp', desc: { tr: 'Radyal kanat yapısı ile yüksek basınç üreten, salyangoz gövde tasarımı ile verimli çalışan endüstriyel fanlar.', en: 'Industrial fans producing high pressure with radial blade design.', de: 'Industrieventilatoren mit radialer Schaufelkonstruktion.' } },
-      { name: 'FRK Serisi Geriye Eğik Orta Basınçlı Konikli Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal8.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FAKK Serisi Geriye Eğik Alçak Basınçlı Kayış Kasnaklı Konikli Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal9.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FPGA Serisi Geriye Eğik Alçak Basınçlı Kayış Kasnaklı Konikli Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal10.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FAGS-KT Serisi Trifaze Alüminyum Döküm Gövdeli Körük Fanlar', img: 'https://www.altancompany.com/images/radyal11.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FAGS-KM Serisi Monofaze Alüminyum Döküm Gövdeli Körük Fanlar', img: 'https://www.altancompany.com/images/radyal12.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'DR-Serisi Dıştan Rotorlu Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal13.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'KAGS-BAGS Serisi Dıştan Rotorlu Alüminyum Gövdeli Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal14.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'KTS-OBS Serisi Metal Gövdeli Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal15.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'POBRA Serisi Sık Kanatlı OBR Serisi Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal16.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'PSEK Serisi Seyrek Kanatlı OBR Serisi Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal17.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'OÇES Serisi Çift Emişli Radyal Fanlar', img: 'https://www.altancompany.com/images/radyal18.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-    ]
-  },
-  {
-    id: 'duman',
-    names: { tr: 'Duman Tahliye Fanları', en: 'Smoke Exhaust Fans', de: 'Rauchabzugsventilatoren' },
-    products: [
-      { name: 'FMF Serisi Aksiyal Mobil Fan (Duman Tahliye Fanı)', img: 'https://www.altancompany.com/images/duman1.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FMF-AL Serisi Aksiyal Alüminyum Pervaneli Taşınabilir Kovanlı Mobil Fan', img: 'https://www.altancompany.com/images/duman2.webp', desc: { tr: 'Acil durum duman tahliyesi için optimize edilmiş, yangın güvenliği standartlarına uygun fanlar.', en: 'Optimized for emergency smoke evacuation, compliant with fire safety standards.', de: 'Für Notfall-Rauchevakuierung optimiert, brandschutznormkonform.' } },
-      { name: 'FAK Serisi Harici Motorlu Metal Kanatlı Yangın Duman Egzoz Fanları', img: 'https://www.altancompany.com/images/duman3.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FAK-AL Serisi Harici Motorlu Alüminyum Kanatlı Yangın Duman Egzoz Fanları', img: 'https://www.altancompany.com/images/duman4.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } },
-      { name: 'FRTF Serisi Yuvarlak Kanal Tipi Aksiyal Tüp Fanlar (180°C Dayanımlı)', img: 'https://www.altancompany.com/images/duman5.webp', desc: { tr: 'Acil durum duman tahliyesi için optimize edilmiş, yangın güvenliği standartlarına uygun fanlar.', en: 'Optimized for emergency smoke evacuation, resistant up to 180°C.', de: 'Für Notfall-Rauchevakuierung optimiert, bis 180°C hitzebeständig.' } },
-      { name: 'FKDB Serisi Harici Motorlu Metal Kanatlı Kayış Kasnaklı Yangın Duman Egzoz Fanları', img: 'https://www.altancompany.com/images/duman6.webp', desc: { tr: 'Acil durum duman tahliyesi için optimize edilmiş, yangın güvenliği standartlarına uygun fanlar.', en: 'Optimized for emergency smoke evacuation, belt pulley driven.', de: 'Für Notfall-Rauchevakuierung optimiert, riemengetrieben.' } },
-    ]
-  },
-  {
-    id: 'isi',
-    names: { tr: 'Isı Geri Kazanım Cihazları', en: 'Heat Recovery Units', de: 'Wärmerückgewinnungsgeräte' },
-    products: [
-      { name: 'Plug Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)', img: 'https://www.altancompany.com/images/isi1.webp', desc: { tr: 'Enerji tasarruflu ısı geri kazanım sistemi ile çalışan, yüksek verimlilik sunan havalandırma cihazları.', en: 'Energy-saving heat recovery units offering high efficiency ventilation.', de: 'Energiesparende Wärmerückgewinnungsgeräte mit hoher Effizienz.' } },
-      { name: 'Radyal Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)', img: 'https://www.altancompany.com/images/isi2.webp', desc: { tr: 'Radyal kanat yapısı ile yüksek basınç üreten, salyangoz gövde tasarımı ile verimli çalışan cihazlar.', en: 'High pressure radial fan design with efficient snail housing.', de: 'Hochdruckradialventilator mit effizientem Schneckengehäuse.' } },
-      { name: 'Enerji Tasarruflu Plug Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)', img: 'https://www.altancompany.com/images/isi3.webp', desc: { tr: 'Enerji tasarruflu ısı geri kazanım sistemi ile çalışan, yüksek verimlilik sunan havalandırma cihazları.', en: 'Energy-saving heat recovery system with high efficiency.', de: 'Energiesparendes Wärmerückgewinnungssystem mit hoher Effizienz.' } },
-      { name: 'Dikey Isı Geri Kazanımlı Temiz Hava Santrali', img: 'https://www.altancompany.com/images/isi4.webp', desc: { tr: 'Kapalı havuzlarda havalandırma, nem alma ve ısıtma amacı ile kullanılan modern havalandırma santralleri.', en: 'Modern ventilation unit for pools with dehumidification and heating.', de: 'Moderne Lüftungszentrale für Hallenbäder mit Entfeuchtung und Heizung.' } },
-    ]
-  },
-  {
-    id: 'kanal',
-    names: { tr: 'Kanal Fanları', en: 'Duct Fans', de: 'Kanalventilatoren' },
-    products: [
-      { name: 'Baypasli 3 Filtreli Kanal Vantilatorü', img: 'https://www.altancompany.com/images/kanal1.webp', desc: { tr: 'Kanal sistemlerine entegre edilmek üzere tasarlanmış, kompakt yapısı ve yüksek performansı ile ideal fanlar.', en: 'Designed for duct system integration, compact and high-performance.', de: 'Für Kanalsysteme konzipiert, kompakt und leistungsstark.' } },
-      { name: '2 Filtreli Motorlu Kanal Vantilatorü', img: 'https://www.altancompany.com/images/kanal2.webp', desc: { tr: 'Kanal sistemlerine entegre edilmek üzere tasarlanmış, kompakt yapısı ve yüksek performansı ile ideal fanlar.', en: 'Designed for duct system integration, compact and high-performance.', de: 'Für Kanalsysteme konzipiert, kompakt und leistungsstark.' } },
-      { name: 'Harici Motorlu Geriye Eğik Seyrek Kanatlı Dikdörtgen Kanal Fanları', img: 'https://www.altancompany.com/images/kanal3.webp', desc: { tr: 'Kanal sistemlerine entegre edilmek üzere tasarlanmış, kompakt yapısı ve yüksek performansı ile ideal fanlar.', en: 'Designed for duct system integration.', de: 'Für Kanalsysteme konzipiert.' } },
-      { name: 'Harici Motorlu Öne Eğimli Sık Kanatlı Dikdörtgen Kanal Fanları', img: 'https://www.altancompany.com/images/kanal4.webp', desc: { tr: 'Kanal sistemlerine entegre edilmek üzere tasarlanmış fanlar.', en: 'Designed for duct system integration.', de: 'Für Kanalsysteme konzipiert.' } },
-      { name: 'Geriye Eğimli Dikdörtgen Kanal Tipi Radyal Fanlar', img: 'https://www.altancompany.com/images/kanal5.webp', desc: { tr: 'Radyal kanat yapısı ile yüksek basınç üreten endüstriyel fanlar.', en: 'Industrial fans producing high pressure with radial blade design.', de: 'Industrieventilatoren mit radialer Schaufelkonstruktion.' } },
-      { name: 'Geriye Eğimli Yuvarlak Kanal Tipi Radyal Fanlar', img: 'https://www.altancompany.com/images/kanal6.webp', desc: { tr: 'Radyal kanat yapısı ile yüksek basınç üreten endüstriyel fanlar.', en: 'Industrial fans producing high pressure.', de: 'Industrieventilatoren mit hohem Druck.' } },
-      { name: 'Kanal Tipi Aksiyal Sirkülasyon Fanları', img: 'https://www.altancompany.com/images/kanal7.webp', desc: { tr: 'Kanal sistemlerine entegre edilmek üzere tasarlanmış fanlar.', en: 'Designed for duct system integration.', de: 'Für Kanalsysteme konzipiert.' } },
-      { name: 'Geriye Eğimli Yuvarlak Girişli Akustik İzoleli Dikdörtgen Kanal Tipi Radyal Fanlar', img: 'https://www.altancompany.com/images/kanal8.webp', desc: { tr: 'Akustik izoleli, radyal kanat yapısıyla yüksek performanslı kanal fanları.', en: 'Acoustically insulated, high-performance radial duct fans.', de: 'Akustisch gedämmte, leistungsstarke Radialkanal-Ventilatoren.' } },
-      { name: 'Dıştan Rotorlu Kanal Tipi Aksiyal Fanlar', img: 'https://www.altancompany.com/images/kanal9.webp', desc: { tr: 'Kanal sistemlerine entegre edilmek üzere tasarlanmış fanlar.', en: 'Designed for duct system integration.', de: 'Für Kanalsysteme konzipiert.' } },
-    ]
-  },
-  {
-    id: 'cati',
-    names: { tr: 'Çatı Fanları', en: 'Roof Fans', de: 'Dachventilatoren' },
-    products: [
-      { name: 'Dikey Atışlı Radyal Çatı Fanları', img: 'https://www.altancompany.com/images/cati1.webp', desc: { tr: 'Radyal kanat yapısı ile yüksek basınç üreten çatı tipi endüstriyel fanlar.', en: 'Roof-type industrial fans producing high pressure with radial blade design.', de: 'Dach-Industrieventilatoren mit radialer Schaufelkonstruktion.' } },
-      { name: 'Dikey Atışlı Harici Motorlu Radyal Çatı Fanları', img: 'https://www.altancompany.com/images/cati2.webp', desc: { tr: 'Radyal kanat yapısı ile yüksek basınç üreten çatı fanları.', en: 'High pressure roof fans with radial blade design.', de: 'Hochdruck-Dachventilatoren.' } },
-      { name: 'Radyal Çatı Fanları', img: 'https://www.altancompany.com/images/cati3.webp', desc: { tr: 'Çatı montajı için özel tasarım, dış hava koşullarına dayanıklı fanlar.', en: 'Purpose-designed for roof mounting, weatherproof fans.', de: 'Für die Dachmontage konzipiert, wetterfeste Ventilatoren.' } },
-      { name: 'Yatay Atışlı Harici Motorlu Radyal Çatı Fanları', img: 'https://www.altancompany.com/images/cati4.webp', desc: { tr: 'Radyal kanat yapısı ile yüksek basınç üreten çatı tipi fanlar.', en: 'Horizontal discharge roof fans with external motor.', de: 'Horizontale Dachventilatoren mit Außenmotor.' } },
-      { name: 'Yatay Atışlı Radyal Çatı Fanları', img: 'https://www.altancompany.com/images/cati5.webp', desc: { tr: 'Radyal kanat yapısı ile yüksek basınç üreten çatı fanları.', en: 'Horizontal discharge radial roof fans.', de: 'Horizontale Radial-Dachventilatoren.' } },
-      { name: 'Harici Motorlu Yatay Atışlı Metal Pervaneli Aksiyel Çatı Fanları', img: 'https://www.altancompany.com/images/cati6.webp', desc: { tr: 'Çatı montajı için özel olarak tasarlanmış, dış hava koşullarına dayanıklı, uzun ömürlü fanlar.', en: 'Specially designed for roof mounting, weatherproof and long-lasting.', de: 'Speziell für die Dachmontage konzipiert, wetterfest und langlebig.' } },
-      { name: 'Yatay Atışlı Aksiyal Çatı Fanları', img: 'https://www.altancompany.com/images/cati7.webp', desc: { tr: 'Çatı montajı için özel olarak tasarlanmış, dış hava koşullarına dayanıklı fanlar.', en: 'Specially designed for roof mounting, weatherproof.', de: 'Speziell für die Dachmontage konzipiert, wetterfest.' } },
-    ]
-  },
-  {
-    id: 'aksiyel',
-    names: { tr: 'Aksiyel Fanlar', en: 'Axial Fans', de: 'Axialventilatoren' },
-    products: [
-      { name: 'Harici Motorlu 4 Kanatlı Metal Pervaneli Kare Kasalı Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel1.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen, uzun ömürlü ve güvenilir performans sunan endüstriyel fanlar.', en: 'High quality industrial fans with long-lasting reliable performance.', de: 'Hochwertige Industrieventilatoren mit langlebiger Leistung.' } },
-      { name: 'Harici Motorlu 4 Kanatlı Metal Pervaneli Yuvarlak Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel2.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen endüstriyel fanlar.', en: 'High quality industrial fans.', de: 'Hochwertige Industrieventilatoren.' } },
-      { name: 'Harici Motorlu Alüminyum Pervaneli Yuvarlak Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel3.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen endüstriyel fanlar.', en: 'High quality industrial fans.', de: 'Hochwertige Industrieventilatoren.' } },
-      { name: 'Harici Motorlu Kare Kasalı Alüminyum Pervaneli Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel4.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen endüstriyel fanlar.', en: 'High quality industrial fans.', de: 'Hochwertige Industrieventilatoren.' } },
-      { name: 'Harici Motorlu Plastik Pervaneli Yuvarlak Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel5.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen endüstriyel fanlar.', en: 'High quality industrial fans.', de: 'Hochwertige Industrieventilatoren.' } },
-      { name: 'Harici Motorlu Plastik Pervaneli Kare Kasalı Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel6.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen endüstriyel fanlar.', en: 'High quality industrial fans.', de: 'Hochwertige Industrieventilatoren.' } },
-      { name: 'Monofaze Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel7.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen endüstriyel fanlar.', en: 'High quality industrial fans.', de: 'Hochwertige Industrieventilatoren.' } },
-      { name: 'Trifaze Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel8.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen endüstriyel fanlar.', en: 'High quality industrial fans.', de: 'Hochwertige Industrieventilatoren.' } },
-      { name: 'Kare Kasa Metal Pervaneli Aksiyal Aspiratörler (Monofaze)', img: 'https://www.altancompany.com/images/aksiyel9.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen endüstriyel fanlar.', en: 'High quality industrial fans.', de: 'Hochwertige Industrieventilatoren.' } },
-      { name: 'Duvar Tipi Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel10.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen endüstriyel fanlar.', en: 'High quality industrial fans.', de: 'Hochwertige Industrieventilatoren.' } },
-      { name: 'Dıştan Rotorlu Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel11.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen endüstriyel fanlar.', en: 'High quality industrial fans.', de: 'Hochwertige Industrieventilatoren.' } },
-      { name: 'Dıştan Rotorlu Kare Kasalı Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel12.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen endüstriyel fanlar.', en: 'High quality industrial fans.', de: 'Hochwertige Industrieventilatoren.' } },
-    ]
-  },
-  {
-    id: 'vantilator',
-    names: { tr: 'Vantilatörler', en: 'Ventilators', de: 'Ventilatoren' },
-    products: [
-      { name: 'Endüstriyel Vantilatörler', img: 'https://www.altancompany.com/images/vantilator1.webp', desc: { tr: 'Endüstriyel uygulamalar için tasarlanmış, yüksek performans ve dayanıklılık sunan vantilatörler.', en: 'Ventilators designed for industrial applications with high performance and durability.', de: 'Für Industrieanwendungen konzipierte Ventilatoren mit hoher Leistung und Haltbarkeit.' } },
-    ]
-  },
-  {
-    id: 'jet',
-    names: { tr: 'Jet Fanlar', en: 'Jet Fans', de: 'Jet-Ventilatoren' },
-    products: [
-      { name: 'Alüminyum Pervaneli Jet Fanlar', img: 'https://www.altancompany.com/images/jet1.webp', desc: { tr: 'Jet etkisi ile hava akımı oluşturan, tünel ve büyük alan havalandırması için ideal fanlar.', en: 'Jet-effect fans ideal for tunnel and large-area ventilation.', de: 'Jet-Effekt-Ventilatoren ideal für Tunnel- und Großflächenbelüftung.' } },
-      { name: 'Radyal Pervaneli Jet Fanlar', img: 'https://www.altancompany.com/images/jet2.webp', desc: { tr: 'Jet etkisi ile hava akımı oluşturan, otopark ve büyük alan havalandırması için ideal fanlar.', en: 'Jet-effect fans ideal for parking and large-area ventilation.', de: 'Jet-Effekt-Ventilatoren ideal für Parkhaus- und Großflächenbelüftung.' } },
-    ]
-  },
+  { id: 'hucreli', names: { tr: 'Hücreli Fanlar', en: 'Cell Fans', de: 'Zellenventilatoren' }, products: [{ name: 'FHV-SK Serisi Öne Eğimli Sık Kanatlı Hücreli Vantilatörler', img: 'https://www.altancompany.com/images/hucreli1.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety: Your Reliable Partner in Fire and Ventilation Solutions.', de: 'Hohe Leistung, Maximale Sicherheit: Ihr zuverlässiger Partner für Brand- und Lüftungslösungen.' } }, { name: 'FHV-SY Serisi Geriye Eğimli Seyrek Kanatlı Hücreli Vantilatörler', img: 'https://www.altancompany.com/images/hucreli2.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FHS Serisi Kabinli Seyrek Kanatlı Mutfak Egzoz Fanlar', img: 'https://www.altancompany.com/images/hucreli3.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FMEF Serisi Kabinli Seyrek Kanatlı Yağ Filtresiz Mutfak Egzoz Fanları', img: 'https://www.altancompany.com/images/hucreli4.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FPH Serisi Harici Motorlu Tek Cidarlı Akustik İzoleli Hücreli Fan', img: 'https://www.altancompany.com/images/hucreli5.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FPH-F Serisi Harici Motorlu Çift Cidarlı Filtreli Hücreli Fan', img: 'https://www.altancompany.com/images/hucreli6.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FBHS Serisi Elektrostatik Filtreli Bacasız Havalandırma Santrali', img: 'https://www.altancompany.com/images/hucreli7.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FDBK Serisi Kabinli Yangın Duman Egzoz ve Basınçlandırma Aspiratörleri', img: 'https://www.altancompany.com/images/hucreli8.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }] },
+  { id: 'santraller', names: { tr: 'Santraller', en: 'Centrals', de: 'Zentralen' }, products: [{ name: 'FSFM Serisi Sığınak Filtre Modülü', img: 'https://www.altancompany.com/images/santraller1.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FKSF-P Serisi Kanal Tipi Sığınak Havalandırma Fanları', img: 'https://www.altancompany.com/images/santraller2.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FHSF-R Serisi Çift Cidarlı Sığınak Santrali – Radyal Fanlı', img: 'https://www.altancompany.com/images/santraller3.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }] },
+  { id: 'radyal', names: { tr: 'Radyal Salyangoz Fanlar', en: 'Radial Snail Fans', de: 'Radiale Schneckenventilatoren' }, products: [{ name: 'FBSY Serisi Öne Eğimli Seyrek Kanatlı Alçak Basınçlı Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal1.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FBO Serisi Orta Basınçlı Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal2.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FBK Serisi Yüksek Basınçlı Körük Fanlar', img: 'https://www.altancompany.com/images/radyal3.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FMK-A Serisi Kare Tip Alçak Basınçlı Seyrek Kanatlı Fanlar', img: 'https://www.altancompany.com/images/radyal4.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FGS Serisi Geriye Eğik Alçak Basınçlı Konikli Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal5.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FAGS-T Serisi Trifaze Alüminyum Döküm Gövdeli Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal6.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FAGS-M Serisi Monofaze Alüminyum Döküm Gövdeli Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal7.webp', desc: { tr: 'Radyal kanat yapısı ile yüksek basınç üreten, salyangoz gövde tasarımı ile verimli çalışan endüstriyel fanlar.', en: 'Industrial fans producing high pressure with radial blade design.', de: 'Industrieventilatoren mit radialer Schaufelkonstruktion.' } }, { name: 'FRK Serisi Geriye Eğik Orta Basınçlı Konikli Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal8.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }] },
+  { id: 'duman', names: { tr: 'Duman Tahliye Fanları', en: 'Smoke Exhaust Fans', de: 'Rauchabzugsventilatoren' }, products: [{ name: 'FMF Serisi Aksiyal Mobil Fan (Duman Tahliye Fanı)', img: 'https://www.altancompany.com/images/duman1.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FMF-AL Serisi Aksiyal Alüminyum Pervaneli Taşınabilir Kovanlı Mobil Fan', img: 'https://www.altancompany.com/images/duman2.webp', desc: { tr: 'Acil durum duman tahliyesi için optimize edilmiş, yangın güvenliği standartlarına uygun fanlar.', en: 'Optimized for emergency smoke evacuation, compliant with fire safety standards.', de: 'Für Notfall-Rauchevakuierung optimiert, brandschutznormkonform.' } }, { name: 'FAK Serisi Harici Motorlu Metal Kanatlı Yangın Duman Egzoz Fanları', img: 'https://www.altancompany.com/images/duman3.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }] },
+  { id: 'isi', names: { tr: 'Isı Geri Kazanım Cihazları', en: 'Heat Recovery Units', de: 'Wärmerückgewinnungsgeräte' }, products: [{ name: 'Plug Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)', img: 'https://www.altancompany.com/images/isi1.webp', desc: { tr: 'Enerji tasarruflu ısı geri kazanım sistemi ile çalışan, yüksek verimlilik sunan havalandırma cihazları.', en: 'Energy-saving heat recovery units offering high efficiency ventilation.', de: 'Energiesparende Wärmerückgewinnungsgeräte mit hoher Effizienz.' } }, { name: 'Radyal Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)', img: 'https://www.altancompany.com/images/isi2.webp', desc: { tr: 'Radyal kanat yapısı ile yüksek basınç üreten, salyangoz gövde tasarımı ile verimli çalışan cihazlar.', en: 'High pressure radial fan design with efficient snail housing.', de: 'Hochdruckradialventilator mit effizientem Schneckengehäuse.' } }, { name: 'Enerji Tasarruflu Plug Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)', img: 'https://www.altancompany.com/images/isi3.webp', desc: { tr: 'Enerji tasarruflu ısı geri kazanım sistemi ile çalışan, yüksek verimlilik sunan havalandırma cihazları.', en: 'Energy-saving heat recovery system with high efficiency.', de: 'Energiesparendes Wärmerückgewinnungssystem mit hoher Effizienz.' } }] },
+  { id: 'kanal', names: { tr: 'Kanal Fanları', en: 'Duct Fans', de: 'Kanalventilatoren' }, products: [{ name: 'Baypasli 3 Filtreli Kanal Vantilatorü', img: 'https://www.altancompany.com/images/kanal1.webp', desc: { tr: 'Kanal sistemlerine entegre edilmek üzere tasarlanmış, kompakt yapısı ve yüksek performansı ile ideal fanlar.', en: 'Designed for duct system integration, compact and high-performance.', de: 'Für Kanalsysteme konzipiert, kompakt und leistungsstark.' } }, { name: '2 Filtreli Motorlu Kanal Vantilatorü', img: 'https://www.altancompany.com/images/kanal2.webp', desc: { tr: 'Kanal sistemlerine entegre edilmek üzere tasarlanmış, kompakt yapısı ve yüksek performansı ile ideal fanlar.', en: 'Designed for duct system integration, compact and high-performance.', de: 'Für Kanalsysteme konzipiert, kompakt und leistungsstark.' } }, { name: 'Harici Motorlu Geriye Eğik Seyrek Kanatlı Dikdörtgen Kanal Fanları', img: 'https://www.altancompany.com/images/kanal3.webp', desc: { tr: 'Kanal sistemlerine entegre edilmek üzere tasarlanmış, kompakt yapısı ve yüksek performansı ile ideal fanlar.', en: 'Designed for duct system integration.', de: 'Für Kanalsysteme konzipiert.' } }] },
+  { id: 'cati', names: { tr: 'Çatı Fanları', en: 'Roof Fans', de: 'Dachventilatoren' }, products: [{ name: 'Dikey Atışlı Radyal Çatı Fanları', img: 'https://www.altancompany.com/images/cati1.webp', desc: { tr: 'Radyal kanat yapısı ile yüksek basınç üreten çatı tipi endüstriyel fanlar.', en: 'Roof-type industrial fans producing high pressure with radial blade design.', de: 'Dach-Industrieventilatoren mit radialer Schaufelkonstruktion.' } }, { name: 'Dikey Atışlı Harici Motorlu Radyal Çatı Fanları', img: 'https://www.altancompany.com/images/cati2.webp', desc: { tr: 'Radyal kanat yapısı ile yüksek basınç üreten çatı fanları.', en: 'High pressure roof fans with radial blade design.', de: 'Hochdruck-Dachventilatoren.' } }, { name: 'Radyal Çatı Fanları', img: 'https://www.altancompany.com/images/cati3.webp', desc: { tr: 'Çatı montajı için özel tasarım, dış hava koşullarına dayanıklı fanlar.', en: 'Purpose-designed for roof mounting, weatherproof fans.', de: 'Für die Dachmontage konzipiert, wetterfeste Ventilatoren.' } }] },
+  { id: 'aksiyel', names: { tr: 'Aksiyel Fanlar', en: 'Axial Fans', de: 'Axialventilatoren' }, products: [{ name: 'Harici Motorlu 4 Kanatlı Metal Pervaneli Kare Kasalı Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel1.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen, uzun ömürlü ve güvenilir performans sunan endüstriyel fanlar.', en: 'High quality industrial fans with long-lasting reliable performance.', de: 'Hochwertige Industrieventilatoren mit langlebiger Leistung.' } }, { name: 'Harici Motorlu 4 Kanatlı Metal Pervaneli Yuvarlak Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel2.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen endüstriyel fanlar.', en: 'High quality industrial fans.', de: 'Hochwertige Industrieventilatoren.' } }, { name: 'Harici Motorlu Alüminyum Pervaneli Yuvarlak Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel3.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen endüstriyel fanlar.', en: 'High quality industrial fans.', de: 'Hochwertige Industrieventilatoren.' } }] },
+  { id: 'vantilator', names: { tr: 'Vantilatörler', en: 'Ventilators', de: 'Ventilatoren' }, products: [{ name: 'Endüstriyel Vantilatörler', img: 'https://www.altancompany.com/images/vantilator1.webp', desc: { tr: 'Endüstriyel uygulamalar için tasarlanmış, yüksek performans ve dayanıklılık sunan vantilatörler.', en: 'Ventilators designed for industrial applications with high performance and durability.', de: 'Für Industrieanwendungen konzipierte Ventilatoren mit hoher Leistung und Haltbarkeit.' } }] },
+  { id: 'jet', names: { tr: 'Jet Fanlar', en: 'Jet Fans', de: 'Jet-Ventilatoren' }, products: [{ name: 'Alüminyum Pervaneli Jet Fanlar', img: 'https://www.altancompany.com/images/jet1.webp', desc: { tr: 'Jet etkisi ile hava akımı oluşturan, tünel ve büyük alan havalandırması için ideal fanlar.', en: 'Jet-effect fans ideal for tunnel and large-area ventilation.', de: 'Jet-Effekt-Ventilatoren ideal für Tunnel- und Großflächenbelüftung.' } }, { name: 'Radyal Pervaneli Jet Fanlar', img: 'https://www.altancompany.com/images/jet2.webp', desc: { tr: 'Jet etkisi ile hava akımı oluşturan, otopark ve büyük alan havalandırması için ideal fanlar.', en: 'Jet-effect fans ideal for parking and large-area ventilation.', de: 'Jet-Effekt-Ventilatoren ideal für Parkhaus- und Großflächenbelüftung.' } }] }
 ];
-
 let currentLang = 'tr';
-
-function setLang(lang) {
-  currentLang = lang;
-  document.documentElement.lang = lang;
-
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.lang-btn').forEach(b => {
-    if (b.textContent.trim().toLowerCase() === lang) b.classList.add('active');
-  });
-
-  document.querySelectorAll('[data-inline-lang]').forEach(el => {
-    el.classList.toggle('lang-active', el.getAttribute('data-inline-lang') === lang);
-  });
-
-  document.querySelectorAll('[data-nav-' + lang + ']').forEach(el => {
-    el.textContent = el.getAttribute('data-nav-' + lang);
-  });
-
-  renderProducts();
-}
-
-function makeProductCard(product, lang) {
-  const t = translations[lang];
-  const waMsg = encodeURIComponent(`Merhaba, "${product.name}" ürünü için fiyat teklifi almak istiyorum.`);
-  return `
-    <div class="product-card">
-      <div class="product-img-wrap">
-        <img src="${product.img}" alt="${product.name}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect width=%22400%22 height=%22300%22 fill=%22%23eaecef%22/%3E%3Ctext x=%22200%22 y=%22150%22 text-anchor=%22middle%22 fill=%22%238a95a3%22 font-size=%2216%22%3EFoto%3C/text%3E%3C/svg%3E'">
-        <span class="product-badge">${t.badge}</span>
-      </div>
-      <div class="product-body">
-        <div class="product-name">${product.name}</div>
-        <div class="product-desc">${product.desc[lang]}</div>
-        <div class="product-actions">
-          <a href="${WA}${waMsg}" class="btn-wa">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            ${t.orderWa}
-          </a>
-          <a href="${TEL}" class="btn-call">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            ${t.callBtn}
-          </a>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function renderProducts() {
-  const lang = currentLang;
-  const t = translations[lang];
-  const container = document.getElementById('products-container');
-  let html = '';
-
-  categories.forEach((cat, catIdx) => {
-    const firstThree = cat.products.slice(0, 3);
-    const rest = cat.products.slice(3);
-    const bg = catIdx % 2 === 0 ? '' : 'style="background:var(--off-white)"';
-    const showMoreId = `showmore-${cat.id}`;
-    const hiddenId = `hidden-${cat.id}`;
-
-    html += `
-    <section class="products-section" id="${cat.id}" ${bg}>
-      <div class="container">
-        <div class="section-header">
-          <div class="section-tag">${cat.names[lang]}</div>
-          <h2 class="section-title">${cat.names[lang]} <span>Ürünleri</span></h2>
-          <span class="section-divider"></span>
-        </div>
-        <div class="products-grid">
-          ${firstThree.map(p => makeProductCard(p, lang)).join('')}
-          ${rest.length > 0 ? `<div class="hidden-products" id="${hiddenId}" style="display:contents;display:none;">${rest.map(p => makeProductCard(p, lang)).join('')}</div>` : ''}
-        </div>
-        ${rest.length > 0 ? `
-        <div class="show-more-wrap">
-          <button class="btn-show-more" id="${showMoreId}" onclick="toggleMore('${hiddenId}','${showMoreId}')">
-            <span>${t.showMore}</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-        </div>
-        ` : ''}
-      </div>
-    </section>`;
-  });
-
-  container.innerHTML = html;
-}
-
-function toggleMore(hiddenId, btnId) {
-  const hidden = document.getElementById(hiddenId);
-  const btn = document.getElementById(btnId);
-  const t = translations[currentLang];
-  if (!hidden) return;
-
-  if (hidden.style.display === 'none' || hidden.style.display === '') {
-    hidden.style.display = 'contents';
-    btn.querySelector('span').textContent = t.showLess;
-    btn.querySelector('svg').style.transform = 'rotate(180deg)';
-  } else {
-    hidden.style.display = 'none';
-    btn.querySelector('span').textContent = t.showMore;
-    btn.querySelector('svg').style.transform = '';
-  }
-}
-
+function makeProductCard(p, lang){const t=translations[lang]; const waMsg=encodeURIComponent(`Merhaba, "${p.name}" ürünü için fiyat teklifi almak istiyorum.`); return `<div class="product-card"><div class="product-img-wrap"><img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect width=%22400%22 height=%22300%22 fill=%22%23eaecef%22/%3E%3Ctext x=%22200%22 y=%22150%22 text-anchor=%22middle%22 fill=%22%238a95a3%22 font-size=%2216%22%3EFoto%3C/text%3E%3C/svg%3E'"><span class="product-badge">${t.badge}</span></div><div class="product-body"><div class="product-name">${p.name}</div><div class="product-desc">${p.desc[lang]}</div><div class="product-actions"><a href="${WA}${waMsg}" class="btn-wa"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>${t.orderWa}</a><a href="${TEL}" class="btn-call"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>${t.callBtn}</a></div></div></div>`;}
+function renderProducts(){const lang=currentLang; const t=translations[lang]; const container=document.getElementById('products-container'); let html=''; categories.forEach((cat,idx)=>{const firstThree=cat.products.slice(0,3); const rest=cat.products.slice(3); const bg=idx%2===0?'':'style="background:var(--off-white)"'; const hiddenId=`hidden-${cat.id}`; const showMoreId=`showmore-${cat.id}`; html+=`<section class="products-section" id="${cat.id}" ${bg}><div class="container"><div class="section-header"><div class="section-tag">${cat.names[lang]}</div><h2 class="section-title">${cat.names[lang]} <span>Ürünleri</span></h2><span class="section-divider"></span></div><div class="products-grid">${firstThree.map(p=>makeProductCard(p,lang)).join('')}${rest.length>0?`<div class="hidden-products" id="${hiddenId}" style="display:none;">${rest.map(p=>makeProductCard(p,lang)).join('')}</div>`:''}</div>${rest.length>0?`<div class="show-more-wrap"><button class="btn-show-more" id="${showMoreId}" onclick="toggleMore('${hiddenId}','${showMoreId}')"><span>${t.showMore}</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button></div>`:''}</div></section>`;}); container.innerHTML=html;}
+function toggleMore(hiddenId,btnId){const hidden=document.getElementById(hiddenId); const btn=document.getElementById(btnId); const t=translations[currentLang]; if(!hidden)return; if(hidden.style.display==='none'||hidden.style.display===''){hidden.style.display='grid'; btn.querySelector('span').textContent=t.showLess; btn.querySelector('svg').style.transform='rotate(180deg)';}else{hidden.style.display='none'; btn.querySelector('span').textContent=t.showMore; btn.querySelector('svg').style.transform='';}}
+function setLang(lang){currentLang=lang; document.documentElement.lang=lang; document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active')); document.querySelectorAll('.lang-btn').forEach(b=>{if(b.textContent.trim().toLowerCase()===lang)b.classList.add('active');}); document.querySelectorAll('[data-inline-lang]').forEach(el=>{el.classList.toggle('lang-active',el.getAttribute('data-inline-lang')===lang);}); document.querySelectorAll('[data-nav-'+lang+']').forEach(el=>{el.textContent=el.getAttribute('data-nav-'+lang);}); renderProducts();}
 renderProducts();
 </script>
 </body>
