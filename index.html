@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
 <title>Altan Company | Fanex Fan Yetkili Bayii | Endüstriyel Havalandırma</title>
 <meta name="description" content="Altan Company - Fanex Fan Yetkili Bayii. Hücreli Fanlar, Duman Tahliye Fanları, Radyal Salyangoz Fanlar ve daha fazlası.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -222,8 +222,9 @@ nav::-webkit-scrollbar { display: none; }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 .hero-desc { color: rgba(255,255,255,0.65); font-size: 16px; font-weight: 400; line-height: 1.75; margin-bottom: 34px; max-width: 500px; }
 .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
-.btn-primary { display: inline-flex; align-items: center; gap: 9px; background: var(--red); color: #fff; text-decoration: none; font-family: var(--heading); font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 30px; border-radius: 5px; transition: all 0.22s; box-shadow: 0 4px 20px var(--red-glow); }
-.btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); }
+/* BUTON RENGİ WHATSAPP YEŞİLİ OLARAK DEĞİŞTİRİLDİ */
+.btn-primary { display: inline-flex; align-items: center; gap: 9px; background: #25D366; color: #fff; text-decoration: none; font-family: var(--heading); font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 30px; border-radius: 5px; transition: all 0.22s; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3); }
+.btn-primary:hover { background: #1EBE5B; transform: translateY(-2px); }
 .btn-secondary { display: inline-flex; align-items: center; gap: 9px; background: rgba(255,255,255,0.07); color: #fff; text-decoration: none; font-family: var(--heading); font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 30px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(8px); }
 .btn-secondary:hover { background: rgba(255,255,255,0.14); transform: translateY(-2px); }
 .hero-stats { display: flex; gap: 1px; background: rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
@@ -303,44 +304,44 @@ nav::-webkit-scrollbar { display: none; }
 .contact-item-label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #9BA5B0; font-weight: 600; margin-bottom: 2px; }
 .contact-item-val { font-family: var(--heading); font-size: 18px; color: var(--navy); font-weight: 600; text-decoration: none; }
 .contact-item-val:hover { color: var(--sky); }
-.contact-cta-block { background: var(--navy); border-radius: 12px; padding: 42px 38px; text-align: center; position: relative; }
-.contact-cta-block::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--red), var(--sky)); }
-.contact-cta-block h3 { font-family: var(--heading); font-size: 28px; font-weight: 800; color: var(--white); text-transform: uppercase; margin-bottom: 12px; }
-.contact-cta-block p { color: rgba(255,255,255,0.55); font-size: 14px; margin-bottom: 28px; }
-.contact-cta-btns { display: flex; flex-direction: column; gap: 10px; }
-.btn-cta-wa { display: flex; align-items: center; justify-content: center; gap: 10px; background: #25D366; color: #fff; text-decoration: none; font-family: var(--heading); font-size: 16px; font-weight: 700; text-transform: uppercase; padding: 15px 24px; border-radius: 7px; }
-.btn-cta-call { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--sky); color: #fff; text-decoration: none; font-family: var(--heading); font-size: 16px; font-weight: 700; text-transform: uppercase; padding: 15px 24px; border-radius: 7px; }
-.btn-cta-fb { display: flex; align-items: center; justify-content: center; gap: 10px; background: #1877F2; color: #fff; text-decoration: none; font-family: var(--heading); font-size: 15px; font-weight: 700; text-transform: uppercase; padding: 13px 24px; border-radius: 7px; }
 
-/* LIGHTBOX */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: rgba(0,0,0,0);
+/* STICKY CTA DÜZELTİLDİ */
+.sticky-cta { position: fixed; bottom: 24px; right: 24px; display: flex; flex-direction: column; gap: 10px; z-index: 999; }
+.sticky-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: background 0.3s, opacity 0.3s;
-  cursor: zoom-out;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+  transition: all 0.22s;
+  border: none;
+  cursor: pointer;
+  position: relative;
 }
-.lightbox.open { background: rgba(0,0,0,0.92); opacity: 1; pointer-events: auto; }
-.lightbox-img { max-width: 92vw; max-height: 88vh; object-fit: contain; border-radius: 6px; transform: scale(0.88); transition: transform 0.35s; }
-.lightbox.open .lightbox-img { transform: scale(1); }
-.lightbox-close { position: absolute; top: 18px; right: 22px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-.lightbox-close:hover { background: rgba(255,255,255,0.2); transform: scale(1.1); }
-
-/* STICKY CTA */
-.sticky-cta { position: fixed; bottom: 24px; right: 24px; display: flex; flex-direction: column; gap: 10px; z-index: 999; }
-.sticky-btn { display: flex; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 50%; text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,0.35); transition: all 0.22s; border: none; cursor: pointer; }
 .sticky-btn:hover { transform: scale(1.1); }
 .sticky-wa { background: #25D366; }
 .sticky-call { background: var(--sky); }
 .sticky-top { background: var(--navy); border: 1px solid rgba(255,255,255,0.15); opacity: 0; pointer-events: none; transform: scale(0.8) translateY(10px); transition: all 0.35s; }
 .sticky-top.visible { opacity: 1; pointer-events: auto; transform: scale(1) translateY(0); }
 .sticky-top:hover { background: var(--sky); }
+.sticky-tooltip {
+  position: absolute;
+  right: 64px;
+  background: rgba(0,0,0,0.75);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.sticky-btn:hover .sticky-tooltip { opacity: 1; }
 
 /* FOOTER */
 footer { background: #050B13; padding: 36px 28px; text-align: center; color: rgba(255,255,255,0.35); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.06); }
@@ -356,7 +357,21 @@ footer a:hover { color: var(--sky); }
   .products-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .header-inner { height: auto; padding: 12px 16px; flex-wrap: wrap; }
+  /* MOBİL DİL SEÇENEKLERİ DÜZELTİLDİ */
+  .header-inner { 
+    height: auto; 
+    padding: 12px 16px; 
+    flex-wrap: wrap; 
+    justify-content: space-between;
+  }
+  .logo-wrap { order: 1; }
+  .lang-switcher { order: 2; margin-left: auto; }
+  .header-contacts { 
+    order: 3; 
+    width: 100%; 
+    justify-content: center; 
+    margin-top: 10px;
+  }
   .hero-inner { padding: 80px 20px 120px; }
   .products-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
@@ -393,6 +408,11 @@ footer a:hover { color: var(--sky); }
       <span class="logo-main">Altan <span class="logo-accent">Company</span></span>
       <span class="logo-sub">Fanex Fan Yetkili Bayii</span>
     </a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('tr')"><span class="flag-circle"><svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="15" fill="#E30A17"/><circle cx="13" cy="15" r="5.5" fill="white"/><circle cx="15" cy="15" r="4.3" fill="#E30A17"/><polygon points="19,15 21.5,10.8 22.5,15.8 17.8,13.2 23,13.2" fill="white"/></svg></span></button>
+      <button class="lang-btn" onclick="setLang('en')"><span class="flag-circle"><svg viewBox="0 0 30 30"><clipPath id="c"><circle cx="15" cy="15" r="15"/></clipPath><circle cx="15" cy="15" r="15" fill="#012169"/><g clip-path="url(#c)"><line x1="0" y1="0" x2="30" y2="30" stroke="white" stroke-width="5"/><line x1="30" y1="0" x2="0" y2="30" stroke="white" stroke-width="5"/><line x1="15" y1="0" x2="15" y2="30" stroke="white" stroke-width="6"/><line x1="0" y1="15" x2="30" y2="15" stroke="white" stroke-width="6"/><line x1="0" y1="0" x2="30" y2="30" stroke="#C8102E" stroke-width="3"/><line x1="30" y1="0" x2="0" y2="30" stroke="#C8102E" stroke-width="3"/><line x1="15" y1="0" x2="15" y2="30" stroke="#C8102E" stroke-width="4"/><line x1="0" y1="15" x2="30" y2="15" stroke="#C8102E" stroke-width="4"/></g></svg></span></button>
+      <button class="lang-btn" onclick="setLang('de')"><span class="flag-circle"><svg viewBox="0 0 30 30"><clipPath id="c2"><circle cx="15" cy="15" r="15"/></clipPath><g clip-path="url(#c2)"><rect width="30" height="10" fill="#000"/><rect y="10" width="30" height="10" fill="#DD0000"/><rect y="20" width="30" height="10" fill="#FFCE00"/></g></svg></span></button>
+    </div>
     <div class="header-contacts">
       <a href="https://wa.me/905422140132" class="contact-pill wa">
         <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -402,11 +422,6 @@ footer a:hover { color: var(--sky); }
         <svg class="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
         <span>+90 542 214 01 32</span>
       </a>
-    </div>
-    <div class="lang-switcher">
-      <button class="lang-btn active" onclick="setLang('tr')"><span class="flag-circle"><svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="15" fill="#E30A17"/><circle cx="13" cy="15" r="5.5" fill="white"/><circle cx="15" cy="15" r="4.3" fill="#E30A17"/><polygon points="19,15 21.5,10.8 22.5,15.8 17.8,13.2 23,13.2" fill="white"/></svg></span></button>
-      <button class="lang-btn" onclick="setLang('en')"><span class="flag-circle"><svg viewBox="0 0 30 30"><clipPath id="c"><circle cx="15" cy="15" r="15"/></clipPath><circle cx="15" cy="15" r="15" fill="#012169"/><g clip-path="url(#c)"><line x1="0" y1="0" x2="30" y2="30" stroke="white" stroke-width="5"/><line x1="30" y1="0" x2="0" y2="30" stroke="white" stroke-width="5"/><line x1="15" y1="0" x2="15" y2="30" stroke="white" stroke-width="6"/><line x1="0" y1="15" x2="30" y2="15" stroke="white" stroke-width="6"/><line x1="0" y1="0" x2="30" y2="30" stroke="#C8102E" stroke-width="3"/><line x1="30" y1="0" x2="0" y2="30" stroke="#C8102E" stroke-width="3"/><line x1="15" y1="0" x2="15" y2="30" stroke="#C8102E" stroke-width="4"/><line x1="0" y1="15" x2="30" y2="15" stroke="#C8102E" stroke-width="4"/></g></svg></span></button>
-      <button class="lang-btn" onclick="setLang('de')"><span class="flag-circle"><svg viewBox="0 0 30 30"><clipPath id="c2"><circle cx="15" cy="15" r="15"/></clipPath><g clip-path="url(#c2)"><rect width="30" height="10" fill="#000"/><rect y="10" width="30" height="10" fill="#DD0000"/><rect y="20" width="30" height="10" fill="#FFCE00"/></g></svg></span></button>
     </div>
   </div>
 </header>
@@ -443,6 +458,7 @@ footer a:hover { color: var(--sky); }
       <h1 class="hero-title"><span class="inline-lang lang-active" data-inline-lang="tr">Güçlü<br><span class="accent">Havalandırma</span><br>Sistemleri</span><span class="inline-lang" data-inline-lang="en">Powerful<br><span class="accent">Ventilation</span><br>Systems</span><span class="inline-lang" data-inline-lang="de">Leistungsstarke<br><span class="accent">Belüftungs</span><br>Systeme</span></h1>
       <p class="hero-desc"><span class="inline-lang lang-active" data-inline-lang="tr">Endüstriyel havalandırma ve yangın güvenliği sistemlerinde Fanex'in yetkili bayii olarak, en kaliteli fan çözümlerini rekabetçi fiyatlarla sunuyoruz.</span><span class="inline-lang" data-inline-lang="en">As Fanex's authorized dealer in industrial ventilation and fire safety systems, we provide the highest quality fan solutions at competitive prices.</span><span class="inline-lang" data-inline-lang="de">Als autorisierter Fanex-Händler bieten wir hochwertigste Lüfterlösungen zu wettbewerbsfähigen Preisen.</span></p>
       <div class="hero-ctas">
+        <!-- BUTON RENGİ WHATSAPP YEŞİLİ -->
         <a href="https://wa.me/905422140132?text=Merhaba,%20fiyat%20teklifi%20almak%20istiyorum" class="btn-primary"><svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span class="inline-lang lang-active" data-inline-lang="tr">Fiyat Teklifi Al</span><span class="inline-lang" data-inline-lang="en">Get a Quote</span><span class="inline-lang" data-inline-lang="de">Angebot Anfordern</span></a>
         <a href="tel:+905422140132" class="btn-secondary"><svg class="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg><span class="inline-lang lang-active" data-inline-lang="tr">Hemen Ara</span><span class="inline-lang" data-inline-lang="en">Call Now</span><span class="inline-lang" data-inline-lang="de">Jetzt Anrufen</span></a>
       </div>
@@ -479,7 +495,7 @@ footer a:hover { color: var(--sky); }
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT (HEMEN FİYAT TEKLİFİ KARTI KALDIRILDI) -->
 <section class="contact-section" id="iletisim">
   <div class="container">
     <div class="section-header reveal"><div class="section-tag">İletişim</div><h2 class="section-title">Fiyat Teklifi <span>Alın</span></h2><span class="section-divider"></span></div>
@@ -490,13 +506,14 @@ footer a:hover { color: var(--sky); }
         <div class="contact-item"><div class="contact-item-icon">🌐</div><div><div class="contact-item-label">Web</div><a href="https://www.altancompany.com/" class="contact-item-val">www.altancompany.com</a></div></div>
         <div class="contact-item"><div class="contact-item-icon">👍</div><div><div class="contact-item-label">Facebook</div><a href="https://www.facebook.com/altancompany" class="contact-item-val">Altan Company</a></div></div>
       </div>
-      <div class="reveal-right"><div class="contact-cta-block"><h3>Hemen Fiyat Teklifi Alın!</h3><p>İhtiyacınız olan ürün için WhatsApp veya telefon ile bize ulaşın. Uzman ekibimiz en kısa sürede fiyat teklifi sunacaktır.</p><div class="contact-cta-btns"><a href="https://wa.me/905422140132" class="btn-cta-wa">WhatsApp</a><a href="tel:+905422140132" class="btn-cta-call">+90 542 214 01 32</a><a href="https://www.facebook.com/altancompany" class="btn-cta-fb">Facebook</a></div></div></div>
+      <!-- SAĞ TARAFTAKİ CTA BLOK KALDIRILDI, GRİD YAPISI SADECE BİR SÜTUN GÖRÜNÜMLÜ OLDUĞU İÇİN SORUN YOK -->
     </div>
   </div>
 </section>
 
 <footer><div class="footer-inner"><strong>Altan Company</strong> &nbsp;|&nbsp; Fanex Fan Yetkili Bayii<br><br><a href="tel:+905422140132">+90 542 214 01 32</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="https://www.altancompany.com/">www.altancompany.com</a><br><br>© 2025 Altan Company. Tüm hakları saklıdır.</div></footer>
 
+<!-- STICKY CTA DÜZENLENDİ -->
 <div class="sticky-cta">
   <button class="sticky-btn sticky-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg><span class="sticky-tooltip">Yukarı</span></button>
   <a href="https://wa.me/905422140132" class="sticky-btn sticky-wa"><svg width="25" height="25" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span class="sticky-tooltip">WhatsApp</span></a>
