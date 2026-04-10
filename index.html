@@ -1684,7 +1684,43 @@ function closeLightbox(e) {
     document.getElementById('lightbox-img').src = '';
   }, 350);
 }
+<script>
+const productsHTML = `
+<section class="products-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Ürünlerimiz</h2>
+    </div>
 
+    <div class="products-grid">
+
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="https://via.placeholder.com/400x300">
+        </div>
+        <div class="product-body">
+          <div class="product-name">Hücreli Fan</div>
+          <div class="product-desc">Yüksek performanslı fan sistemi</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="https://via.placeholder.com/400x300">
+        </div>
+        <div class="product-body">
+          <div class="product-name">Radyal Fan</div>
+          <div class="product-desc">Endüstriyel kullanım için ideal</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+`;
+
+document.getElementById("products-container").innerHTML = productsHTML;
+</script>
 // Close with Escape key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeLightbox();
