@@ -482,9 +482,13 @@ nav::-webkit-scrollbar { display: none; }
   aspect-ratio: 4/3;
   overflow: hidden;
   cursor: zoom-in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .product-img-wrap img {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
 }
@@ -503,21 +507,9 @@ nav::-webkit-scrollbar { display: none; }
   padding: 3px 10px;
   border-radius: 3px;
   box-shadow: 0 2px 8px rgba(212,34,44,0.4);
-}
-.products-section {
-  opacity: 1 !important;
-  visibility: visible !important;
+  z-index: 2;
 }
 
-.product-card {
-  opacity: 1 !important;
-}
-
-.reveal {
-  opacity: 1 !important;
-  transform: none !important;
-}
-/* zoom icon overlay */
 .product-img-wrap::after {
   content: '';
   position: absolute;
@@ -525,6 +517,7 @@ nav::-webkit-scrollbar { display: none; }
   background: rgba(8,14,24,0);
   transition: background 0.3s;
   pointer-events: none;
+  z-index: 1;
 }
 .product-img-wrap:hover::after { background: rgba(8,14,24,0.25); }
 .zoom-icon {
@@ -538,7 +531,7 @@ nav::-webkit-scrollbar { display: none; }
   transform: scale(0.8);
   transition: opacity 0.3s, transform 0.3s;
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
 }
 .product-img-wrap:hover .zoom-icon { opacity: 1; transform: scale(1); }
 
@@ -832,7 +825,6 @@ img, video, svg, iframe { max-width: 100%; }
   .hero-stats { flex-direction: column; }
   .products-section { padding: 56px 16px; }
   .why-section, .contact-section { padding: 56px 16px; }
-  /* FIX 3: Prevent horizontal overflow from wide content */
   .hero-ctas { gap: 8px; }
   .hero-ctas .btn-primary,
   .hero-ctas .btn-secondary { padding: 12px 18px; font-size: 13px; }
@@ -843,7 +835,6 @@ img, video, svg, iframe { max-width: 100%; }
   .contact-pill span { display: none; }
   .contact-pill.wa span { display: inline; }
   .lang-switcher { gap: 2px; }
-  /* prevent any element from exceeding viewport */
   .section-title { font-size: clamp(22px, 7vw, 36px); }
 }
 
@@ -884,7 +875,6 @@ img, video, svg, iframe { max-width: 100%; }
       <span class="logo-sub">Fanex Fan Yetkili Bayii</span>
     </a>
     <div class="header-contacts">
-      <!-- FIX 5: Correct phone SVG icons with proper viewBox and path -->
       <a href="https://wa.me/905422140132" class="contact-pill wa">
         <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -892,7 +882,6 @@ img, video, svg, iframe { max-width: 100%; }
         <span>+90 542 214 01 32</span>
       </a>
       <a href="tel:+905422140132" class="contact-pill">
-        <!-- FIX 5: Phone handset icon - correct path that renders a proper handset shape -->
         <svg class="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
         </svg>
@@ -901,7 +890,6 @@ img, video, svg, iframe { max-width: 100%; }
     </div>
     <!-- FIX 4: Flag circle language buttons -->
     <div class="lang-switcher">
-      <!-- Turkish flag -->
       <button class="lang-btn active" onclick="setLang('tr')" title="Türkçe">
         <span class="flag-circle">
           <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
@@ -912,7 +900,6 @@ img, video, svg, iframe { max-width: 100%; }
           </svg>
         </span>
       </button>
-      <!-- UK / English flag -->
       <button class="lang-btn" onclick="setLang('en')" title="English">
         <span class="flag-circle">
           <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
@@ -931,7 +918,6 @@ img, video, svg, iframe { max-width: 100%; }
           </svg>
         </span>
       </button>
-      <!-- German flag -->
       <button class="lang-btn" onclick="setLang('de')" title="Deutsch">
         <span class="flag-circle">
           <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
@@ -1092,7 +1078,132 @@ img, video, svg, iframe { max-width: 100%; }
     <span class="scroll-label">Scroll</span>
   </div>
 </section>
+<!-- Ürünlerin gözükeceği container - bu elementin var olduğundan emin olun -->
+<div id="products-container"></div>
 
+<script>
+// TÜM ÜRÜN VERİLERİ - Sabit ve çalışan versiyon
+const categoriesData = [
+  {
+    id: 'hucreli',
+    name_tr: 'Hücreli Fanlar',
+    name_en: 'Cell Fans', 
+    name_de: 'Zellenventilatoren',
+    products: [
+      { name: 'FHV-SK Serisi Öne Eğimli Sık Kanatlı Hücreli Vantilatör', desc_tr: 'Düşük gürültü seviyesinde üstün hava debisi sağlar', desc_en: 'Superior airflow at low noise levels', desc_de: 'Überlegener Luftdurchsatz bei geringer Lautstärke' },
+      { name: 'FHV-SY Serisi Geriye Eğimli Seyrek Kanatlı Hücreli Vantilatör', desc_tr: 'Yüksek statik basınç gerektiren uzun kanal hatları için', desc_en: 'For long duct runs requiring high static pressure', desc_de: 'Für lange Kanäle mit hohem statischem Druck' },
+      { name: 'FHS Serisi Kabinli Mutfak Egzoz Fanı', desc_tr: 'Endüstriyel mutfaklar için yağlı buhar ve ısıya dayanıklı', desc_en: 'Grease and heat resistant for industrial kitchens', desc_de: 'Fett- und hitzebeständig für Industrieküchen' }
+    ]
+  },
+  {
+    id: 'radyal',
+    name_tr: 'Radyal Salyangoz Fanlar',
+    name_en: 'Radial Fans',
+    name_de: 'Radialventilatoren', 
+    products: [
+      { name: 'FBSY Serisi Öne Eğimli Alçak Basınçlı Salyangoz Fan', desc_tr: 'Alçak basınçlı sistemlerde maksimum hava debisi', desc_en: 'Maximum airflow in low pressure systems', desc_de: 'Maximaler Luftdurchsatz in Niederdrucksystemen' },
+      { name: 'FBO Serisi Orta Basınçlı Salyangoz Fan', desc_tr: 'Endüstriyel proseslerden genel havalandırmaya', desc_en: 'From industrial processes to general ventilation', desc_de: 'Von Industrieprozessen bis zur Allgemeinlüftung' },
+      { name: 'FBK Serisi Yüksek Basınçlı Körük Fan', desc_tr: '5.000 Pa\'ya kadar statik basınç üreten güçlü fan', desc_en: 'Powerful fan producing static pressure up to 5,000 Pa', desc_de: 'Leistungsstarker Ventilator mit statischem Druck bis 5.000 Pa' }
+    ]
+  }
+];
+
+// Dil değişkeni
+let currentLanguage = 'tr';
+
+// Çeviriler
+const translationsData = {
+  tr: { orderWa: 'Sipariş Ver', callBtn: 'Ara', showMore: 'Daha Fazla Göster', showLess: 'Daha Az Göster', badge: '%25 İndirim', products: 'Ürünleri' },
+  en: { orderWa: 'Order Now', callBtn: 'Call', showMore: 'Show More', showLess: 'Show Less', badge: '25% Off', products: 'Products' },
+  de: { orderWa: 'Bestellen', callBtn: 'Anrufen', showMore: 'Mehr Anzeigen', showLess: 'Weniger', badge: '25% Rabatt', products: 'Produkte' }
+};
+
+// Placeholder görsel
+const placeholderImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23EEF0F3'/%3E%3Ctext x='200' y='160' text-anchor='middle' fill='%23999' font-size='14'%3EÜrün Görseli%3C/text%3E%3C/svg%3E";
+
+// Ürün kartı oluştur
+function createProductCard(product, lang) {
+  const t = translationsData[lang];
+  const desc = product[`desc_${lang}`] || product.desc_tr;
+  const waMsg = encodeURIComponent(`Merhaba, "${product.name}" ürünü için fiyat teklifi almak istiyorum.`);
+  
+  return `
+    <div class="product-card" style="background:white;border-radius:10px;overflow:hidden;border:1px solid #E0E4EB;margin-bottom:22px;">
+      <div style="background:#EEF0F3;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;">
+        <img src="${placeholderImg}" alt="${product.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='${placeholderImg}'">
+        <span style="position:absolute;top:10px;left:10px;background:#D4222C;color:white;padding:3px 10px;border-radius:3px;font-size:10px;font-weight:bold;">${t.badge}</span>
+      </div>
+      <div style="padding:18px;">
+        <h3 style="font-size:14px;font-weight:700;margin-bottom:7px;color:#080E18;">${product.name}</h3>
+        <p style="font-size:12.5px;color:#6B7685;margin-bottom:16px;line-height:1.5;">${desc}</p>
+        <div style="display:flex;gap:8px;">
+          <a href="https://wa.me/905422140132?text=${waMsg}" style="flex:1;background:#25D366;color:white;text-decoration:none;padding:9px 12px;border-radius:5px;font-size:12px;font-weight:bold;text-align:center;">📱 ${t.orderWa}</a>
+          <a href="tel:+905422140132" style="flex:1;background:transparent;color:#080E18;text-decoration:none;padding:9px 12px;border-radius:5px;font-size:12px;font-weight:bold;text-align:center;border:1px solid #E0E4EB;">📞 ${t.callBtn}</a>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Tüm ürünleri render et
+function renderAllProducts() {
+  const container = document.getElementById('products-container');
+  if (!container) {
+    console.error('HATA: #products-container elementi bulunamadı!');
+    return;
+  }
+  
+  const lang = currentLanguage;
+  const t = translationsData[lang];
+  let html = '';
+  
+  categoriesData.forEach((cat, index) => {
+    const bgColor = index % 2 === 0 ? 'white' : '#F2F4F7';
+    const catName = cat[`name_${lang}`] || cat.name_tr;
+    
+    html += `
+      <section style="padding:60px 28px;background:${bgColor};" id="${cat.id}">
+        <div style="max-width:1320px;margin:0 auto;">
+          <div style="text-align:center;margin-bottom:52px;">
+            <div style="display:inline-block;background:rgba(30,144,212,0.1);color:#1E90D4;padding:5px 14px;border-radius:3px;font-size:11px;font-weight:bold;margin-bottom:12px;">${catName}</div>
+            <h2 style="font-size:clamp(30px,4vw,44px);font-weight:800;color:#080E18;text-transform:uppercase;">${catName} <span style="color:#D4222C;">${t.products}</span></h2>
+            <div style="width:48px;height:3px;background:linear-gradient(90deg,#D4222C,#1E90D4);margin:16px auto 0;border-radius:2px;"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
+            ${cat.products.map(p => createProductCard(p, lang)).join('')}
+          </div>
+        </div>
+      </section>
+    `;
+  });
+  
+  container.innerHTML = html;
+  console.log('✅ Ürünler başarıyla render edildi! Toplam ürün sayısı:', categoriesData.reduce((sum, cat) => sum + cat.products.length, 0));
+}
+
+// Sayfa yüklendiğinde çalıştır
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('🟢 DOM yüklendi, ürünler render ediliyor...');
+    renderAllProducts();
+  });
+} else {
+  console.log('🟢 Sayfa hazır, ürünler render ediliyor...');
+  renderAllProducts();
+}
+
+// Dil değiştirme fonksiyonu (opsiyonel)
+window.changeLanguage = function(lang) {
+  currentLanguage = lang;
+  renderAllProducts();
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.style.display = el.getAttribute('data-lang') === lang ? 'inline' : 'none';
+  });
+};
+
+// Konsoldan test etmek için
+console.log('Script yüklendi. Ürünler otomatik olarak görünecektir.');
+</script>
 <!-- PRODUCTS CONTAINER -->
 <div id="products-container"></div>
 
@@ -1275,25 +1386,7 @@ img, video, svg, iframe { max-width: 100%; }
     © 2025 Altan Company. Tüm hakları saklıdır.
   </div>
 </footer>
-  <div id="products-container">
-  <section class="products-section">
-    <div class="container">
-      <div class="products-grid">
-        
-        <div class="product-card">
-          <div class="product-img-wrap">
-            <img src="https://via.placeholder.com/400x300">
-          </div>
-          <div class="product-body">
-            <div class="product-name">Test Ürün</div>
-            <div class="product-desc">Bu bir test ürünüdür</div>
-          </div>
-        </div>
 
-      </div>
-    </div>
-  </section>
-</div>
 <!-- STICKY CTA + BACK TO TOP -->
 <div class="sticky-cta">
   <button class="sticky-btn sticky-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Sayfanın başına dön">
@@ -1326,7 +1419,10 @@ const translations = {
   de: { orderWa: 'Bestellen',   callBtn: 'Anrufen', showMore: 'Mehr Anzeigen',  showLess: 'Weniger',          badge: '25% Rabatt',   products: 'Produkte' }
 };
 
-// FIX 2: Unique product descriptions for every product
+// Placeholder görsel (görsel yüklenmezse gösterilecek)
+const PLACEHOLDER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23EEF0F3'/%3E%3Ctext x='200' y='160' text-anchor='middle' fill='%239BA5B0' font-size='14' font-family='sans-serif'%3EÜrün Görseli%3C/text%3E%3C/svg%3E";
+
+// Ürün verileri (görseller için gerçek URL'ler, placeholder yedekte)
 const categories = [
   { id:'hucreli', names:{tr:'Hücreli Fanlar',en:'Cell Fans',de:'Zellenventilatoren'},
     products:[
@@ -1374,209 +1470,89 @@ const categories = [
   },
   { id:'santraller', names:{tr:'Santraller',en:'Centrals',de:'Zentralen'},
     products:[
-      {name:'FSFM Serisi Sığınak Filtre Modülü',img:'https://www.altancompany.com/images/santraller1.webp',desc:{
-        tr:'NBC tehditlerine karşı tasarlanmış yüksek verimli filtre modülü; sığınak hava kalitesini kritik standartlarda tutarak kullanıcıları zararlı ajanlara karşı korur.',
-        en:'High-efficiency filter module designed against NBC threats — maintains shelter air quality at critical standards, protecting occupants from harmful agents.',
-        de:'Hocheffizienter Filtermodul gegen ABC-Bedrohungen — hält die Luftqualität im Schutzraum auf kritischen Standards und schützt Personen vor schädlichen Stoffen.'
-      }},
-      {name:'FKSF-P Serisi Kanal Tipi Sığınak Havalandırma Fanları',img:'https://www.altancompany.com/images/santraller2.webp',desc:{
-        tr:'Kanal sistemine doğrudan entegre edilen kompakt yapısıyla sığınak ortamlarında sessiz ve güvenilir hava sirkülasyonu sağlar; acil durumlarda anında devreye girer.',
-        en:'Its compact build integrates directly into the duct system, providing quiet and reliable air circulation in shelter environments — engages instantly in emergencies.',
-        de:'Die kompakte Bauform integriert sich direkt ins Kanalsystem und sorgt für ruhige, zuverlässige Luftzirkulation in Schutzräumen — sofortiger Einsatz im Notfall.'
-      }},
-      {name:'FHSF-R Serisi Çift Cidarlı Sığınak Santrali – Radyal Fanlı',img:'https://www.altancompany.com/images/santraller3.webp',desc:{
-        tr:'Çift cidarlı termal ve akustik yalıtım ile radyal fan teknolojisini bir araya getiren bu santral, sığınak konforunu ve güvenliğini en üst düzeye çıkarır.',
-        en:'Combining double-wall thermal and acoustic insulation with radial fan technology, this unit maximizes both shelter comfort and safety.',
-        de:'Diese Zentrale verbindet doppelwandige Wärme- und Schalldämmung mit Radialventilator-Technologie für maximalen Komfort und Sicherheit im Schutzraum.'
-      }}
+      {name:'FSFM Serisi Sığınak Filtre Modülü',img:'https://www.altancompany.com/images/santraller1.webp',desc:{tr:'NBC tehditlerine karşı tasarlanmış yüksek verimli filtre modülü; sığınak hava kalitesini kritik standartlarda tutarak kullanıcıları zararlı ajanlara karşı korur.',en:'High-efficiency filter module designed against NBC threats — maintains shelter air quality at critical standards, protecting occupants from harmful agents.',de:'Hocheffizienter Filtermodul gegen ABC-Bedrohungen — hält die Luftqualität im Schutzraum auf kritischen Standards und schützt Personen vor schädlichen Stoffen.'}},
+      {name:'FKSF-P Serisi Kanal Tipi Sığınak Havalandırma Fanları',img:'https://www.altancompany.com/images/santraller2.webp',desc:{tr:'Kanal sistemine doğrudan entegre edilen kompakt yapısıyla sığınak ortamlarında sessiz ve güvenilir hava sirkülasyonu sağlar; acil durumlarda anında devreye girer.',en:'Its compact build integrates directly into the duct system, providing quiet and reliable air circulation in shelter environments — engages instantly in emergencies.',de:'Die kompakte Bauform integriert sich direkt ins Kanalsystem und sorgt für ruhige, zuverlässige Luftzirkulation in Schutzräumen — sofortiger Einsatz im Notfall.'}},
+      {name:'FHSF-R Serisi Çift Cidarlı Sığınak Santrali – Radyal Fanlı',img:'https://www.altancompany.com/images/santraller3.webp',desc:{tr:'Çift cidarlı termal ve akustik yalıtım ile radyal fan teknolojisini bir araya getiren bu santral, sığınak konforunu ve güvenliğini en üst düzeye çıkarır.',en:'Combining double-wall thermal and acoustic insulation with radial fan technology, this unit maximizes both shelter comfort and safety.',de:'Diese Zentrale verbindet doppelwandige Wärme- und Schalldämmung mit Radialventilator-Technologie für maximalen Komfort und Sicherheit im Schutzraum.'}}
     ]
   },
   { id:'radyal', names:{tr:'Radyal Salyangoz Fanlar',en:'Radial Snail Fans',de:'Radiale Schneckenventilatoren'},
     products:[
-      {name:'FBSY Serisi Öne Eğimli Seyrek Kanatlı Alçak Basınçlı Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal1.webp',desc:{
-        tr:'Aereodinamik salyangoz gövdesi ve öne eğimli seyrek kanatların uyumu, alçak basınçlı sistemlerde maksimum hava debisini minimum enerji tüketimiyle sunar.',
-        en:'The harmony of aerodynamic snail housing and forward-curved sparse blades delivers maximum airflow in low-pressure systems with minimum energy consumption.',
-        de:'Das Zusammenspiel von aerodynamischem Schneckengehäuse und vorwärts geneigten weitläufigen Schaufeln liefert maximalen Luftdurchsatz bei minimalem Energieverbrauch.'
-      }},
-      {name:'FBO Serisi Orta Basınçlı Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal2.webp',desc:{
-        tr:'Orta basınç aralığında geniş uygulama yelpazesine sahip bu salyangoz fan; endüstriyel proseslerden genel havalandırmaya kadar esnek çözümler üretir.',
-        en:'This snail fan covers a wide application range in the medium pressure zone — producing flexible solutions from industrial processes to general ventilation.',
-        de:'Dieser Schneckenventilator deckt ein breites Anwendungsfeld im mittleren Druckbereich ab — von Industrieprozessen bis zur allgemeinen Lüftung.'
-      }},
-      {name:'FBK Serisi Yüksek Basınçlı Körük Fanlar',img:'https://www.altancompany.com/images/radyal3.webp',desc:{
-        tr:'Filtre tesisleri, toz taşıma hatları ve yüksek direnç gerektiren proseslerde 5.000 Pa'ya kadar statik basınç üreten güçlü körük fan serisidir.',
-        en:'A powerful blower fan series producing static pressure up to 5,000 Pa for filter plants, dust conveying lines, and processes requiring high resistance.',
-        de:'Eine leistungsstarke Gebläseventilator-Serie, die bis zu 5.000 Pa statischen Druck für Filteranlagen, Staubförderanlagen und widerstandsintensive Prozesse erzeugt.'
-      }},
-      {name:'FMK-A Serisi Kare Tip Alçak Basınçlı Seyrek Kanatlı Fanlar',img:'https://www.altancompany.com/images/radyal4.webp',desc:{
-        tr:'Kare kasası, dar makine daireleri ve mevcut yapılara kolaylıkla entegrasyon sağlar; alçak basınçlı genel havalandırma uygulamalarında ekonomik çözümdür.',
-        en:'Its square casing easily integrates into narrow machine rooms and existing structures — an economical solution for low-pressure general ventilation.',
-        de:'Das quadratische Gehäuse lässt sich leicht in enge Maschinenräume und Bestandsgebäude integrieren — eine wirtschaftliche Lösung für die allgemeine Niederdrucklüftung.'
-      }},
-      {name:'FGS Serisi Geriye Eğik Alçak Basınçlı Konikli Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal5.webp',desc:{
-        tr:'Konik volüt ve geriye eğik kanatların birleşimi, yüksek verimli sessiz çalışma sağlar; temiz oda ve ofis havalandırma sistemleri için özellikle uygundur.',
-        en:'The combination of conical volute and backward-swept blades delivers highly efficient, quiet operation — particularly suitable for clean room and office ventilation.',
-        de:'Die Kombination aus konischem Spiralgehäuse und rückwärts geschwungenen Schaufeln ermöglicht einen hocheffizienten, leisen Betrieb — ideal für Reinraum- und Bürolüftung.'
-      }},
-      {name:'FAGS-T Serisi Trifaze Alüminyum Döküm Gövdeli Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal6.webp',desc:{
-        tr:'Yüksek mukavemetli alüminyum döküm gövde ve trifaze motor kombinasyonu; ağır endüstri, kimya ve gıda tesislerinde uzun yıllar kesintisiz hizmet sunar.',
-        en:'The high-strength aluminum die-cast body combined with a three-phase motor delivers years of uninterrupted service in heavy industry, chemical, and food plants.',
-        de:'Das hochfeste Aluminiumdruckgussgehäuse kombiniert mit einem Drehstrommotor bietet jahrelangen, ununterbrochenen Service in der Schwer-, Chemie- und Lebensmittelindustrie.'
-      }},
-      {name:'FAGS-M Serisi Monofaze Alüminyum Döküm Gövdeli Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal7.webp',desc:{
-        tr:'Tek fazlı elektrik bağlantısı gerektiren küçük ve orta ölçekli tesisler için alüminyum döküm dayanıklılığını monofaze kolaylığıyla buluşturan ideal çözüm.',
-        en:'The ideal solution for small and medium facilities requiring single-phase power — combining aluminum die-cast durability with single-phase convenience.',
-        de:'Die ideale Lösung für kleine und mittlere Betriebe mit einphasiger Stromversorgung — vereint Aluminiumdruckguss-Haltbarkeit mit einphasiger Einfachheit.'
-      }},
-      {name:'FRK Serisi Geriye Eğik Orta Basınçlı Konikli Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal8.webp',desc:{
-        tr:'Orta basınç aralığında geriye eğik kanatlı konik salyangoz geometrisi, verim eğrisini geniş bir debi bandında sabit tutar; enerji tasarrufu üstündür.',
-        en:'The backward-swept bladed conical snail geometry in the mid-pressure range maintains efficiency across a wide flow rate band — delivering outstanding energy savings.',
-        de:'Die rückwärts geschwungene Kegelschneckengeometrie im mittleren Druckbereich hält die Effizienz über ein breites Volumenstromband konstant — herausragende Energieeinsparung.'
-      }}
+      {name:'FBSY Serisi Öne Eğimli Seyrek Kanatlı Alçak Basınçlı Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal1.webp',desc:{tr:'Aereodinamik salyangoz gövdesi ve öne eğimli seyrek kanatların uyumu, alçak basınçlı sistemlerde maksimum hava debisini minimum enerji tüketimiyle sunar.',en:'The harmony of aerodynamic snail housing and forward-curved sparse blades delivers maximum airflow in low-pressure systems with minimum energy consumption.',de:'Das Zusammenspiel von aerodynamischem Schneckengehäuse und vorwärts geneigten weitläufigen Schaufeln liefert maximalen Luftdurchsatz bei minimalem Energieverbrauch.'}},
+      {name:'FBO Serisi Orta Basınçlı Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal2.webp',desc:{tr:'Orta basınç aralığında geniş uygulama yelpazesine sahip bu salyangoz fan; endüstriyel proseslerden genel havalandırmaya kadar esnek çözümler üretir.',en:'This snail fan covers a wide application range in the medium pressure zone — producing flexible solutions from industrial processes to general ventilation.',de:'Dieser Schneckenventilator deckt ein breites Anwendungsfeld im mittleren Druckbereich ab — von Industrieprozessen bis zur allgemeinen Lüftung.'}},
+      {name:'FBK Serisi Yüksek Basınçlı Körük Fanlar',img:'https://www.altancompany.com/images/radyal3.webp',desc:{tr:'Filtre tesisleri, toz taşıma hatları ve yüksek direnç gerektiren proseslerde 5.000 Pa\'ya kadar statik basınç üreten güçlü körük fan serisidir.',en:'A powerful blower fan series producing static pressure up to 5,000 Pa for filter plants, dust conveying lines, and processes requiring high resistance.',de:'Eine leistungsstarke Gebläseventilator-Serie, die bis zu 5.000 Pa statischen Druck für Filteranlagen, Staubförderanlagen und widerstandsintensive Prozesse erzeugt.'}},
+      {name:'FMK-A Serisi Kare Tip Alçak Basınçlı Seyrek Kanatlı Fanlar',img:'https://www.altancompany.com/images/radyal4.webp',desc:{tr:'Kare kasası, dar makine daireleri ve mevcut yapılara kolaylıkla entegrasyon sağlar; alçak basınçlı genel havalandırma uygulamalarında ekonomik çözümdür.',en:'Its square casing easily integrates into narrow machine rooms and existing structures — an economical solution for low-pressure general ventilation.',de:'Das quadratische Gehäuse lässt sich leicht in enge Maschinenräume und Bestandsgebäude integrieren — eine wirtschaftliche Lösung für die allgemeine Niederdrucklüftung.'}},
+      {name:'FGS Serisi Geriye Eğik Alçak Basınçlı Konikli Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal5.webp',desc:{tr:'Konik volüt ve geriye eğik kanatların birleşimi, yüksek verimli sessiz çalışma sağlar; temiz oda ve ofis havalandırma sistemleri için özellikle uygundur.',en:'The combination of conical volute and backward-swept blades delivers highly efficient, quiet operation — particularly suitable for clean room and office ventilation.',de:'Die Kombination aus konischem Spiralgehäuse und rückwärts geschwungenen Schaufeln ermöglicht einen hocheffizienten, leisen Betrieb — ideal für Reinraum- und Bürolüftung.'}},
+      {name:'FAGS-T Serisi Trifaze Alüminyum Döküm Gövdeli Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal6.webp',desc:{tr:'Yüksek mukavemetli alüminyum döküm gövde ve trifaze motor kombinasyonu; ağır endüstri, kimya ve gıda tesislerinde uzun yıllar kesintisiz hizmet sunar.',en:'The high-strength aluminum die-cast body combined with a three-phase motor delivers years of uninterrupted service in heavy industry, chemical, and food plants.',de:'Das hochfeste Aluminiumdruckgussgehäuse kombiniert mit einem Drehstrommotor bietet jahrelangen, ununterbrochenen Service in der Schwer-, Chemie- und Lebensmittelindustrie.'}},
+      {name:'FAGS-M Serisi Monofaze Alüminyum Döküm Gövdeli Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal7.webp',desc:{tr:'Tek fazlı elektrik bağlantısı gerektiren küçük ve orta ölçekli tesisler için alüminyum döküm dayanıklılığını monofaze kolaylığıyla buluşturan ideal çözüm.',en:'The ideal solution for small and medium facilities requiring single-phase power — combining aluminum die-cast durability with single-phase convenience.',de:'Die ideale Lösung für kleine und mittlere Betriebe mit einphasiger Stromversorgung — vereint Aluminiumdruckguss-Haltbarkeit mit einphasiger Einfachheit.'}},
+      {name:'FRK Serisi Geriye Eğik Orta Basınçlı Konikli Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal8.webp',desc:{tr:'Orta basınç aralığında geriye eğik kanatlı konik salyangoz geometrisi, verim eğrisini geniş bir debi bandında sabit tutar; enerji tasarrufu üstündür.',en:'The backward-swept bladed conical snail geometry in the mid-pressure range maintains efficiency across a wide flow rate band — delivering outstanding energy savings.',de:'Die rückwärts geschwungene Kegelschneckengeometrie im mittleren Druckbereich hält die Effizienz über ein breites Volumenstromband konstant — herausragende Energieeinsparung.'}}
     ]
   },
   { id:'duman', names:{tr:'Duman Tahliye Fanları',en:'Smoke Exhaust Fans',de:'Rauchabzugsventilatoren'},
     products:[
-      {name:'FMF Serisi Aksiyal Mobil Fan (Duman Tahliye Fanı)',img:'https://www.altancompany.com/images/duman1.webp',desc:{
-        tr:'Tekerlekli taşınabilir yapısıyla yangın söndürme ekiplerine saha esnekliği sunar; güçlü aksiyal etkisiyle yapı içindeki duman ve toksik gazları dakikalar içinde tahliye eder.',
-        en:'Its wheeled, portable structure offers field flexibility to firefighting teams — the powerful axial effect evacuates smoke and toxic gases from buildings within minutes.',
-        de:'Die fahrbare Tragbarkeitsstruktur bietet Feuerwehrteams Feldeinsatzflexibilität — der kräftige axiale Effekt evakuiert Rauch und Toxine innerhalb von Minuten aus Gebäuden.'
-      }},
-      {name:'FMF-AL Serisi Aksiyal Alüminyum Pervaneli Taşınabilir Kovanlı Mobil Fan',img:'https://www.altancompany.com/images/duman2.webp',desc:{
-        tr:'Hafif alüminyum pervane ve çelik kovan kombinasyonu, yüksek sıcaklık ortamında dahi güvenli çalışma sağlar; tek kişiyle kolaylıkla konumlandırılır.',
-        en:'The lightweight aluminum impeller and steel shroud combination ensures safe operation even in high-temperature environments — easily positioned by a single person.',
-        de:'Die Kombination aus leichtem Aluminiumlaufrad und Stahlmantel gewährleistet sicheren Betrieb auch bei hohen Temperaturen — leicht von einer Person zu positionieren.'
-      }},
-      {name:'FAK Serisi Harici Motorlu Metal Kanatlı Yangın Duman Egzoz Fanları',img:'https://www.altancompany.com/images/duman3.webp',desc:{
-        tr:'Sabit montaj için tasarlanmış bu fan, 300°C'de 1 saat ve 400°C'de yarım saat performans garantisi taşır; otopark, atrium ve kapalı alan projelerinde standart çözümdür.',
-        en:'Designed for permanent installation, this fan carries a performance guarantee of 1 hour at 300°C and 30 minutes at 400°C — the standard solution for car parks, atriums, and indoor projects.',
-        de:'Für die Festmontage konzipiert, bietet dieser Ventilator eine Leistungsgarantie von 1 Stunde bei 300°C und 30 Minuten bei 400°C — Standardlösung für Parkhäuser und Innenräume.'
-      }}
+      {name:'FMF Serisi Aksiyal Mobil Fan (Duman Tahliye Fanı)',img:'https://www.altancompany.com/images/duman1.webp',desc:{tr:'Tekerlekli taşınabilir yapısıyla yangın söndürme ekiplerine saha esnekliği sunar; güçlü aksiyal etkisiyle yapı içindeki duman ve toksik gazları dakikalar içinde tahliye eder.',en:'Its wheeled, portable structure offers field flexibility to firefighting teams — the powerful axial effect evacuates smoke and toxic gases from buildings within minutes.',de:'Die fahrbare Tragbarkeitsstruktur bietet Feuerwehrteams Feldeinsatzflexibilität — der kräftige axiale Effekt evakuiert Rauch und Toxine innerhalb von Minuten aus Gebäuden.'}},
+      {name:'FMF-AL Serisi Aksiyal Alüminyum Pervaneli Taşınabilir Kovanlı Mobil Fan',img:'https://www.altancompany.com/images/duman2.webp',desc:{tr:'Hafif alüminyum pervane ve çelik kovan kombinasyonu, yüksek sıcaklık ortamında dahi güvenli çalışma sağlar; tek kişiyle kolaylıkla konumlandırılır.',en:'The lightweight aluminum impeller and steel shroud combination ensures safe operation even in high-temperature environments — easily positioned by a single person.',de:'Die Kombination aus leichtem Aluminiumlaufrad und Stahlmantel gewährleistet sicheren Betrieb auch bei hohen Temperaturen — leicht von einer Person zu positionieren.'}},
+      {name:'FAK Serisi Harici Motorlu Metal Kanatlı Yangın Duman Egzoz Fanları',img:'https://www.altancompany.com/images/duman3.webp',desc:{tr:'Sabit montaj için tasarlanmış bu fan, 300°C\'de 1 saat ve 400°C\'de yarım saat performans garantisi taşır; otopark, atrium ve kapalı alan projelerinde standart çözümdür.',en:'Designed for permanent installation, this fan carries a performance guarantee of 1 hour at 300°C and 30 minutes at 400°C — the standard solution for car parks, atriums, and indoor projects.',de:'Für die Festmontage konzipiert, bietet dieser Ventilator eine Leistungsgarantie von 1 Stunde bei 300°C und 30 Minuten bei 400°C — Standardlösung für Parkhäuser und Innenräume.'}}
     ]
   },
   { id:'isi', names:{tr:'Isı Geri Kazanım Cihazları',en:'Heat Recovery Units',de:'Wärmerückgewinnungsgeräte'},
     products:[
-      {name:'Plug Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)',img:'https://www.altancompany.com/images/isi1.webp',desc:{
-        tr:'Alüminyum çapraz akışlı eşanjörü, giden hava ile gelen taze havayı %80'e varan verimle ısı değişimine sokar; ısıtma maliyetlerini dramatik biçimde düşürür.',
-        en:'The aluminum cross-flow heat exchanger transfers heat between exhaust and fresh air at up to 80% efficiency — dramatically reducing heating costs.',
-        de:'Der Aluminium-Kreuzstrom-Wärmetauscher überträgt Wärme zwischen Abluft und Frischluft mit bis zu 80% Effizienz — senkt Heizkosten drastisch.'
-      }},
-      {name:'Radyal Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)',img:'https://www.altancompany.com/images/isi2.webp',desc:{
-        tr:'Radyal fanlı motor grubu, uzun ve dirençli kanal sistemlerinde bile stabil hava debisi korur; eşanjör verimi düşmeden yıl boyu enerji tasarrufu sağlar.',
-        en:'The radial fan motor group maintains stable airflow even in long and resistant duct systems — delivering year-round energy savings without sacrificing heat exchanger efficiency.',
-        de:'Die Radialventilator-Motorgruppe hält stabilen Luftdurchsatz auch in langen, widerstandsreichen Kanalsystemen — ganzjährige Energieeinsparung ohne Einbußen bei der Wärmetauscher-Effizienz.'
-      }},
-      {name:'Enerji Tasarruflu Plug Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)',img:'https://www.altancompany.com/images/isi3.webp',desc:{
-        tr:'EC motorlu plug fan tasarımı, kısmi yüklerde enerji tüketimini yarıya indirirken alüminyum eşanjör ısı geri kazanımını hiç ödün vermeden sürdürür.',
-        en:'The EC motor-driven plug fan design halves energy consumption at partial loads while the aluminum heat exchanger maintains heat recovery without compromise.',
-        de:'Das EC-motorisierte Plug-Fan-Design halbiert den Energieverbrauch bei Teillast, während der Aluminiumwärmetauscher die Wärmerückgewinnung kompromisslos aufrechterhält.'
-      }}
+      {name:'Plug Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)',img:'https://www.altancompany.com/images/isi1.webp',desc:{tr:'Alüminyum çapraz akışlı eşanjörü, giden hava ile gelen taze havayı %80\'e varan verimle ısı değişimine sokar; ısıtma maliyetlerini dramatik biçimde düşürür.',en:'The aluminum cross-flow heat exchanger transfers heat between exhaust and fresh air at up to 80% efficiency — dramatically reducing heating costs.',de:'Der Aluminium-Kreuzstrom-Wärmetauscher überträgt Wärme zwischen Abluft und Frischluft mit bis zu 80% Effizienz — senkt Heizkosten drastisch.'}},
+      {name:'Radyal Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)',img:'https://www.altancompany.com/images/isi2.webp',desc:{tr:'Radyal fanlı motor grubu, uzun ve dirençli kanal sistemlerinde bile stabil hava debisi korur; eşanjör verimi düşmeden yıl boyu enerji tasarrufu sağlar.',en:'The radial fan motor group maintains stable airflow even in long and resistant duct systems — delivering year-round energy savings without sacrificing heat exchanger efficiency.',de:'Die Radialventilator-Motorgruppe hält stabilen Luftdurchsatz auch in langen, widerstandsreichen Kanalsystemen — ganzjährige Energieeinsparung ohne Einbußen bei der Wärmetauscher-Effizienz.'}},
+      {name:'Enerji Tasarruflu Plug Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)',img:'https://www.altancompany.com/images/isi3.webp',desc:{tr:'EC motorlu plug fan tasarımı, kısmi yüklerde enerji tüketimini yarıya indirirken alüminyum eşanjör ısı geri kazanımını hiç ödün vermeden sürdürür.',en:'The EC motor-driven plug fan design halves energy consumption at partial loads while the aluminum heat exchanger maintains heat recovery without compromise.',de:'Das EC-motorisierte Plug-Fan-Design halbiert den Energieverbrauch bei Teillast, während der Aluminiumwärmetauscher die Wärmerückgewinnung kompromisslos aufrechterhält.'}}
     ]
   },
   { id:'kanal', names:{tr:'Kanal Fanları',en:'Duct Fans',de:'Kanalventilatoren'},
     products:[
-      {name:'Baypasli 3 Filtreli Kanal Vantilatorü',img:'https://www.altancompany.com/images/kanal1.webp',desc:{
-        tr:'Üç kademeli filtre ve bypass damperli bu kanal ünitesi; kaba, ince ve karbon filtrasyonu ile iç hava kalitesini en üst düzeye taşır, bakım sürecini basitleştirir.',
-        en:'This duct unit with three-stage filtration and a bypass damper — coarse, fine, and carbon — maximizes indoor air quality while simplifying maintenance.',
-        de:'Diese Kanaleinheit mit dreistufiger Filterung und Bypass-Klappe — Grob-, Fein- und Kohlefilterung — maximiert die Innenraumluftqualität und vereinfacht die Wartung.'
-      }},
-      {name:'2 Filtreli Motorlu Kanal Vantilatorü',img:'https://www.altancompany.com/images/kanal2.webp',desc:{
-        tr:'Kompakt çift filtreli yapısıyla konut ve küçük ticari projelere kolay entegre edilir; düşük gürültü seviyesi ve yüksek basınç kapasitesiyle konforlu ortam sağlar.',
-        en:'Its compact dual-filter build integrates easily into residential and small commercial projects — delivering a comfortable environment with low noise and high pressure capacity.',
-        de:'Die kompakte Doppelfilter-Bauform lässt sich leicht in Wohn- und kleingewerbliche Projekte integrieren — komfortables Umfeld mit niedrigem Lärmpegel und hoher Druckkapazität.'
-      }},
-      {name:'Harici Motorlu Geriye Eğik Seyrek Kanatlı Dikdörtgen Kanal Fanları',img:'https://www.altancompany.com/images/kanal3.webp',desc:{
-        tr:'Dikdörtgen kesitli gövdesi asma tavan boşluklarına sorunsuz sığar; harici motorlu geriye eğik kanat tasarımı uzun çalışma ömrü ve sessiz operasyon garantiler.',
-        en:'Its rectangular cross-section body fits seamlessly into suspended ceiling voids — the externally mounted backward-curved blade design guarantees long service life and quiet operation.',
-        de:'Das rechteckige Querschnittsgehäuse passt nahtlos in Hohlräume von Unterdecken — das extern montierte rückwärts geneigte Schaufeldesign garantiert lange Lebensdauer und leisen Betrieb.'
-      }}
+      {name:'Baypasli 3 Filtreli Kanal Vantilatorü',img:'https://www.altancompany.com/images/kanal1.webp',desc:{tr:'Üç kademeli filtre ve bypass damperli bu kanal ünitesi; kaba, ince ve karbon filtrasyonu ile iç hava kalitesini en üst düzeye taşır, bakım sürecini basitleştirir.',en:'This duct unit with three-stage filtration and a bypass damper — coarse, fine, and carbon — maximizes indoor air quality while simplifying maintenance.',de:'Diese Kanaleinheit mit dreistufiger Filterung und Bypass-Klappe — Grob-, Fein- und Kohlefilterung — maximiert die Innenraumluftqualität und vereinfacht die Wartung.'}},
+      {name:'2 Filtreli Motorlu Kanal Vantilatorü',img:'https://www.altancompany.com/images/kanal2.webp',desc:{tr:'Kompakt çift filtreli yapısıyla konut ve küçük ticari projelere kolay entegre edilir; düşük gürültü seviyesi ve yüksek basınç kapasitesiyle konforlu ortam sağlar.',en:'Its compact dual-filter build integrates easily into residential and small commercial projects — delivering a comfortable environment with low noise and high pressure capacity.',de:'Die kompakte Doppelfilter-Bauform lässt sich leicht in Wohn- und kleingewerbliche Projekte integrieren — komfortables Umfeld mit niedrigem Lärmpegel und hoher Druckkapazität.'}},
+      {name:'Harici Motorlu Geriye Eğik Seyrek Kanatlı Dikdörtgen Kanal Fanları',img:'https://www.altancompany.com/images/kanal3.webp',desc:{tr:'Dikdörtgen kesitli gövdesi asma tavan boşluklarına sorunsuz sığar; harici motorlu geriye eğik kanat tasarımı uzun çalışma ömrü ve sessiz operasyon garantiler.',en:'Its rectangular cross-section body fits seamlessly into suspended ceiling voids — the externally mounted backward-curved blade design guarantees long service life and quiet operation.',de:'Das rechteckige Querschnittsgehäuse passt nahtlos in Hohlräume von Unterdecken — das extern montierte rückwärts geneigte Schaufeldesign garantiert lange Lebensdauer und leisen Betrieb.'}}
     ]
   },
   { id:'cati', names:{tr:'Çatı Fanları',en:'Roof Fans',de:'Dachventilatoren'},
     products:[
-      {name:'Dikey Atışlı Radyal Çatı Fanları',img:'https://www.altancompany.com/images/cati1.webp',desc:{
-        tr:'Çatı üstüne monte edilen dikey atışlı radyal fan, egzoz havasını direkt yukarı fırlatarak komşu yapılardan geri çekilme riskini ortadan kaldırır ve enerji verimlidir.',
-        en:'Mounted on the rooftop, this vertical-discharge radial fan blasts exhaust air straight up — eliminating re-entry risk from neighboring buildings while remaining energy efficient.',
-        de:'Auf dem Dach montiert schleudert dieser Vertikal-Radialventilator Abluft direkt nach oben — eliminiert das Rücksaugrisiko aus benachbarten Gebäuden bei hoher Energieeffizienz.'
-      }},
-      {name:'Dikey Atışlı Harici Motorlu Radyal Çatı Fanları',img:'https://www.altancompany.com/images/cati2.webp',desc:{
-        tr:'Motor egzoz havasıyla temas etmediği için verim ve ömür üstündür; harici motor konfigürasyonu bakım erişimini kolaylaştırır, yedek parça maliyetini azaltır.',
-        en:'Since the motor never contacts exhaust air, efficiency and lifespan are superior — external motor configuration simplifies maintenance access and reduces spare parts costs.',
-        de:'Da der Motor nie mit der Abluft in Kontakt kommt, sind Effizienz und Lebensdauer überlegen — externe Motorkonfiguration vereinfacht den Wartungszugang und senkt Ersatzteilkosten.'
-      }},
-      {name:'Radyal Çatı Fanları',img:'https://www.altancompany.com/images/cati3.webp',desc:{
-        tr:'Yağmur, UV ve tuz gibi dış etkenlere karşı özel kaplama ve sızdırmaz tasarımıyla; fabrika, depo ve üretim tesisi çatılarında onlarca yıl güvenle hizmet eder.',
-        en:'With its special coating and watertight design against rain, UV, and salt, it reliably serves factory, warehouse, and production facility rooftops for decades.',
-        de:'Mit spezieller Beschichtung und wasserdichter Konstruktion gegen Regen, UV und Salz dient er jahrzehntelang zuverlässig auf Fabrik-, Lager- und Produktionshallendächern.'
-      }}
+      {name:'Dikey Atışlı Radyal Çatı Fanları',img:'https://www.altancompany.com/images/cati1.webp',desc:{tr:'Çatı üstüne monte edilen dikey atışlı radyal fan, egzoz havasını direkt yukarı fırlatarak komşu yapılardan geri çekilme riskini ortadan kaldırır ve enerji verimlidir.',en:'Mounted on the rooftop, this vertical-discharge radial fan blasts exhaust air straight up — eliminating re-entry risk from neighboring buildings while remaining energy efficient.',de:'Auf dem Dach montiert schleudert dieser Vertikal-Radialventilator Abluft direkt nach oben — eliminiert das Rücksaugrisiko aus benachbarten Gebäuden bei hoher Energieeffizienz.'}},
+      {name:'Dikey Atışlı Harici Motorlu Radyal Çatı Fanları',img:'https://www.altancompany.com/images/cati2.webp',desc:{tr:'Motor egzoz havasıyla temas etmediği için verim ve ömür üstündür; harici motor konfigürasyonu bakım erişimini kolaylaştırır, yedek parça maliyetini azaltır.',en:'Since the motor never contacts exhaust air, efficiency and lifespan are superior — external motor configuration simplifies maintenance access and reduces spare parts costs.',de:'Da der Motor nie mit der Abluft in Kontakt kommt, sind Effizienz und Lebensdauer überlegen — externe Motorkonfiguration vereinfacht den Wartungszugang und senkt Ersatzteilkosten.'}},
+      {name:'Radyal Çatı Fanları',img:'https://www.altancompany.com/images/cati3.webp',desc:{tr:'Yağmur, UV ve tuz gibi dış etkenlere karşı özel kaplama ve sızdırmaz tasarımıyla; fabrika, depo ve üretim tesisi çatılarında onlarca yıl güvenle hizmet eder.',en:'With its special coating and watertight design against rain, UV, and salt, it reliably serves factory, warehouse, and production facility rooftops for decades.',de:'Mit spezieller Beschichtung und wasserdichter Konstruktion gegen Regen, UV und Salz dient er jahrzehntelang zuverlässig auf Fabrik-, Lager- und Produktionshallendächern.'}}
     ]
   },
   { id:'aksiyel', names:{tr:'Aksiyel Fanlar',en:'Axial Fans',de:'Axialventilatoren'},
     products:[
-      {name:'Harici Motorlu 4 Kanatlı Metal Pervaneli Kare Kasalı Aksiyal Aspiratörler',img:'https://www.altancompany.com/images/aksiyel1.webp',desc:{
-        tr:'Dört kanatlı metal pervane ve kare kasanın bu kombinasyonu; otopark, imalathane ve depolar için büyük hacmi hızla havalandıran ekonomik ve sağlam çözümdür.',
-        en:'This combination of four-blade metal impeller and square casing rapidly ventilates large volumes in car parks, workshops, and warehouses — an economical, robust solution.',
-        de:'Diese Kombination aus vierflügeligem Metallrad und quadratischem Gehäuse belüftet schnell große Volumina in Parkhäusern, Werkstätten und Lagern — wirtschaftlich und robust.'
-      }},
-      {name:'Harici Motorlu 4 Kanatlı Metal Pervaneli Yuvarlak Aksiyal Aspiratörler',img:'https://www.altancompany.com/images/aksiyel2.webp',desc:{
-        tr:'Yuvarlak gövde dairesel kanallara doğrudan bağlanır; harici motor düzeni motor ısısını akışın dışında tutar ve yüksek debi koşullarında kararlı performans sunar.',
-        en:'The round body connects directly to circular ducts — the external motor arrangement keeps motor heat outside the airstream, offering stable performance at high flow rates.',
-        de:'Das runde Gehäuse verbindet sich direkt mit Rundkanälen — die externe Motoranordnung hält die Motorwärme aus dem Luftstrom und bietet stabile Leistung bei hohen Volumenströmen.'
-      }},
-      {name:'Harici Motorlu Alüminyum Pervaneli Yuvarlak Aksiyal Aspiratörler',img:'https://www.altancompany.com/images/aksiyel3.webp',desc:{
-        tr:'Alüminyum alaşımlı pervane döner dengeyi mükemmel korur, titreşimi minimize eder; gıda, ilaç ve elektronik gibi temizlik hassasiyeti yüksek sektörler için idealdir.',
-        en:'The aluminum alloy impeller maintains perfect rotational balance and minimizes vibration — ideal for sectors with high cleanliness sensitivity such as food, pharma, and electronics.',
-        de:'Das Aluminiumlegierungsrad hält perfekte Rotationsbalance und minimiert Vibrationen — ideal für Sektoren mit hoher Reinheitsanforderung wie Lebensmittel, Pharma und Elektronik.'
-      }}
+      {name:'Harici Motorlu 4 Kanatlı Metal Pervaneli Kare Kasalı Aksiyal Aspiratörler',img:'https://www.altancompany.com/images/aksiyel1.webp',desc:{tr:'Dört kanatlı metal pervane ve kare kasanın bu kombinasyonu; otopark, imalathane ve depolar için büyük hacmi hızla havalandıran ekonomik ve sağlam çözümdür.',en:'This combination of four-blade metal impeller and square casing rapidly ventilates large volumes in car parks, workshops, and warehouses — an economical, robust solution.',de:'Diese Kombination aus vierflügeligem Metallrad und quadratischem Gehäuse belüftet schnell große Volumina in Parkhäusern, Werkstätten und Lagern — wirtschaftlich und robust.'}},
+      {name:'Harici Motorlu 4 Kanatlı Metal Pervaneli Yuvarlak Aksiyal Aspiratörler',img:'https://www.altancompany.com/images/aksiyel2.webp',desc:{tr:'Yuvarlak gövde dairesel kanallara doğrudan bağlanır; harici motor düzeni motor ısısını akışın dışında tutar ve yüksek debi koşullarında kararlı performans sunar.',en:'The round body connects directly to circular ducts — the external motor arrangement keeps motor heat outside the airstream, offering stable performance at high flow rates.',de:'Das runde Gehäuse verbindet sich direkt mit Rundkanälen — die externe Motoranordnung hält die Motorwärme aus dem Luftstrom und bietet stabile Leistung bei hohen Volumenströmen.'}},
+      {name:'Harici Motorlu Alüminyum Pervaneli Yuvarlak Aksiyal Aspiratörler',img:'https://www.altancompany.com/images/aksiyel3.webp',desc:{tr:'Alüminyum alaşımlı pervane döner dengeyi mükemmel korur, titreşimi minimize eder; gıda, ilaç ve elektronik gibi temizlik hassasiyeti yüksek sektörler için idealdir.',en:'The aluminum alloy impeller maintains perfect rotational balance and minimizes vibration — ideal for sectors with high cleanliness sensitivity such as food, pharma, and electronics.',de:'Das Aluminiumlegierungsrad hält perfekte Rotationsbalance und minimiert Vibrationen — ideal für Sektoren mit hoher Reinheitsanforderung wie Lebensmittel, Pharma und Elektronik.'}}
     ]
   },
   { id:'vantilator', names:{tr:'Vantilatörler',en:'Ventilators',de:'Ventilatoren'},
     products:[
-      {name:'Endüstriyel Vantilatörler',img:'https://www.altancompany.com/images/vantilator1.webp',desc:{
-        tr:'Montaj esnekliği, güçlü motor seçenekleri ve geniş çaplı pervane yelpazesiyle her ölçekteki endüstriyel tesise özelleştirilebilen yüksek kapasiteli hava sirkülasyon çözümüdür.',
-        en:'With mounting flexibility, powerful motor options, and a wide impeller range, this is a high-capacity air circulation solution customizable for industrial facilities of any scale.',
-        de:'Mit Montageflexibilität, leistungsstarken Motoroptionen und einer breiten Laufradserie ist dies eine hochkapazitive Luftzirkulationslösung für Industrieanlagen jeder Größenordnung.'
-      }}
+      {name:'Endüstriyel Vantilatörler',img:'https://www.altancompany.com/images/vantilator1.webp',desc:{tr:'Montaj esnekliği, güçlü motor seçenekleri ve geniş çaplı pervane yelpazesiyle her ölçekteki endüstriyel tesise özelleştirilebilen yüksek kapasiteli hava sirkülasyon çözümüdür.',en:'With mounting flexibility, powerful motor options, and a wide impeller range, this is a high-capacity air circulation solution customizable for industrial facilities of any scale.',de:'Mit Montageflexibilität, leistungsstarken Motoroptionen und einer breiten Laufradserie ist dies eine hochkapazitive Luftzirkulationslösung für Industrieanlagen jeder Größenordnung.'}}
     ]
   },
   { id:'jet', names:{tr:'Jet Fanlar',en:'Jet Fans',de:'Jet-Ventilatoren'},
     products:[
-      {name:'Alüminyum Pervaneli Jet Fanlar',img:'https://www.altancompany.com/images/jet1.webp',desc:{
-        tr:'Yüksek atış hızındaki alüminyum pervane, tünel boyunca uzun mesafelere hava itimi sağlar; duman kontrolü ve CO azaltımı için TS EN 12101-3 standartlarına uygundur.',
-        en:'The high-throw aluminum impeller pushes air over long distances along tunnels — compliant with TS EN 12101-3 standards for smoke control and CO reduction.',
-        de:'Das Hochwurfaluminiumrad schiebt Luft über lange Tunnelstrecken — konform mit TS EN 12101-3 für Rauchkontrolle und CO-Reduzierung.'
-      }},
-      {name:'Radyal Pervaneli Jet Fanlar',img:'https://www.altancompany.com/images/jet2.webp',desc:{
-        tr:'Radyal kanat profili alçak tavanlı kapalı otoparklarda bile güçlü hava akımı yaratır; çift yönlü çalışma özelliği ile taze hava temini ve egzoz görevini tek ünitede üstlenir.',
-        en:'The radial blade profile creates powerful airflow even in low-ceiling enclosed car parks — bidirectional operation means one unit handles both fresh air supply and exhaust duties.',
-        de:'Das Radialschaufelprofil erzeugt kräftigen Luftstrom auch in Niedrigraum-Parkhäusern — der bidirektionale Betrieb lässt eine Einheit sowohl Frischluftzufuhr als auch Abluftaufgaben übernehmen.'
-      }}
+      {name:'Alüminyum Pervaneli Jet Fanlar',img:'https://www.altancompany.com/images/jet1.webp',desc:{tr:'Yüksek atış hızındaki alüminyum pervane, tünel boyunca uzun mesafelere hava itimi sağlar; duman kontrolü ve CO azaltımı için TS EN 12101-3 standartlarına uygundur.',en:'The high-throw aluminum impeller pushes air over long distances along tunnels — compliant with TS EN 12101-3 standards for smoke control and CO reduction.',de:'Das Hochwurfaluminiumrad schiebt Luft über lange Tunnelstrecken — konform mit TS EN 12101-3 für Rauchkontrolle und CO-Reduzierung.'}},
+      {name:'Radyal Pervaneli Jet Fanlar',img:'https://www.altancompany.com/images/jet2.webp',desc:{tr:'Radyal kanat profili alçak tavanlı kapalı otoparklarda bile güçlü hava akımı yaratır; çift yönlü çalışma özelliği ile taze hava temini ve egzoz görevini tek ünitede üstlenir.',en:'The radial blade profile creates powerful airflow even in low-ceiling enclosed car parks — bidirectional operation means one unit handles both fresh air supply and exhaust duties.',de:'Das Radialschaufelprofil erzeugt kräftigen Luftstrom auch in Niedrigraum-Parkhäusern — der bidirektionale Betrieb lässt eine Einheit sowohl Frischluftzufuhr als auch Abluftaufgaben übernehmen.'}}
     ]
   }
 ];
 
 let currentLang = 'tr';
 
-const PLACEHOLDER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%23EEF0F3'/%3E%3Ctext x='200' y='155' text-anchor='middle' fill='%239BA5B0' font-size='14' font-family='sans-serif'%3EFoto%3C/text%3E%3C/svg%3E";
-
-// FIX 5: Consistent phone SVG used everywhere via a helper
 const WA_SVG = `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;display:block;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
 
-// FIX 5: Clean phone icon path that renders correctly at small sizes
 const TEL_SVG = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;display:block;"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>`;
 
 const DOWN_SVG = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><polyline points="6 9 12 15 18 9"/></svg>`;
 
-// FIX 1: Zoom icon in product image wrap
 const ZOOM_ICON = `<span class="zoom-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1A202C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>`;
 
 function makeProductCard(p, lang) {
   const t = translations[lang];
   const waMsg = encodeURIComponent(`Merhaba, "${p.name}" ürünü için fiyat teklifi almak istiyorum.`);
+  const imgUrl = p.img;
   return `
     <div class="product-card reveal">
-      <div class="product-img-wrap" onclick="openLightbox('${p.img.replace(/'/g,"\\'")}','${p.name.replace(/'/g,"\\'")}')">
-        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='${PLACEHOLDER}'">
+      <div class="product-img-wrap" onclick="openLightbox('${imgUrl.replace(/'/g,"\\'")}','${p.name.replace(/'/g,"\\'")}')">
+        <img src="${imgUrl}" alt="${p.name}" loading="lazy" onerror="this.src='${PLACEHOLDER}'">
         <span class="product-badge">${t.badge}</span>
         ${ZOOM_ICON}
       </div>
@@ -1595,6 +1571,8 @@ function renderProducts() {
   const lang = currentLang;
   const t = translations[lang];
   const container = document.getElementById('products-container');
+  if (!container) return;
+  
   let html = '';
 
   categories.forEach((cat, idx) => {
@@ -1640,7 +1618,10 @@ function renderProducts() {
   });
 
   container.innerHTML = html;
-  initReveal();
+  setTimeout(() => {
+    initReveal();
+    observeSections();
+  }, 100);
 }
 
 function toggleMore(hiddenId, btnId) {
@@ -1663,7 +1644,6 @@ function toggleMore(hiddenId, btnId) {
   }
 }
 
-// FIX 1: Lightbox functions
 function openLightbox(src, title) {
   const lb = document.getElementById('lightbox');
   const img = document.getElementById('lightbox-img');
@@ -1675,53 +1655,16 @@ function openLightbox(src, title) {
 }
 
 function closeLightbox(e) {
-  // close only if clicking backdrop or close button, not the image itself
   const lb = document.getElementById('lightbox');
   if (e && e.target === document.getElementById('lightbox-img')) return;
   lb.classList.remove('open');
   document.body.style.overflow = '';
   setTimeout(() => {
-    document.getElementById('lightbox-img').src = '';
+    const img = document.getElementById('lightbox-img');
+    if (img) img.src = '';
   }, 350);
 }
-<script>
-const productsHTML = `
-<section class="products-section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Ürünlerimiz</h2>
-    </div>
 
-    <div class="products-grid">
-
-      <div class="product-card">
-        <div class="product-img-wrap">
-          <img src="https://via.placeholder.com/400x300">
-        </div>
-        <div class="product-body">
-          <div class="product-name">Hücreli Fan</div>
-          <div class="product-desc">Yüksek performanslı fan sistemi</div>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-img-wrap">
-          <img src="https://via.placeholder.com/400x300">
-        </div>
-        <div class="product-body">
-          <div class="product-name">Radyal Fan</div>
-          <div class="product-desc">Endüstriyel kullanım için ideal</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-`;
-
-document.getElementById("products-container").innerHTML = productsHTML;
-</script>
-// Close with Escape key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeLightbox();
 });
@@ -1731,7 +1674,12 @@ function setLang(lang) {
   document.documentElement.lang = lang;
 
   document.querySelectorAll('.lang-btn').forEach(b => {
-    const btnLang = b.getAttribute('onclick').match(/'(\w+)'/)?.[1];
+    const match = b.getAttribute('onclick');
+    let btnLang = null;
+    if (match) {
+      const matchResult = match.match(/setLang\('(\w+)'\)/);
+      if (matchResult) btnLang = matchResult[1];
+    }
     b.classList.toggle('active', btnLang === lang);
   });
 
@@ -1809,9 +1757,12 @@ function observeSections() {
   document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
 }
 
-renderProducts();
-observeSections();
-initReveal();
+// Sayfa yüklendiğinde çalıştır
+document.addEventListener('DOMContentLoaded', () => {
+  renderProducts();
+  initReveal();
+  observeSections();
+});
 </script>
 </body>
 </html>
