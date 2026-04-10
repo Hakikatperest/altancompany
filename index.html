@@ -2,124 +2,118 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Altan Company | Fanex Fan Yetkili Bayii | Endüstriyel Havalandırma</title>
-<meta name="description" content="Altan Company - Fanex Fan Yetkili Bayii. Hücreli Fanlar, Duman Tahliye Fanları, Radyal Salyangoz Fanlar ve daha fazlası. Güçlü Havalandırma, Uygun Fiyat, Hızlı Teslim.">
+<meta name="description" content="Altan Company - Fanex Fan Yetkili Bayii. Hücreli Fanlar, Duman Tahliye Fanları, Radyal Salyangoz Fanlar ve daha fazlası.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --red: #C0222A;
-  --red-dark: #8B1219;
-  --red-light: #E8323B;
-  --navy: #0E1A2B;
-  --navy-mid: #1A2D44;
-  --steel: #2C4A6E;
-  --sky: #3B7EC8;
-  --sky-light: #E8F2FC;
+  --red: #D4222C;
+  --red-dark: #9E181F;
+  --red-glow: rgba(212,34,44,0.3);
+  --navy: #080E18;
+  --navy-2: #0D1624;
+  --navy-3: #111D2E;
+  --steel: #1A2A3F;
+  --sky: #1E90D4;
+  --sky-2: #2AA8F5;
+  --sky-dim: rgba(30,144,212,0.12);
   --white: #FFFFFF;
-  --off-white: #F5F6F8;
-  --light-gray: #EAECEF;
-  --mid-gray: #8A95A3;
-  --dark-text: #1A1F26;
-  --body-text: #3D4752;
-  --heading-font: 'Oswald', sans-serif;
-  --body-font: 'Source Sans 3', sans-serif;
+  --off: #F2F4F7;
+  --border: rgba(255,255,255,0.08);
+  --border-light: #E0E4EB;
+  --text-dim: rgba(255,255,255,0.55);
+  --text-mid: rgba(255,255,255,0.75);
+  --heading: 'Barlow Condensed', sans-serif;
+  --body: 'Barlow', sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: var(--body-font);
-  color: var(--dark-text);
+  font-family: var(--body);
+  color: #1A202C;
   background: var(--white);
-  line-height: 1.6;
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
-/* PROMO BAR */
+/* ── PROMO BAR ── */
 .promo-bar {
   background: var(--red);
-  color: var(--white);
+  color: #fff;
   text-align: center;
-  padding: 10px 20px;
-  font-family: var(--heading-font);
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  padding: 9px 20px;
+  font-family: var(--heading);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  animation: pulse-bg 3s ease-in-out infinite;
   position: relative;
-  z-index: 10;
+  overflow: hidden;
 }
-@keyframes pulse-bg {
-  0%,100%{background:var(--red);}
-  50%{background:var(--red-dark);}
+.promo-bar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  animation: shimmer 3s infinite;
 }
-.promo-bar span { display: inline-block; margin: 0 16px; }
-.promo-star { color: #FFD700; margin: 0 6px; }
+@keyframes shimmer { to { left: 200%; } }
+.promo-star { color: #FFD700; margin: 0 8px; }
 
-/* HEADER */
+/* ── HEADER ── */
 header {
   background: var(--navy);
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  border-bottom: 1px solid var(--border);
 }
 .header-inner {
-  max-width: 1280px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
-  gap: 16px;
+  height: 68px;
+  gap: 20px;
 }
-.logo-wrap {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
+.logo-wrap { display: flex; flex-direction: column; line-height: 1.15; }
 .logo-main {
-  font-family: var(--heading-font);
-  font-size: 22px;
-  font-weight: 700;
+  font-family: var(--heading);
+  font-size: 24px;
+  font-weight: 800;
   color: var(--white);
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
+.logo-accent { color: var(--sky-2); }
 .logo-sub {
-  font-size: 10px;
+  font-size: 9px;
   color: var(--sky);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  opacity: 0.8;
 }
-.header-contacts {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
+
+.header-contacts { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .contact-pill {
   display: flex;
   align-items: center;
   gap: 7px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 50px;
-  padding: 6px 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 7px 14px;
   text-decoration: none;
   color: var(--white);
   font-size: 13px;
@@ -127,411 +121,408 @@ header {
   transition: all 0.2s;
   white-space: nowrap;
 }
-.contact-pill:hover { background: rgba(255,255,255,0.15); }
-.contact-pill.wa { background: rgba(37,211,102,0.2); border-color: rgba(37,211,102,0.4); }
-.contact-pill.wa:hover { background: rgba(37,211,102,0.3); }
-.contact-icon { width: 16px; height: 16px; flex-shrink: 0; }
+.contact-pill:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); }
+.contact-pill.wa { background: rgba(37,211,102,0.12); border-color: rgba(37,211,102,0.3); color: #4DE882; }
+.contact-pill.wa:hover { background: rgba(37,211,102,0.22); }
 
-.lang-switcher { display: flex; gap: 4px; }
+.lang-switcher { display: flex; gap: 3px; }
 .lang-btn {
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.25);
-  color: rgba(255,255,255,0.65);
-  font-family: var(--heading-font);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.5);
+  font-family: var(--heading);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 1px;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s;
 }
-.lang-btn.active, .lang-btn:hover {
+.lang-btn:hover, .lang-btn.active {
   background: var(--sky);
   color: var(--white);
   border-color: var(--sky);
 }
 
+/* ── NAV ── */
 nav {
-  background: var(--navy-mid);
-  border-top: 1px solid rgba(255,255,255,0.07);
+  background: var(--navy-2);
+  border-bottom: 1px solid var(--border);
   overflow-x: auto;
+  scrollbar-width: none;
 }
+nav::-webkit-scrollbar { display: none; }
 .nav-inner {
-  max-width: 1280px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 28px;
   display: flex;
-  gap: 2px;
+  gap: 0;
+  white-space: nowrap;
 }
 .nav-link {
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.55);
   text-decoration: none;
-  font-family: var(--heading-font);
+  font-family: var(--heading);
   font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  font-weight: 600;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 12px 14px;
-  white-space: nowrap;
-  border-bottom: 3px solid transparent;
+  padding: 11px 15px;
+  border-bottom: 2px solid transparent;
   transition: all 0.2s;
+  display: inline-block;
 }
 .nav-link:hover, .nav-link.active {
   color: var(--white);
   border-bottom-color: var(--red);
 }
 
-/* ========== HERO (VIDEO VERSIYONU) ========== */
+/* ── HERO ── */
 .hero {
   position: relative;
+  min-height: 90vh;
+  display: block;
   overflow: hidden;
-  padding: 80px 24px;
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
 }
-
-/* VIDEO */
 .hero-video {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 120%;
-  height: 120%;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  filter: brightness(0.4) contrast(1.1);
-  animation: zoomVideo 20s ease-in-out infinite alternate;
-}
-
-@keyframes zoomVideo {
-  from { transform: translate(-50%, -50%) scale(1); }
-  to { transform: translate(-50%, -50%) scale(1.1); }
-}
-.hero {
-  position: relative;
-  height: 70vh;
-  display: flex;
-  align-items: center;
-}
-
-/* içerik ortala */
-.hero-inner {
-  position: relative;
-  z-index: 2;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%) scale(1.05);
+  filter: brightness(0.35) contrast(1.15) saturate(0.8);
+  animation: heroZoom 20s ease-in-out infinite alternate;
 }
-
-/* mobilde içerik kaybolmasın */
-@media (max-width: 768px) {
-  .hero {
-    height: auto;
-    padding: 60px 20px;
-  }
+@keyframes heroZoom {
+  from { transform: translate(-50%, -50%) scale(1.05); }
+  to   { transform: translate(-50%, -50%) scale(1.12); }
 }
-  .inline-lang {
-  display: inline !important;
-}
-/* DARK OVERLAY (premium hissi) */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(14,26,43,0.85),
-    rgba(14,26,43,0.6)
-  );
+  background: 
+    linear-gradient(135deg, rgba(8,14,24,0.92) 0%, rgba(8,14,24,0.55) 55%, rgba(8,14,24,0.4) 100%),
+    linear-gradient(to bottom, transparent 60%, rgba(8,14,24,0.7) 100%);
   z-index: 1;
 }
-
-/* İçerik üstte kalsın */
 .hero-inner {
   position: relative;
   z-index: 2;
-  max-width: 1280px;
+  max-width: 1320px;
   margin: 0 auto;
+  padding: 140px 28px 120px;
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
   align-items: center;
 }
 
-.hero-badge {
-  display: inline-block;
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.hero-tag {
   background: var(--red);
-  color: var(--white);
-  font-family: var(--heading-font);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 5px 14px;
-  border-radius: 3px;
-  margin-bottom: 20px;
-}
-.hero-title {
-  font-family: var(--heading-font);
-  font-size: clamp(36px, 5vw, 58px);
+  color: #fff;
+  font-family: var(--heading);
+  font-size: 11px;
   font-weight: 700;
-  color: var(--white);
-  line-height: 1.1;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  padding: 4px 12px;
+  border-radius: 3px;
 }
-.hero-title span { color: var(--sky); }
+.hero-tag-line {
+  width: 36px;
+  height: 2px;
+  background: var(--sky);
+  border-radius: 2px;
+}
+
+.hero-title {
+  font-family: var(--heading);
+  font-size: clamp(48px, 6.5vw, 82px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin-bottom: 22px;
+  animation: fadeInUp 0.7s 0.1s cubic-bezier(0.22,1,0.36,1) both;
+}
+.hero-title .accent { color: var(--sky-2); }
+.hero-title .block { display: block; }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .hero-desc {
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.65);
   font-size: 16px;
-  line-height: 1.7;
-  margin-bottom: 32px;
-  max-width: 480px;
+  font-weight: 400;
+  line-height: 1.75;
+  margin-bottom: 34px;
+  max-width: 500px;
 }
-.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
   background: var(--red);
-  color: var(--white);
+  color: #fff;
   text-decoration: none;
-  font-family: var(--heading-font);
+  font-family: var(--heading);
   font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding: 14px 28px;
-  border-radius: 4px;
+  padding: 14px 30px;
+  border-radius: 5px;
   border: none;
   cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
+  transition: all 0.22s;
+  box-shadow: 0 4px 20px var(--red-glow);
 }
-.btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+.btn-primary:hover {
+  background: var(--red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--red-glow);
+}
+
 .btn-secondary {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: transparent;
-  color: var(--white);
+  gap: 9px;
+  background: rgba(255,255,255,0.07);
+  color: #fff;
   text-decoration: none;
-  font-family: var(--heading-font);
+  font-family: var(--heading);
   font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding: 13px 28px;
-  border-radius: 4px;
-  border: 2px solid rgba(255,255,255,0.4);
+  padding: 14px 30px;
+  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,0.25);
   cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
+  transition: all 0.22s;
+  backdrop-filter: blur(8px);
 }
-.btn-secondary:hover { 
-  border-color: var(--white); 
-  background: rgba(255,255,255,0.1); 
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.5);
+  transform: translateY(-2px);
 }
 
-.btn-secondary svg { 
-  stroke-width: 2.2; 
-  transform: translateY(1px); 
-}
-.btn-secondary svg {
-  width: 18px;
-  height: 18px;
-}
 .hero-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 1px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.07);
   border-radius: 8px;
   overflow: hidden;
-  margin-top: 36px;
+  border: 1px solid var(--border);
 }
 .hero-stat {
-  background: rgba(255,255,255,0.05);
-  padding: 20px;
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  padding: 18px 16px;
   text-align: center;
+  transition: background 0.2s;
 }
+.hero-stat:hover { background: rgba(255,255,255,0.08); }
 .stat-num {
-  font-family: var(--heading-font);
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--sky);
   display: block;
+  font-family: var(--heading);
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--sky-2);
+  line-height: 1;
+  margin-bottom: 4px;
 }
 .stat-label {
-  font-size: 12px;
-  color: rgba(255,255,255,0.6);
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 4px;
+  letter-spacing: 1.5px;
+  font-weight: 500;
 }
 
-.hero-right { position: relative; }
+/* Feature cards */
 .hero-feature-cards { display: flex; flex-direction: column; gap: 12px; }
 .feature-card {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-left: 4px solid var(--sky);
-  border-radius: 6px;
-  padding: 16px 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--sky);
+  border-radius: 8px;
+  padding: 18px 20px;
   display: flex;
   align-items: center;
   gap: 16px;
-  animation: slide-in 0.6s ease forwards;
+  backdrop-filter: blur(12px);
   opacity: 0;
+  animation: fadeInRight 0.6s ease forwards;
+  transition: border-color 0.2s, background 0.2s;
 }
-.feature-card:nth-child(1) { animation-delay: 0.1s; border-left-color: var(--sky); }
-.feature-card:nth-child(2) { animation-delay: 0.2s; border-left-color: var(--red); }
-.feature-card:nth-child(3) { animation-delay: 0.3s; border-left-color: #27AE60; }
-@keyframes slide-in {
-  from { opacity: 0; transform: translateX(20px); }
-  to { opacity: 1; transform: translateX(0); }
+.feature-card:hover { background: rgba(255,255,255,0.09); }
+.feature-card:nth-child(1) { animation-delay: 0.5s; border-left-color: var(--sky); }
+.feature-card:nth-child(2) { animation-delay: 0.65s; border-left-color: var(--red); }
+.feature-card:nth-child(3) { animation-delay: 0.8s; border-left-color: #27AE60; }
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
+
 .feature-icon-wrap {
-  width: 48px;
-  height: 48px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 46px; height: 46px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
   flex-shrink: 0;
-  font-size: 22px;
 }
-.fc-blue { background: rgba(59,126,200,0.2); }
-.fc-red { background: rgba(192,34,42,0.2); }
-.fc-green { background: rgba(39,174,96,0.2); }
+.fc-blue { background: rgba(30,144,212,0.18); }
+.fc-red  { background: rgba(212,34,44,0.18); }
+.fc-green { background: rgba(39,174,96,0.18); }
 .feature-card-title {
-  font-family: var(--heading-font);
-  font-size: 17px;
-  font-weight: 600;
+  font-family: var(--heading);
+  font-size: 16px;
+  font-weight: 700;
   color: var(--white);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  line-height: 1.2;
 }
 .feature-card-text {
-  font-size: 13px;
-  color: rgba(255,255,255,0.6);
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
   margin-top: 3px;
+  line-height: 1.4;
 }
 
-/* SECTION STYLES */
-.section-header {
-  text-align: center;
-  margin-bottom: 48px;
-}
+/* ── SECTION STYLES ── */
+.section-header { text-align: center; margin-bottom: 52px; }
 .section-tag {
   display: inline-block;
-  background: var(--sky-light);
+  background: rgba(30,144,212,0.1);
   color: var(--sky);
-  font-family: var(--heading-font);
+  font-family: var(--heading);
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-weight: 700;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  padding: 4px 14px;
+  padding: 5px 14px;
   border-radius: 3px;
   margin-bottom: 12px;
+  border: 1px solid rgba(30,144,212,0.2);
 }
 .section-title {
-  font-family: var(--heading-font);
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 700;
+  font-family: var(--heading);
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 800;
   color: var(--navy);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  line-height: 1.1;
+  letter-spacing: 0.5px;
+  line-height: 1.05;
 }
 .section-title span { color: var(--red); }
 .section-divider {
   display: block;
-  width: 60px;
-  height: 4px;
-  background: var(--red);
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--red), var(--sky));
   margin: 16px auto 0;
   border-radius: 2px;
 }
 
-/* PRODUCT SECTIONS */
-.products-section { padding: 80px 24px; }
-.products-section:nth-child(even) { background: var(--off-white); }
-.container { max-width: 1280px; margin: 0 auto; }
+/* ── PRODUCTS ── */
+.products-section { padding: 84px 28px; }
+.products-section:nth-child(even) { background: var(--off); }
+.container { max-width: 1320px; margin: 0 auto; }
 
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 22px;
 }
+
 .product-card {
   background: var(--white);
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid var(--light-gray);
-  transition: all 0.3s;
+  border: 1px solid var(--border-light);
+  transition: all 0.28s cubic-bezier(0.22,1,0.36,1);
   display: flex;
   flex-direction: column;
 }
+.products-section:nth-child(even) .product-card { background: var(--white); }
 .product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(14,26,43,0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(8,14,24,0.14);
   border-color: var(--sky);
 }
+
 .product-img-wrap {
   position: relative;
-  background: var(--light-gray);
+  background: #EEF0F3;
   aspect-ratio: 4/3;
   overflow: hidden;
 }
 .product-img-wrap img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform 0.4s;
+  transition: transform 0.4s ease;
 }
-.product-card:hover .product-img-wrap img { transform: scale(1.05); }
+.product-card:hover .product-img-wrap img { transform: scale(1.06); }
+
 .product-badge {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 10px; left: 10px;
   background: var(--red);
-  color: var(--white);
-  font-family: var(--heading-font);
+  color: #fff;
+  font-family: var(--heading);
   font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding: 3px 9px;
+  padding: 3px 10px;
   border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(212,34,44,0.4);
 }
+
 .product-body {
-  padding: 18px;
+  padding: 18px 18px 16px;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 .product-name {
-  font-family: var(--heading-font);
-  font-size: 15px;
-  font-weight: 600;
+  font-family: var(--heading);
+  font-size: 14px;
+  font-weight: 700;
   color: var(--navy);
-  line-height: 1.3;
-  margin-bottom: 8px;
+  line-height: 1.35;
+  margin-bottom: 7px;
   text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 .product-desc {
-  font-size: 13px;
-  color: var(--mid-gray);
+  font-size: 12.5px;
+  color: #6B7685;
   line-height: 1.5;
   margin-bottom: 16px;
   flex: 1;
 }
-.product-actions {
-  display: flex;
-  gap: 8px;
-}
+.product-actions { display: flex; gap: 8px; }
+
 .btn-wa {
   flex: 1;
   display: inline-flex;
@@ -539,18 +530,19 @@ nav {
   justify-content: center;
   gap: 6px;
   background: #25D366;
-  color: var(--white);
+  color: #fff;
   text-decoration: none;
-  font-family: var(--heading-font);
+  font-family: var(--heading);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   padding: 9px 12px;
   border-radius: 5px;
   transition: all 0.2s;
 }
-.btn-wa:hover { background: #1EBE5B; }
+.btn-wa:hover { background: #1EBE5B; transform: translateY(-1px); }
+
 .btn-call {
   display: inline-flex;
   align-items: center;
@@ -559,350 +551,388 @@ nav {
   background: transparent;
   color: var(--navy);
   text-decoration: none;
-  font-family: var(--heading-font);
+  font-family: var(--heading);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   padding: 9px 12px;
   border-radius: 5px;
-  border: 1px solid var(--light-gray);
+  border: 1px solid var(--border-light);
   transition: all 0.2s;
 }
-.btn-call:hover { border-color: var(--navy); background: var(--navy); color: var(--white); }
+.btn-call:hover { border-color: var(--navy); background: var(--navy); color: #fff; }
 
-.show-more-wrap { text-align: center; margin-top: 32px; }
+.show-more-wrap { text-align: center; margin-top: 36px; }
 .btn-show-more {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   background: transparent;
   color: var(--navy);
-  font-family: var(--heading-font);
+  font-family: var(--heading);
   font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 11px 24px;
+  padding: 11px 26px;
   border-radius: 5px;
   border: 2px solid var(--navy);
   cursor: pointer;
   transition: all 0.2s;
 }
-.btn-show-more:hover { background: var(--navy); color: var(--white); }
+.btn-show-more:hover { background: var(--navy); color: #fff; }
+
 .hidden-products { display: none; }
-.hidden-products.visible { display: contents; }
 
-/* STICKY CTA BAR */
-.sticky-cta {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 999;
-}
-.sticky-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  text-decoration: none;
-  font-size: 22px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  transition: all 0.2s;
-}
-.sticky-btn:hover { transform: scale(1.1); }
-.sticky-wa { background: #25D366; }
-.sticky-call { background: var(--sky); }
-.sticky-tooltip {
-  position: absolute;
-  right: 66px;
-  background: var(--navy);
-  color: var(--white);
-  font-size: 12px;
-  font-weight: 600;
-  white-space: nowrap;
-  padding: 5px 10px;
-  border-radius: 4px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s;
-}
-.sticky-btn:hover .sticky-tooltip { opacity: 1; }
-
-/* WHY US */
+/* ── WHY SECTION ── */
 .why-section {
   background: var(--navy);
-  padding: 80px 24px;
+  padding: 88px 28px;
+  position: relative;
+  overflow: hidden;
+}
+.why-section::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(30,144,212,0.08) 0%, transparent 70%);
+  pointer-events: none;
 }
 .why-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 48px;
+  gap: 16px;
+  margin-top: 52px;
 }
 .why-card {
   background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
   padding: 32px 24px;
+  border-radius: 10px;
   text-align: center;
-  transition: background 0.3s;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
 }
-.why-card:hover { background: rgba(255,255,255,0.09); }
+.why-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--sky), var(--red));
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+.why-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-3px); }
+.why-card:hover::before { transform: scaleX(1); }
+
 .why-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px;
   font-size: 24px;
 }
-.why-icon-1 { background: rgba(59,126,200,0.2); }
-.why-icon-2 { background: rgba(192,34,42,0.2); }
-.why-icon-3 { background: rgba(39,174,96,0.2); }
-.why-icon-4 { background: rgba(255,193,7,0.2); }
+.why-icon-1 { background: rgba(30,144,212,0.15); box-shadow: 0 0 24px rgba(30,144,212,0.12); }
+.why-icon-2 { background: rgba(212,34,44,0.15); box-shadow: 0 0 24px rgba(212,34,44,0.12); }
+.why-icon-3 { background: rgba(39,174,96,0.15); box-shadow: 0 0 24px rgba(39,174,96,0.12); }
+.why-icon-4 { background: rgba(255,193,7,0.15); box-shadow: 0 0 24px rgba(255,193,7,0.12); }
+
 .why-title {
-  font-family: var(--heading-font);
+  font-family: var(--heading);
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--white);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
-.why-text {
-  font-size: 14px;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.6;
-}
+.why-text { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.65; }
 
-/* CONTACT SECTION */
-.contact-section {
-  padding: 80px 24px;
-  background: var(--off-white);
-}
+/* ── CONTACT ── */
+.contact-section { padding: 88px 28px; background: var(--off); }
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 52px;
   align-items: start;
 }
-.contact-info h3 {
-  font-family: var(--heading-font);
+
+.contact-info-title {
+  font-family: var(--heading);
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 800;
   color: var(--navy);
   text-transform: uppercase;
+  letter-spacing: 1px;
   margin-bottom: 24px;
 }
+
 .contact-item {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--light-gray);
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border-light);
 }
 .contact-item:last-child { border-bottom: none; }
 .contact-item-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background: var(--sky-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background: rgba(30,144,212,0.1);
+  border: 1px solid rgba(30,144,212,0.2);
+  display: flex; align-items: center; justify-content: center;
   font-size: 18px;
+  flex-shrink: 0;
 }
 .contact-item-label {
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--mid-gray);
+  letter-spacing: 2px;
+  color: #9BA5B0;
   font-weight: 600;
+  margin-bottom: 2px;
 }
 .contact-item-val {
-  font-family: var(--heading-font);
-  font-size: 17px;
+  font-family: var(--heading);
+  font-size: 18px;
   color: var(--navy);
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
+  transition: color 0.2s;
 }
 .contact-item-val:hover { color: var(--sky); }
 
 .contact-cta-block {
   background: var(--navy);
   border-radius: 12px;
-  padding: 40px 36px;
+  padding: 42px 38px;
   text-align: center;
-}
-.contact-cta-block h3 {
-  font-family: var(--heading-font);
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--white);
-  text-transform: uppercase;
-  line-height: 1.2;
-  margin-bottom: 12px;
-}
-.contact-cta-block p {
-  color: rgba(255,255,255,0.6);
-  font-size: 15px;
-  margin-bottom: 28px;
-}
-.contact-cta-btns { display: flex; flex-direction: column; gap: 12px; }
-.btn-cta-wa {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: #25D366;
-  color: var(--white);
-  text-decoration: none;
-  font-family: var(--heading-font);
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 16px 24px;
-  border-radius: 7px;
-  transition: all 0.2s;
-}
-.btn-cta-wa:hover { background: #1EBE5B; transform: translateY(-2px); }
-.btn-cta-call {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: var(--sky);
-  color: var(--white);
-  text-decoration: none;
-  font-family: var(--heading-font);
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 16px 24px;
-  border-radius: 7px;
-  transition: all 0.2s;
-}
-.btn-cta-call:hover { background: #2B6FAF; transform: translateY(-2px); }
-.btn-cta-fb {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: #1877F2;
-  color: var(--white);
-  text-decoration: none;
-  font-family: var(--heading-font);
-  font-size: 15px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 14px 24px;
-  border-radius: 7px;
-  transition: all 0.2s;
-}
-.btn-cta-fb:hover { background: #0D65D9; }
-
-/* FOOTER */
-footer {
-  background: #060D14;
-  padding: 32px 24px;
-  text-align: center;
-  color: rgba(255,255,255,0.4);
-  font-size: 13px;
-}
-footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
-footer strong { color: rgba(255,255,255,0.8); }
-
-/* ========== HERO GENEL AYAR ========== */
-.hero {
-  height: 70vh;
+  position: relative;
   overflow: hidden;
 }
+.contact-cta-block::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--red), var(--sky));
+}
+.contact-cta-block h3 {
+  font-family: var(--heading);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--white);
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+.contact-cta-block p {
+  color: rgba(255,255,255,0.55);
+  font-size: 14px;
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+.contact-cta-btns { display: flex; flex-direction: column; gap: 10px; }
 
-.hero-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.btn-cta-wa {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: #25D366; color: #fff;
+  text-decoration: none;
+  font-family: var(--heading); font-size: 16px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  padding: 15px 24px; border-radius: 7px;
+  transition: all 0.22s;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.25);
+}
+.btn-cta-wa:hover { background: #1EBE5B; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.35); }
+
+.btn-cta-call {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--sky); color: #fff;
+  text-decoration: none;
+  font-family: var(--heading); font-size: 16px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  padding: 15px 24px; border-radius: 7px;
+  transition: all 0.22s;
+  box-shadow: 0 4px 20px rgba(30,144,212,0.25);
+}
+.btn-cta-call:hover { background: #1677B8; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(30,144,212,0.35); }
+
+.btn-cta-fb {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: #1877F2; color: #fff;
+  text-decoration: none;
+  font-family: var(--heading); font-size: 15px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  padding: 13px 24px; border-radius: 7px;
+  transition: all 0.22s;
+}
+.btn-cta-fb:hover { background: #0D65D9; transform: translateY(-2px); }
+
+/* ── FOOTER ── */
+footer {
+  background: #050B13;
+  padding: 36px 28px;
+  text-align: center;
+  color: rgba(255,255,255,0.35);
+  font-size: 13px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+footer strong { color: rgba(255,255,255,0.75); }
+footer a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+footer a:hover { color: var(--sky); }
+.footer-inner { max-width: 1320px; margin: 0 auto; }
+
+/* ── STICKY BTNS ── */
+.sticky-cta {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  display: flex; flex-direction: column; gap: 10px;
+  z-index: 999;
+}
+.sticky-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+  transition: all 0.22s;
+  position: relative;
+}
+.sticky-btn:hover { transform: scale(1.1); }
+.sticky-wa { background: #25D366; }
+.sticky-call { background: var(--sky); }
+.sticky-tooltip {
+  position: absolute;
+  right: 62px;
+  background: var(--navy);
+  color: #fff;
+  font-family: var(--heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 5px 10px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  border: 1px solid var(--border);
+}
+.sticky-btn:hover .sticky-tooltip { opacity: 1; }
+
+/* ── SCROLL INDICATOR ── */
+.scroll-indicator {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation: scrollFadeIn 1s 1.2s ease both;
+}
+@keyframes scrollFadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.scroll-dot {
+  width: 22px; height: 36px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 11px;
+  display: flex; align-items: flex-start; justify-content: center;
+  padding-top: 5px;
+}
+.scroll-dot-inner {
+  width: 4px; height: 8px;
+  background: var(--sky-2);
+  border-radius: 2px;
+  animation: scrollBounce 1.8s ease infinite;
+}
+@keyframes scrollBounce {
+  0%,100% { transform: translateY(0); opacity: 1; }
+  50%      { transform: translateY(10px); opacity: 0.4; }
+}
+.scroll-label {
+  font-family: var(--heading);
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
 }
 
-
-/* ========== RESPONSIVE ========== */
-@media (max-width: 1024px) {
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
   .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero-feature-cards { flex-direction: row; flex-wrap: wrap; }
+  .feature-card { flex: 1; min-width: 200px; }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
   .products-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
   .header-inner { height: auto; padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
-  .header-contacts { gap: 8px; }
-  .contact-pill { padding: 5px 10px; font-size: 11px; }
+  .hero { min-height: 100svh; }
+  .hero-inner { padding: 80px 20px 120px; }
+  .hero-feature-cards { flex-direction: column; }
   .products-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
-  .why-grid { grid-template-columns: 1fr 1fr; }
-
-  /* HERO FIX */
-  .hero {
-    height: 60vh;
-    padding: 40px 20px;
-  }
-
-  .hero-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    animation: none; /* mobilde zoom kapalı */
-  }
-
-  .hero-stats { grid-template-columns: repeat(3, 1fr); }
+  .why-grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: column; }
+  .products-section { padding: 56px 20px; }
+  .why-section, .contact-section { padding: 56px 20px; }
 }
 
 @media (max-width: 480px) {
-  .why-grid { grid-template-columns: 1fr; }
-  .hero-stats { grid-template-columns: 1fr; }
-
-  /* ekstra küçük ekran fix */
-  .hero {
-    height: 55vh;
-  }
+  .contact-pill span { display: none; }
+  .contact-pill.wa span { display: inline; }
+  .lang-switcher { gap: 2px; }
 }
 
-/* LANGUAGE HIDDEN */
-[data-lang] { display: none; }
-[data-lang].lang-active { display: block; }
+/* ── INLINE LANG SYSTEM ── */
 .inline-lang { display: none; }
 .inline-lang.lang-active { display: inline; }
 </style>
 </head>
 <body>
 
+<!-- PROMO BAR -->
+<div class="promo-bar">
+  <span class="promo-star">★</span>
+  <span class="inline-lang lang-active" data-inline-lang="tr">Tüm Fanex Ürünlerinde %25 İndirim</span>
+  <span class="inline-lang" data-inline-lang="en">25% Discount on All Fanex Products</span>
+  <span class="inline-lang" data-inline-lang="de">25% Rabatt auf alle Fanex-Produkte</span>
+  <span class="promo-star">★</span>
+  <span>
+    <span class="inline-lang lang-active" data-inline-lang="tr">Hızlı Teslim Garantisi</span>
+    <span class="inline-lang" data-inline-lang="en">Fast Delivery Guarantee</span>
+    <span class="inline-lang" data-inline-lang="de">Schnelle Liefergarantie</span>
+  </span>
+  <span class="promo-star">★</span>
+</div>
+
 <!-- HEADER -->
 <header>
   <div class="header-inner">
     <div class="logo-wrap">
-      <span class="logo-main">Altan Company</span>
+      <span class="logo-main">Altan <span class="logo-accent">Company</span></span>
       <span class="logo-sub">Fanex Fan Yetkili Bayii</span>
     </div>
     <div class="header-contacts">
       <a href="https://wa.me/905422140132" class="contact-pill wa">
-        <svg class="contact-icon" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        +90 542 214 01 32
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span>+90 542 214 01 32</span>
       </a>
       <a href="tel:+905422140132" class="contact-pill">
-        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        +90 542 214 01 32
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <span>+90 542 214 01 32</span>
       </a>
     </div>
     <div class="lang-switcher">
@@ -930,7 +960,7 @@ footer strong { color: rgba(255,255,255,0.8); }
   </div>
 </nav>
 
-<!-- HERO (VIDEO EKLENDİ) -->
+<!-- HERO -->
 <section class="hero">
   <video autoplay muted loop playsinline class="hero-video">
     <source src="https://www.altancompany.com/images/fan.mp4" type="video/mp4">
@@ -938,20 +968,23 @@ footer strong { color: rgba(255,255,255,0.8); }
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div>
-      <div class="hero-badge">
-        <span class="inline-lang lang-active" data-inline-lang="tr">Fanex Yetkili Bayii</span>
-        <span class="inline-lang" data-inline-lang="en">Fanex Authorized Dealer</span>
-        <span class="inline-lang" data-inline-lang="de">Fanex Autorisierter Händler</span>
+      <div class="hero-eyebrow">
+        <span class="hero-tag">
+          <span class="inline-lang lang-active" data-inline-lang="tr">Fanex Yetkili Bayii</span>
+          <span class="inline-lang" data-inline-lang="en">Fanex Authorized Dealer</span>
+          <span class="inline-lang" data-inline-lang="de">Fanex Autorisierter Händler</span>
+        </span>
+        <span class="hero-tag-line"></span>
       </div>
       <h1 class="hero-title">
-        <span class="inline-lang lang-active" data-inline-lang="tr">Güçlü <span>Havalandırma</span><br>Uygun Fiyat<br>Hızlı Teslim</span>
-        <span class="inline-lang" data-inline-lang="en">Powerful <span>Ventilation</span><br>Affordable Price<br>Fast Delivery</span>
-        <span class="inline-lang" data-inline-lang="de">Leistungsstarke <span>Belüftung</span><br>Günstiger Preis<br>Schnelle Lieferung</span>
+        <span class="inline-lang lang-active" data-inline-lang="tr">Güçlü<br><span class="accent">Havalandırma</span><br>Sistemleri</span>
+        <span class="inline-lang" data-inline-lang="en">Powerful<br><span class="accent">Ventilation</span><br>Systems</span>
+        <span class="inline-lang" data-inline-lang="de">Leistungsstarke<br><span class="accent">Belüftungs</span><br>Systeme</span>
       </h1>
       <p class="hero-desc">
         <span class="inline-lang lang-active" data-inline-lang="tr">Endüstriyel havalandırma ve yangın güvenliği sistemlerinde Fanex'in yetkili bayii olarak, en kaliteli fan çözümlerini rekabetçi fiyatlarla sunuyoruz.</span>
         <span class="inline-lang" data-inline-lang="en">As Fanex's authorized dealer in industrial ventilation and fire safety systems, we provide the highest quality fan solutions at competitive prices.</span>
-        <span class="inline-lang" data-inline-lang="de">Als autorisierter Händler von Fanex für industrielle Lüftungs- und Brandschutzsysteme bieten wir die hochwertigsten Lüfterlösungen zu wettbewerbsfähigen Preisen an.</span>
+        <span class="inline-lang" data-inline-lang="de">Als autorisierter Fanex-Händler bieten wir hochwertigste Lüfterlösungen zu wettbewerbsfähigen Preisen.</span>
       </p>
       <div class="hero-ctas">
         <a href="https://wa.me/905422140132?text=Merhaba,%20fiyat%20teklifi%20almak%20istiyorum" class="btn-primary">
@@ -994,7 +1027,7 @@ footer strong { color: rgba(255,255,255,0.8); }
         </div>
       </div>
     </div>
-    <div class="hero-right">
+    <div>
       <div class="hero-feature-cards">
         <div class="feature-card">
           <div class="feature-icon-wrap fc-blue">🌀</div>
@@ -1022,7 +1055,7 @@ footer strong { color: rgba(255,255,255,0.8); }
             <div class="feature-card-text">
               <span class="inline-lang lang-active" data-inline-lang="tr">Duman tahliye ve basınçlandırma çözümleri</span>
               <span class="inline-lang" data-inline-lang="en">Smoke exhaust and pressurization solutions</span>
-              <span class="inline-lang" data-inline-lang="de">Lösungen zur Rauchabsaugung und Druckbeaufschlagung</span>
+              <span class="inline-lang" data-inline-lang="de">Rauchabsaugung und Druckbeaufschlagung</span>
             </div>
           </div>
         </div>
@@ -1044,29 +1077,83 @@ footer strong { color: rgba(255,255,255,0.8); }
       </div>
     </div>
   </div>
+  <div class="scroll-indicator">
+    <div class="scroll-dot"><div class="scroll-dot-inner"></div></div>
+    <span class="scroll-label">Scroll</span>
+  </div>
 </section>
 
+<!-- PRODUCTS CONTAINER -->
 <div id="products-container"></div>
-  <!-- WHY US -->
+
+<!-- WHY US -->
 <section class="why-section">
   <div class="container">
     <div class="section-header">
-      <div class="section-tag" style="background:rgba(59,126,200,0.15);color:var(--sky);">
+      <div class="section-tag" style="background:rgba(30,144,212,0.1);color:var(--sky);border-color:rgba(30,144,212,0.2);">
         <span class="inline-lang lang-active" data-inline-lang="tr">Neden Altan Company?</span>
         <span class="inline-lang" data-inline-lang="en">Why Altan Company?</span>
         <span class="inline-lang" data-inline-lang="de">Warum Altan Company?</span>
       </div>
       <h2 class="section-title" style="color:var(--white);">
-        <span class="inline-lang lang-active" data-inline-lang="tr">Bizi <span style="color:var(--sky)">Tercih Edin</span></span>
-        <span class="inline-lang" data-inline-lang="en">Choose <span style="color:var(--sky)">Us</span></span>
-        <span class="inline-lang" data-inline-lang="de">Wählen Sie <span style="color:var(--sky)">Uns</span></span>
+        <span class="inline-lang lang-active" data-inline-lang="tr">Bizi <span style="color:var(--sky-2)">Tercih Edin</span></span>
+        <span class="inline-lang" data-inline-lang="en">Choose <span style="color:var(--sky-2)">Us</span></span>
+        <span class="inline-lang" data-inline-lang="de">Wählen Sie <span style="color:var(--sky-2)">Uns</span></span>
       </h2>
     </div>
     <div class="why-grid">
-      <div class="why-card"><div class="why-icon why-icon-1">🏆</div><div class="why-title"><span class="inline-lang lang-active" data-inline-lang="tr">Yetkili Bayi</span><span class="inline-lang" data-inline-lang="en">Authorized Dealer</span><span class="inline-lang" data-inline-lang="de">Autorisierter Händler</span></div><div class="why-text"><span class="inline-lang lang-active" data-inline-lang="tr">Fanex'in resmi yetkili bayii olarak orijinal ürün garantisi sunuyoruz</span><span class="inline-lang" data-inline-lang="en">As Fanex's official authorized dealer, we offer original product warranty</span><span class="inline-lang" data-inline-lang="de">Als offizieller Fanex-Händler bieten wir originale Produktgarantie</span></div></div>
-      <div class="why-card"><div class="why-icon why-icon-2">💰</div><div class="why-title"><span class="inline-lang lang-active" data-inline-lang="tr">Uygun Fiyat</span><span class="inline-lang" data-inline-lang="en">Affordable Price</span><span class="inline-lang" data-inline-lang="de">Günstiger Preis</span></div><div class="why-text"><span class="inline-lang lang-active" data-inline-lang="tr">Tüm ürünlerde %25 indirim, rekabetçi fiyat politikamız ile tasarruf edin</span><span class="inline-lang" data-inline-lang="en">Save with 25% discount on all products and our competitive pricing policy</span><span class="inline-lang" data-inline-lang="de">Sparen Sie mit 25% Rabatt auf alle Produkte und unserer wettbewerbsfähigen Preispolitik</span></div></div>
-      <div class="why-card"><div class="why-icon why-icon-3">🚀</div><div class="why-title"><span class="inline-lang lang-active" data-inline-lang="tr">Hızlı Teslim</span><span class="inline-lang" data-inline-lang="en">Fast Delivery</span><span class="inline-lang" data-inline-lang="de">Schnelle Lieferung</span></div><div class="why-text"><span class="inline-lang lang-active" data-inline-lang="tr">Zamanında teslimat garantisiyle projelerinizi aksatmadan tamamlayın</span><span class="inline-lang" data-inline-lang="en">Complete your projects without interruption with our on-time delivery guarantee</span><span class="inline-lang" data-inline-lang="de">Schließen Sie Ihre Projekte ohne Unterbrechung mit unserer pünktlichen Liefergarantie ab</span></div></div>
-      <div class="why-card"><div class="why-icon why-icon-4">📞</div><div class="why-title"><span class="inline-lang lang-active" data-inline-lang="tr">7/24 Destek</span><span class="inline-lang" data-inline-lang="en">24/7 Support</span><span class="inline-lang" data-inline-lang="de">24/7 Support</span></div><div class="why-text"><span class="inline-lang lang-active" data-inline-lang="tr">Uzman ekibimizle her an yanınızdayız, sorularınızı anında yanıtlıyoruz</span><span class="inline-lang" data-inline-lang="en">Our expert team is always with you, answering your questions instantly</span><span class="inline-lang" data-inline-lang="de">Unser Expertenteam steht Ihnen jederzeit zur Seite und beantwortet Ihre Fragen sofort</span></div></div>
+      <div class="why-card">
+        <div class="why-icon why-icon-1">🏆</div>
+        <div class="why-title">
+          <span class="inline-lang lang-active" data-inline-lang="tr">Yetkili Bayi</span>
+          <span class="inline-lang" data-inline-lang="en">Authorized Dealer</span>
+          <span class="inline-lang" data-inline-lang="de">Autorisierter Händler</span>
+        </div>
+        <div class="why-text">
+          <span class="inline-lang lang-active" data-inline-lang="tr">Fanex'in resmi yetkili bayii olarak orijinal ürün garantisi sunuyoruz</span>
+          <span class="inline-lang" data-inline-lang="en">As Fanex's official authorized dealer, we offer original product warranty</span>
+          <span class="inline-lang" data-inline-lang="de">Als offizieller Fanex-Händler bieten wir originale Produktgarantie</span>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon why-icon-2">💰</div>
+        <div class="why-title">
+          <span class="inline-lang lang-active" data-inline-lang="tr">Uygun Fiyat</span>
+          <span class="inline-lang" data-inline-lang="en">Affordable Price</span>
+          <span class="inline-lang" data-inline-lang="de">Günstiger Preis</span>
+        </div>
+        <div class="why-text">
+          <span class="inline-lang lang-active" data-inline-lang="tr">Tüm ürünlerde %25 indirim, rekabetçi fiyat politikamız ile tasarruf edin</span>
+          <span class="inline-lang" data-inline-lang="en">Save with 25% discount on all products and our competitive pricing policy</span>
+          <span class="inline-lang" data-inline-lang="de">Sparen Sie mit 25% Rabatt auf alle Produkte</span>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon why-icon-3">🚀</div>
+        <div class="why-title">
+          <span class="inline-lang lang-active" data-inline-lang="tr">Hızlı Teslim</span>
+          <span class="inline-lang" data-inline-lang="en">Fast Delivery</span>
+          <span class="inline-lang" data-inline-lang="de">Schnelle Lieferung</span>
+        </div>
+        <div class="why-text">
+          <span class="inline-lang lang-active" data-inline-lang="tr">Zamanında teslimat garantisiyle projelerinizi aksatmadan tamamlayın</span>
+          <span class="inline-lang" data-inline-lang="en">Complete your projects without interruption with our on-time delivery guarantee</span>
+          <span class="inline-lang" data-inline-lang="de">Schließen Sie Ihre Projekte mit pünktlicher Liefergarantie ab</span>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon why-icon-4">📞</div>
+        <div class="why-title">
+          <span class="inline-lang lang-active" data-inline-lang="tr">7/24 Destek</span>
+          <span class="inline-lang" data-inline-lang="en">24/7 Support</span>
+          <span class="inline-lang" data-inline-lang="de">24/7 Support</span>
+        </div>
+        <div class="why-text">
+          <span class="inline-lang lang-active" data-inline-lang="tr">Uzman ekibimizle her an yanınızdayız, sorularınızı anında yanıtlıyoruz</span>
+          <span class="inline-lang" data-inline-lang="en">Our expert team is always with you, answering your questions instantly</span>
+          <span class="inline-lang" data-inline-lang="de">Unser Expertenteam steht Ihnen jederzeit zur Seite</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1074,47 +1161,341 @@ footer strong { color: rgba(255,255,255,0.8); }
 <!-- CONTACT -->
 <section class="contact-section" id="iletisim">
   <div class="container">
-    <div class="section-header"><div class="section-tag"><span class="inline-lang lang-active" data-inline-lang="tr">İletişim</span><span class="inline-lang" data-inline-lang="en">Contact</span><span class="inline-lang" data-inline-lang="de">Kontakt</span></div><h2 class="section-title"><span class="inline-lang lang-active" data-inline-lang="tr">Fiyat Teklifi <span>Alın</span></span><span class="inline-lang" data-inline-lang="en">Get a <span>Quote</span></span><span class="inline-lang" data-inline-lang="de">Angebot <span>Anfordern</span></span></h2><span class="section-divider"></span></div>
-    <div class="contact-grid">
-      <div class="contact-info"><h3><span class="inline-lang lang-active" data-inline-lang="tr">Bize Ulaşın</span><span class="inline-lang" data-inline-lang="en">Reach Us</span><span class="inline-lang" data-inline-lang="de">Kontaktieren Sie Uns</span></h3>
-        <div class="contact-item"><div class="contact-item-icon">📱</div><div><div class="contact-item-label">WhatsApp</div><a href="https://wa.me/905422140132" class="contact-item-val">+90 542 214 01 32</a></div></div>
-        <div class="contact-item"><div class="contact-item-icon">📞</div><div><div class="contact-item-label"><span class="inline-lang lang-active" data-inline-lang="tr">Telefon</span><span class="inline-lang" data-inline-lang="en">Phone</span><span class="inline-lang" data-inline-lang="de">Telefon</span></div><a href="tel:+905422140132" class="contact-item-val">+90 542 214 01 32</a></div></div>
-        <div class="contact-item"><div class="contact-item-icon">🌐</div><div><div class="contact-item-label">Web</div><a href="https://www.altancompany.com/" class="contact-item-val">www.altancompany.com</a></div></div>
-        <div class="contact-item"><div class="contact-item-icon">👍</div><div><div class="contact-item-label">Facebook</div><a href="https://www.facebook.com/altancompany" class="contact-item-val" target="_blank">Altan Company</a></div></div>
+    <div class="section-header">
+      <div class="section-tag">
+        <span class="inline-lang lang-active" data-inline-lang="tr">İletişim</span>
+        <span class="inline-lang" data-inline-lang="en">Contact</span>
+        <span class="inline-lang" data-inline-lang="de">Kontakt</span>
       </div>
-      <div><div class="contact-cta-block"><h3><span class="inline-lang lang-active" data-inline-lang="tr">Hemen Fiyat Teklifi Alın!</span><span class="inline-lang" data-inline-lang="en">Get Your Quote Now!</span><span class="inline-lang" data-inline-lang="de">Jetzt Angebot Anfordern!</span></h3><p><span class="inline-lang lang-active" data-inline-lang="tr">İhtiyacınız olan ürün için WhatsApp veya telefon ile bize ulaşın. Uzman ekibimiz en kısa sürede fiyat teklifi sunacaktır.</span><span class="inline-lang" data-inline-lang="en">Contact us via WhatsApp or phone for the product you need. Our expert team will provide a price quote in the shortest time.</span><span class="inline-lang" data-inline-lang="de">Kontaktieren Sie uns per WhatsApp oder Telefon für das Produkt, das Sie benötigen. Unser Expertenteam erstellt Ihnen so schnell wie möglich ein Angebot.</span></p><div class="contact-cta-btns"><a href="https://wa.me/905422140132?text=Merhaba,%20fiyat%20teklifi%20almak%20istiyorum" class="btn-cta-wa"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a><a href="tel:+905422140132" class="btn-cta-call"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+90 542 214 01 32</a> <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-  <path d="M6.62 10.79a15.91 15.91 0 006.59 6.59l2.2-2.2a1 1 0 011-.24c1.12.37 2.33.57 3.59.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4a1 1 0 011-1H6.5a1 1 0 011 1c0 1.26.2 2.47.57 3.59a1 1 0 01-.25 1z"/>
-</svg> <a href="https://www.facebook.com/altancompany" class="btn-cta-fb" target="_blank"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook</a></div></div></div>
+      <h2 class="section-title">
+        <span class="inline-lang lang-active" data-inline-lang="tr">Fiyat Teklifi <span>Alın</span></span>
+        <span class="inline-lang" data-inline-lang="en">Get a <span>Quote</span></span>
+        <span class="inline-lang" data-inline-lang="de">Angebot <span>Anfordern</span></span>
+      </h2>
+      <span class="section-divider"></span>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-title">
+          <span class="inline-lang lang-active" data-inline-lang="tr">Bize Ulaşın</span>
+          <span class="inline-lang" data-inline-lang="en">Reach Us</span>
+          <span class="inline-lang" data-inline-lang="de">Kontaktieren Sie Uns</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📱</div>
+          <div>
+            <div class="contact-item-label">WhatsApp</div>
+            <a href="https://wa.me/905422140132" class="contact-item-val">+90 542 214 01 32</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div>
+            <div class="contact-item-label">
+              <span class="inline-lang lang-active" data-inline-lang="tr">Telefon</span>
+              <span class="inline-lang" data-inline-lang="en">Phone</span>
+              <span class="inline-lang" data-inline-lang="de">Telefon</span>
+            </div>
+            <a href="tel:+905422140132" class="contact-item-val">+90 542 214 01 32</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🌐</div>
+          <div>
+            <div class="contact-item-label">Web</div>
+            <a href="https://www.altancompany.com/" class="contact-item-val">www.altancompany.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">👍</div>
+          <div>
+            <div class="contact-item-label">Facebook</div>
+            <a href="https://www.facebook.com/altancompany" class="contact-item-val" target="_blank" rel="noopener">Altan Company</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="contact-cta-block">
+          <h3>
+            <span class="inline-lang lang-active" data-inline-lang="tr">Hemen Fiyat Teklifi Alın!</span>
+            <span class="inline-lang" data-inline-lang="en">Get Your Quote Now!</span>
+            <span class="inline-lang" data-inline-lang="de">Jetzt Angebot Anfordern!</span>
+          </h3>
+          <p>
+            <span class="inline-lang lang-active" data-inline-lang="tr">İhtiyacınız olan ürün için WhatsApp veya telefon ile bize ulaşın. Uzman ekibimiz en kısa sürede fiyat teklifi sunacaktır.</span>
+            <span class="inline-lang" data-inline-lang="en">Contact us via WhatsApp or phone for the product you need. Our expert team will provide a quote as soon as possible.</span>
+            <span class="inline-lang" data-inline-lang="de">Kontaktieren Sie uns per WhatsApp oder Telefon. Unser Expertenteam erstellt Ihnen so schnell wie möglich ein Angebot.</span>
+          </p>
+          <div class="contact-cta-btns">
+            <a href="https://wa.me/905422140132?text=Merhaba,%20fiyat%20teklifi%20almak%20istiyorum" class="btn-cta-wa">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+            <a href="tel:+905422140132" class="btn-cta-call">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              +90 542 214 01 32
+            </a>
+            <a href="https://www.facebook.com/altancompany" class="btn-cta-fb" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<footer><div><strong>Altan Company</strong> | Fanex Fan Yetkili Bayii<br><a href="tel:+905422140132">+90 542 214 01 32</a> &nbsp;|&nbsp;<a href="https://www.altancompany.com/">www.altancompany.com</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/altancompany" target="_blank">Facebook</a><br><br>© 2025 Altan Company. Tüm hakları saklıdır.</div></footer>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <strong>Altan Company</strong> &nbsp;|&nbsp; Fanex Fan Yetkili Bayii<br><br>
+    <a href="tel:+905422140132">+90 542 214 01 32</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="https://www.altancompany.com/">www.altancompany.com</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="https://www.facebook.com/altancompany" target="_blank" rel="noopener">Facebook</a>
+    <br><br>
+    © 2025 Altan Company. Tüm hakları saklıdır.
+  </div>
+</footer>
 
-<div class="sticky-cta"><a href="https://wa.me/905422140132?text=Merhaba,%20fiyat%20teklifi%20almak%20istiyorum" class="sticky-btn sticky-wa"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span class="sticky-tooltip">WhatsApp</span></a><a href="tel:+905422140132" class="sticky-btn sticky-call"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span class="sticky-tooltip">Ara</span></a></div>
+<!-- STICKY CTA -->
+<div class="sticky-cta">
+  <a href="https://wa.me/905422140132?text=Merhaba,%20fiyat%20teklifi%20almak%20istiyorum" class="sticky-btn sticky-wa">
+    <svg width="25" height="25" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="sticky-tooltip">WhatsApp</span>
+  </a>
+  <a href="tel:+905422140132" class="sticky-btn sticky-call">
+    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    <span class="sticky-tooltip">Ara</span>
+  </a>
+</div>
 
 <script>
-const WA = 'https://wa.me/905422140132?text=';
+const WA  = 'https://wa.me/905422140132?text=';
 const TEL = 'tel:+905422140132';
-const translations = { tr: { orderWa: 'Sipariş Ver', callBtn: 'Ara', quoteTxt: 'Fiyat Teklifi', showMore: 'Daha Fazla Göster', showLess: 'Daha Az Göster', badge: '%25 İndirim' }, en: { orderWa: 'Order Now', callBtn: 'Call', quoteTxt: 'Get Quote', showMore: 'Show More', showLess: 'Show Less', badge: '25% Off' }, de: { orderWa: 'Bestellen', callBtn: 'Anrufen', quoteTxt: 'Angebot', showMore: 'Mehr Anzeigen', showLess: 'Weniger Anzeigen', badge: '25% Rabatt' } };
+
+const translations = {
+  tr: { orderWa: 'Sipariş Ver', callBtn: 'Ara', showMore: 'Daha Fazla Göster', showLess: 'Daha Az Göster', badge: '%25 İndirim', products: 'Ürünleri' },
+  en: { orderWa: 'Order Now',   callBtn: 'Call', showMore: 'Show More',         showLess: 'Show Less',        badge: '25% Off',      products: 'Products' },
+  de: { orderWa: 'Bestellen',   callBtn: 'Anrufen', showMore: 'Mehr Anzeigen',  showLess: 'Weniger',          badge: '25% Rabatt',   products: 'Produkte' }
+};
+
 const categories = [
-  { id: 'hucreli', names: { tr: 'Hücreli Fanlar', en: 'Cell Fans', de: 'Zellenventilatoren' }, products: [{ name: 'FHV-SK Serisi Öne Eğimli Sık Kanatlı Hücreli Vantilatörler', img: 'https://www.altancompany.com/images/hucreli1.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety: Your Reliable Partner in Fire and Ventilation Solutions.', de: 'Hohe Leistung, Maximale Sicherheit: Ihr zuverlässiger Partner für Brand- und Lüftungslösungen.' } }, { name: 'FHV-SY Serisi Geriye Eğimli Seyrek Kanatlı Hücreli Vantilatörler', img: 'https://www.altancompany.com/images/hucreli2.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FHS Serisi Kabinli Seyrek Kanatlı Mutfak Egzoz Fanlar', img: 'https://www.altancompany.com/images/hucreli3.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FMEF Serisi Kabinli Seyrek Kanatlı Yağ Filtresiz Mutfak Egzoz Fanları', img: 'https://www.altancompany.com/images/hucreli4.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FPH Serisi Harici Motorlu Tek Cidarlı Akustik İzoleli Hücreli Fan', img: 'https://www.altancompany.com/images/hucreli5.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FPH-F Serisi Harici Motorlu Çift Cidarlı Filtreli Hücreli Fan', img: 'https://www.altancompany.com/images/hucreli6.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FBHS Serisi Elektrostatik Filtreli Bacasız Havalandırma Santrali', img: 'https://www.altancompany.com/images/hucreli7.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FDBK Serisi Kabinli Yangın Duman Egzoz ve Basınçlandırma Aspiratörleri', img: 'https://www.altancompany.com/images/hucreli8.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }] },
-  { id: 'santraller', names: { tr: 'Santraller', en: 'Centrals', de: 'Zentralen' }, products: [{ name: 'FSFM Serisi Sığınak Filtre Modülü', img: 'https://www.altancompany.com/images/santraller1.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FKSF-P Serisi Kanal Tipi Sığınak Havalandırma Fanları', img: 'https://www.altancompany.com/images/santraller2.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FHSF-R Serisi Çift Cidarlı Sığınak Santrali – Radyal Fanlı', img: 'https://www.altancompany.com/images/santraller3.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }] },
-  { id: 'radyal', names: { tr: 'Radyal Salyangoz Fanlar', en: 'Radial Snail Fans', de: 'Radiale Schneckenventilatoren' }, products: [{ name: 'FBSY Serisi Öne Eğimli Seyrek Kanatlı Alçak Basınçlı Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal1.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FBO Serisi Orta Basınçlı Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal2.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FBK Serisi Yüksek Basınçlı Körük Fanlar', img: 'https://www.altancompany.com/images/radyal3.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FMK-A Serisi Kare Tip Alçak Basınçlı Seyrek Kanatlı Fanlar', img: 'https://www.altancompany.com/images/radyal4.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FGS Serisi Geriye Eğik Alçak Basınçlı Konikli Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal5.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FAGS-T Serisi Trifaze Alüminyum Döküm Gövdeli Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal6.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FAGS-M Serisi Monofaze Alüminyum Döküm Gövdeli Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal7.webp', desc: { tr: 'Radyal kanat yapısı ile yüksek basınç üreten, salyangoz gövde tasarımı ile verimli çalışan endüstriyel fanlar.', en: 'Industrial fans producing high pressure with radial blade design.', de: 'Industrieventilatoren mit radialer Schaufelkonstruktion.' } }, { name: 'FRK Serisi Geriye Eğik Orta Basınçlı Konikli Salyangoz Fanlar', img: 'https://www.altancompany.com/images/radyal8.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }] },
-  { id: 'duman', names: { tr: 'Duman Tahliye Fanları', en: 'Smoke Exhaust Fans', de: 'Rauchabzugsventilatoren' }, products: [{ name: 'FMF Serisi Aksiyal Mobil Fan (Duman Tahliye Fanı)', img: 'https://www.altancompany.com/images/duman1.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }, { name: 'FMF-AL Serisi Aksiyal Alüminyum Pervaneli Taşınabilir Kovanlı Mobil Fan', img: 'https://www.altancompany.com/images/duman2.webp', desc: { tr: 'Acil durum duman tahliyesi için optimize edilmiş, yangın güvenliği standartlarına uygun fanlar.', en: 'Optimized for emergency smoke evacuation, compliant with fire safety standards.', de: 'Für Notfall-Rauchevakuierung optimiert, brandschutznormkonform.' } }, { name: 'FAK Serisi Harici Motorlu Metal Kanatlı Yangın Duman Egzoz Fanları', img: 'https://www.altancompany.com/images/duman3.webp', desc: { tr: 'Yüksek Performans, Maksimum Güvenlik.', en: 'High Performance, Maximum Safety.', de: 'Hohe Leistung, Maximale Sicherheit.' } }] },
-  { id: 'isi', names: { tr: 'Isı Geri Kazanım Cihazları', en: 'Heat Recovery Units', de: 'Wärmerückgewinnungsgeräte' }, products: [{ name: 'Plug Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)', img: 'https://www.altancompany.com/images/isi1.webp', desc: { tr: 'Enerji tasarruflu ısı geri kazanım sistemi ile çalışan, yüksek verimlilik sunan havalandırma cihazları.', en: 'Energy-saving heat recovery units offering high efficiency ventilation.', de: 'Energiesparende Wärmerückgewinnungsgeräte mit hoher Effizienz.' } }, { name: 'Radyal Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)', img: 'https://www.altancompany.com/images/isi2.webp', desc: { tr: 'Radyal kanat yapısı ile yüksek basınç üreten, salyangoz gövde tasarımı ile verimli çalışan cihazlar.', en: 'High pressure radial fan design with efficient snail housing.', de: 'Hochdruckradialventilator mit effizientem Schneckengehäuse.' } }, { name: 'Enerji Tasarruflu Plug Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)', img: 'https://www.altancompany.com/images/isi3.webp', desc: { tr: 'Enerji tasarruflu ısı geri kazanım sistemi ile çalışan, yüksek verimlilik sunan havalandırma cihazları.', en: 'Energy-saving heat recovery system with high efficiency.', de: 'Energiesparendes Wärmerückgewinnungssystem mit hoher Effizienz.' } }] },
-  { id: 'kanal', names: { tr: 'Kanal Fanları', en: 'Duct Fans', de: 'Kanalventilatoren' }, products: [{ name: 'Baypasli 3 Filtreli Kanal Vantilatorü', img: 'https://www.altancompany.com/images/kanal1.webp', desc: { tr: 'Kanal sistemlerine entegre edilmek üzere tasarlanmış, kompakt yapısı ve yüksek performansı ile ideal fanlar.', en: 'Designed for duct system integration, compact and high-performance.', de: 'Für Kanalsysteme konzipiert, kompakt und leistungsstark.' } }, { name: '2 Filtreli Motorlu Kanal Vantilatorü', img: 'https://www.altancompany.com/images/kanal2.webp', desc: { tr: 'Kanal sistemlerine entegre edilmek üzere tasarlanmış, kompakt yapısı ve yüksek performansı ile ideal fanlar.', en: 'Designed for duct system integration, compact and high-performance.', de: 'Für Kanalsysteme konzipiert, kompakt und leistungsstark.' } }, { name: 'Harici Motorlu Geriye Eğik Seyrek Kanatlı Dikdörtgen Kanal Fanları', img: 'https://www.altancompany.com/images/kanal3.webp', desc: { tr: 'Kanal sistemlerine entegre edilmek üzere tasarlanmış, kompakt yapısı ve yüksek performansı ile ideal fanlar.', en: 'Designed for duct system integration.', de: 'Für Kanalsysteme konzipiert.' } }] },
-  { id: 'cati', names: { tr: 'Çatı Fanları', en: 'Roof Fans', de: 'Dachventilatoren' }, products: [{ name: 'Dikey Atışlı Radyal Çatı Fanları', img: 'https://www.altancompany.com/images/cati1.webp', desc: { tr: 'Radyal kanat yapısı ile yüksek basınç üreten çatı tipi endüstriyel fanlar.', en: 'Roof-type industrial fans producing high pressure with radial blade design.', de: 'Dach-Industrieventilatoren mit radialer Schaufelkonstruktion.' } }, { name: 'Dikey Atışlı Harici Motorlu Radyal Çatı Fanları', img: 'https://www.altancompany.com/images/cati2.webp', desc: { tr: 'Radyal kanat yapısı ile yüksek basınç üreten çatı fanları.', en: 'High pressure roof fans with radial blade design.', de: 'Hochdruck-Dachventilatoren.' } }, { name: 'Radyal Çatı Fanları', img: 'https://www.altancompany.com/images/cati3.webp', desc: { tr: 'Çatı montajı için özel tasarım, dış hava koşullarına dayanıklı fanlar.', en: 'Purpose-designed for roof mounting, weatherproof fans.', de: 'Für die Dachmontage konzipiert, wetterfeste Ventilatoren.' } }] },
-  { id: 'aksiyel', names: { tr: 'Aksiyel Fanlar', en: 'Axial Fans', de: 'Axialventilatoren' }, products: [{ name: 'Harici Motorlu 4 Kanatlı Metal Pervaneli Kare Kasalı Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel1.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen, uzun ömürlü ve güvenilir performans sunan endüstriyel fanlar.', en: 'High quality industrial fans with long-lasting reliable performance.', de: 'Hochwertige Industrieventilatoren mit langlebiger Leistung.' } }, { name: 'Harici Motorlu 4 Kanatlı Metal Pervaneli Yuvarlak Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel2.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen endüstriyel fanlar.', en: 'High quality industrial fans.', de: 'Hochwertige Industrieventilatoren.' } }, { name: 'Harici Motorlu Alüminyum Pervaneli Yuvarlak Aksiyal Aspiratörler', img: 'https://www.altancompany.com/images/aksiyel3.webp', desc: { tr: 'Yüksek kalite standartlarında üretilen endüstriyel fanlar.', en: 'High quality industrial fans.', de: 'Hochwertige Industrieventilatoren.' } }] },
-  { id: 'vantilator', names: { tr: 'Vantilatörler', en: 'Ventilators', de: 'Ventilatoren' }, products: [{ name: 'Endüstriyel Vantilatörler', img: 'https://www.altancompany.com/images/vantilator1.webp', desc: { tr: 'Endüstriyel uygulamalar için tasarlanmış, yüksek performans ve dayanıklılık sunan vantilatörler.', en: 'Ventilators designed for industrial applications with high performance and durability.', de: 'Für Industrieanwendungen konzipierte Ventilatoren mit hoher Leistung und Haltbarkeit.' } }] },
-  { id: 'jet', names: { tr: 'Jet Fanlar', en: 'Jet Fans', de: 'Jet-Ventilatoren' }, products: [{ name: 'Alüminyum Pervaneli Jet Fanlar', img: 'https://www.altancompany.com/images/jet1.webp', desc: { tr: 'Jet etkisi ile hava akımı oluşturan, tünel ve büyük alan havalandırması için ideal fanlar.', en: 'Jet-effect fans ideal for tunnel and large-area ventilation.', de: 'Jet-Effekt-Ventilatoren ideal für Tunnel- und Großflächenbelüftung.' } }, { name: 'Radyal Pervaneli Jet Fanlar', img: 'https://www.altancompany.com/images/jet2.webp', desc: { tr: 'Jet etkisi ile hava akımı oluşturan, otopark ve büyük alan havalandırması için ideal fanlar.', en: 'Jet-effect fans ideal for parking and large-area ventilation.', de: 'Jet-Effekt-Ventilatoren ideal für Parkhaus- und Großflächenbelüftung.' } }] }
+  { id:'hucreli',    names:{tr:'Hücreli Fanlar',en:'Cell Fans',de:'Zellenventilatoren'},
+    products:[
+      {name:'FHV-SK Serisi Öne Eğimli Sık Kanatlı Hücreli Vantilatörler',img:'https://www.altancompany.com/images/hucreli1.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.',en:'High Performance, Maximum Safety: Your Reliable Partner in Fire and Ventilation Solutions.',de:'Hohe Leistung, Maximale Sicherheit: Ihr zuverlässiger Partner für Brand- und Lüftungslösungen.'}},
+      {name:'FHV-SY Serisi Geriye Eğimli Seyrek Kanatlı Hücreli Vantilatörler',img:'https://www.altancompany.com/images/hucreli2.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}},
+      {name:'FHS Serisi Kabinli Seyrek Kanatlı Mutfak Egzoz Fanlar',img:'https://www.altancompany.com/images/hucreli3.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}},
+      {name:'FMEF Serisi Kabinli Seyrek Kanatlı Yağ Filtresiz Mutfak Egzoz Fanları',img:'https://www.altancompany.com/images/hucreli4.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}},
+      {name:'FPH Serisi Harici Motorlu Tek Cidarlı Akustik İzoleli Hücreli Fan',img:'https://www.altancompany.com/images/hucreli5.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}},
+      {name:'FPH-F Serisi Harici Motorlu Çift Cidarlı Filtreli Hücreli Fan',img:'https://www.altancompany.com/images/hucreli6.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}},
+      {name:'FBHS Serisi Elektrostatik Filtreli Bacasız Havalandırma Santrali',img:'https://www.altancompany.com/images/hucreli7.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}},
+      {name:'FDBK Serisi Kabinli Yangın Duman Egzoz ve Basınçlandırma Aspiratörleri',img:'https://www.altancompany.com/images/hucreli8.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}}
+    ]
+  },
+  { id:'santraller', names:{tr:'Santraller',en:'Centrals',de:'Zentralen'},
+    products:[
+      {name:'FSFM Serisi Sığınak Filtre Modülü',img:'https://www.altancompany.com/images/santraller1.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}},
+      {name:'FKSF-P Serisi Kanal Tipi Sığınak Havalandırma Fanları',img:'https://www.altancompany.com/images/santraller2.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}},
+      {name:'FHSF-R Serisi Çift Cidarlı Sığınak Santrali – Radyal Fanlı',img:'https://www.altancompany.com/images/santraller3.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}}
+    ]
+  },
+  { id:'radyal',     names:{tr:'Radyal Salyangoz Fanlar',en:'Radial Snail Fans',de:'Radiale Schneckenventilatoren'},
+    products:[
+      {name:'FBSY Serisi Öne Eğimli Seyrek Kanatlı Alçak Basınçlı Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal1.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}},
+      {name:'FBO Serisi Orta Basınçlı Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal2.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}},
+      {name:'FBK Serisi Yüksek Basınçlı Körük Fanlar',img:'https://www.altancompany.com/images/radyal3.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}},
+      {name:'FMK-A Serisi Kare Tip Alçak Basınçlı Seyrek Kanatlı Fanlar',img:'https://www.altancompany.com/images/radyal4.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}},
+      {name:'FGS Serisi Geriye Eğik Alçak Basınçlı Konikli Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal5.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}},
+      {name:'FAGS-T Serisi Trifaze Alüminyum Döküm Gövdeli Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal6.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}},
+      {name:'FAGS-M Serisi Monofaze Alüminyum Döküm Gövdeli Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal7.webp',desc:{tr:'Radyal kanat yapısı ile yüksek basınç üreten endüstriyel fanlar.',en:'Industrial fans producing high pressure with radial blade design.',de:'Industrieventilatoren mit radialer Schaufelkonstruktion.'}},
+      {name:'FRK Serisi Geriye Eğik Orta Basınçlı Konikli Salyangoz Fanlar',img:'https://www.altancompany.com/images/radyal8.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}}
+    ]
+  },
+  { id:'duman',      names:{tr:'Duman Tahliye Fanları',en:'Smoke Exhaust Fans',de:'Rauchabzugsventilatoren'},
+    products:[
+      {name:'FMF Serisi Aksiyal Mobil Fan (Duman Tahliye Fanı)',img:'https://www.altancompany.com/images/duman1.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik: Yangın ve Havalandırma Çözümlerinde Güvenilir Ortağınız.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}},
+      {name:'FMF-AL Serisi Aksiyal Alüminyum Pervaneli Taşınabilir Kovanlı Mobil Fan',img:'https://www.altancompany.com/images/duman2.webp',desc:{tr:'Acil durum duman tahliyesi için optimize edilmiş, yangın güvenliği standartlarına uygun fanlar.',en:'Optimized for emergency smoke evacuation, compliant with fire safety standards.',de:'Für Notfall-Rauchevakuierung optimiert, brandschutznormkonform.'}},
+      {name:'FAK Serisi Harici Motorlu Metal Kanatlı Yangın Duman Egzoz Fanları',img:'https://www.altancompany.com/images/duman3.webp',desc:{tr:'Yüksek Performans, Maksimum Güvenlik.',en:'High Performance, Maximum Safety.',de:'Hohe Leistung, Maximale Sicherheit.'}}
+    ]
+  },
+  { id:'isi',        names:{tr:'Isı Geri Kazanım Cihazları',en:'Heat Recovery Units',de:'Wärmerückgewinnungsgeräte'},
+    products:[
+      {name:'Plug Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)',img:'https://www.altancompany.com/images/isi1.webp',desc:{tr:'Enerji tasarruflu ısı geri kazanım sistemi ile çalışan, yüksek verimlilik sunan havalandırma cihazları.',en:'Energy-saving heat recovery units offering high efficiency ventilation.',de:'Energiesparende Wärmerückgewinnungsgeräte mit hoher Effizienz.'}},
+      {name:'Radyal Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)',img:'https://www.altancompany.com/images/isi2.webp',desc:{tr:'Radyal kanat yapısı ile yüksek basınç üreten, salyangoz gövde tasarımı ile verimli çalışan cihazlar.',en:'High pressure radial fan design with efficient snail housing.',de:'Hochdruckradialventilator mit effizientem Schneckengehäuse.'}},
+      {name:'Enerji Tasarruflu Plug Fanlı Isı Geri Kazanım Cihazları (Alüminyum Eşanjörlü)',img:'https://www.altancompany.com/images/isi3.webp',desc:{tr:'Enerji tasarruflu ısı geri kazanım sistemi ile çalışan, yüksek verimlilik sunan havalandırma cihazları.',en:'Energy-saving heat recovery system with high efficiency.',de:'Energiesparendes Wärmerückgewinnungssystem mit hoher Effizienz.'}}
+    ]
+  },
+  { id:'kanal',      names:{tr:'Kanal Fanları',en:'Duct Fans',de:'Kanalventilatoren'},
+    products:[
+      {name:'Baypasli 3 Filtreli Kanal Vantilatorü',img:'https://www.altancompany.com/images/kanal1.webp',desc:{tr:'Kanal sistemlerine entegre edilmek üzere tasarlanmış, kompakt yapısı ve yüksek performansı ile ideal fanlar.',en:'Designed for duct system integration, compact and high-performance.',de:'Für Kanalsysteme konzipiert, kompakt und leistungsstark.'}},
+      {name:'2 Filtreli Motorlu Kanal Vantilatorü',img:'https://www.altancompany.com/images/kanal2.webp',desc:{tr:'Kanal sistemlerine entegre edilmek üzere tasarlanmış, kompakt yapısı ve yüksek performansı ile ideal fanlar.',en:'Designed for duct system integration, compact and high-performance.',de:'Für Kanalsysteme konzipiert, kompakt und leistungsstark.'}},
+      {name:'Harici Motorlu Geriye Eğik Seyrek Kanatlı Dikdörtgen Kanal Fanları',img:'https://www.altancompany.com/images/kanal3.webp',desc:{tr:'Kanal sistemlerine entegre edilmek üzere tasarlanmış, kompakt yapısı ve yüksek performansı ile ideal fanlar.',en:'Designed for duct system integration.',de:'Für Kanalsysteme konzipiert.'}}
+    ]
+  },
+  { id:'cati',       names:{tr:'Çatı Fanları',en:'Roof Fans',de:'Dachventilatoren'},
+    products:[
+      {name:'Dikey Atışlı Radyal Çatı Fanları',img:'https://www.altancompany.com/images/cati1.webp',desc:{tr:'Radyal kanat yapısı ile yüksek basınç üreten çatı tipi endüstriyel fanlar.',en:'Roof-type industrial fans producing high pressure with radial blade design.',de:'Dach-Industrieventilatoren mit radialer Schaufelkonstruktion.'}},
+      {name:'Dikey Atışlı Harici Motorlu Radyal Çatı Fanları',img:'https://www.altancompany.com/images/cati2.webp',desc:{tr:'Radyal kanat yapısı ile yüksek basınç üreten çatı fanları.',en:'High pressure roof fans with radial blade design.',de:'Hochdruck-Dachventilatoren.'}},
+      {name:'Radyal Çatı Fanları',img:'https://www.altancompany.com/images/cati3.webp',desc:{tr:'Çatı montajı için özel tasarım, dış hava koşullarına dayanıklı fanlar.',en:'Purpose-designed for roof mounting, weatherproof fans.',de:'Für die Dachmontage konzipiert, wetterfeste Ventilatoren.'}}
+    ]
+  },
+  { id:'aksiyel',    names:{tr:'Aksiyel Fanlar',en:'Axial Fans',de:'Axialventilatoren'},
+    products:[
+      {name:'Harici Motorlu 4 Kanatlı Metal Pervaneli Kare Kasalı Aksiyal Aspiratörler',img:'https://www.altancompany.com/images/aksiyel1.webp',desc:{tr:'Yüksek kalite standartlarında üretilen, uzun ömürlü ve güvenilir performans sunan endüstriyel fanlar.',en:'High quality industrial fans with long-lasting reliable performance.',de:'Hochwertige Industrieventilatoren mit langlebiger Leistung.'}},
+      {name:'Harici Motorlu 4 Kanatlı Metal Pervaneli Yuvarlak Aksiyal Aspiratörler',img:'https://www.altancompany.com/images/aksiyel2.webp',desc:{tr:'Yüksek kalite standartlarında üretilen endüstriyel fanlar.',en:'High quality industrial fans.',de:'Hochwertige Industrieventilatoren.'}},
+      {name:'Harici Motorlu Alüminyum Pervaneli Yuvarlak Aksiyal Aspiratörler',img:'https://www.altancompany.com/images/aksiyel3.webp',desc:{tr:'Yüksek kalite standartlarında üretilen endüstriyel fanlar.',en:'High quality industrial fans.',de:'Hochwertige Industrieventilatoren.'}}
+    ]
+  },
+  { id:'vantilator', names:{tr:'Vantilatörler',en:'Ventilators',de:'Ventilatoren'},
+    products:[
+      {name:'Endüstriyel Vantilatörler',img:'https://www.altancompany.com/images/vantilator1.webp',desc:{tr:'Endüstriyel uygulamalar için tasarlanmış, yüksek performans ve dayanıklılık sunan vantilatörler.',en:'Ventilators designed for industrial applications with high performance and durability.',de:'Für Industrieanwendungen konzipierte Ventilatoren mit hoher Leistung und Haltbarkeit.'}}
+    ]
+  },
+  { id:'jet',        names:{tr:'Jet Fanlar',en:'Jet Fans',de:'Jet-Ventilatoren'},
+    products:[
+      {name:'Alüminyum Pervaneli Jet Fanlar',img:'https://www.altancompany.com/images/jet1.webp',desc:{tr:'Jet etkisi ile hava akımı oluşturan, tünel ve büyük alan havalandırması için ideal fanlar.',en:'Jet-effect fans ideal for tunnel and large-area ventilation.',de:'Jet-Effekt-Ventilatoren ideal für Tunnel- und Großflächenbelüftung.'}},
+      {name:'Radyal Pervaneli Jet Fanlar',img:'https://www.altancompany.com/images/jet2.webp',desc:{tr:'Jet etkisi ile hava akımı oluşturan, otopark ve büyük alan havalandırması için ideal fanlar.',en:'Jet-effect fans ideal for parking and large-area ventilation.',de:'Jet-Effekt-Ventilatoren ideal für Parkhaus- und Großflächenbelüftung.'}}
+    ]
+  }
 ];
+
 let currentLang = 'tr';
-function makeProductCard(p, lang){const t=translations[lang]; const waMsg=encodeURIComponent(`Merhaba, "${p.name}" ürünü için fiyat teklifi almak istiyorum.`); return `<div class="product-card"><div class="product-img-wrap"><img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect width=%22400%22 height=%22300%22 fill=%22%23eaecef%22/%3E%3Ctext x=%22200%22 y=%22150%22 text-anchor=%22middle%22 fill=%22%238a95a3%22 font-size=%2216%22%3EFoto%3C/text%3E%3C/svg%3E'"><span class="product-badge">${t.badge}</span></div><div class="product-body"><div class="product-name">${p.name}</div><div class="product-desc">${p.desc[lang]}</div><div class="product-actions"><a href="${WA}${waMsg}" class="btn-wa"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>${t.orderWa}</a><a href="${TEL}" class="btn-call"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>${t.callBtn}</a></div></div></div>`;}
-function renderProducts(){const lang=currentLang; const t=translations[lang]; const container=document.getElementById('products-container'); let html=''; categories.forEach((cat,idx)=>{const firstThree=cat.products.slice(0,3); const rest=cat.products.slice(3); const bg=idx%2===0?'':'style="background:var(--off-white)"'; const hiddenId=`hidden-${cat.id}`; const showMoreId=`showmore-${cat.id}`; html+=`<section class="products-section" id="${cat.id}" ${bg}><div class="container"><div class="section-header"><div class="section-tag">${cat.names[lang]}</div><h2 class="section-title">${cat.names[lang]} <span>Ürünleri</span></h2><span class="section-divider"></span></div><div class="products-grid">${firstThree.map(p=>makeProductCard(p,lang)).join('')}${rest.length>0?`<div class="hidden-products" id="${hiddenId}" style="display:none;">${rest.map(p=>makeProductCard(p,lang)).join('')}</div>`:''}</div>${rest.length>0?`<div class="show-more-wrap"><button class="btn-show-more" id="${showMoreId}" onclick="toggleMore('${hiddenId}','${showMoreId}')"><span>${t.showMore}</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button></div>`:''}</div></section>`;}); container.innerHTML=html;}
-function toggleMore(hiddenId,btnId){const hidden=document.getElementById(hiddenId); const btn=document.getElementById(btnId); const t=translations[currentLang]; if(!hidden)return; if(hidden.style.display==='none'||hidden.style.display===''){hidden.style.display='grid'; btn.querySelector('span').textContent=t.showLess; btn.querySelector('svg').style.transform='rotate(180deg)';}else{hidden.style.display='none'; btn.querySelector('span').textContent=t.showMore; btn.querySelector('svg').style.transform='';}}
-function setLang(lang){currentLang=lang; document.documentElement.lang=lang; document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active')); document.querySelectorAll('.lang-btn').forEach(b=>{if(b.textContent.trim().toLowerCase()===lang)b.classList.add('active');}); document.querySelectorAll('[data-inline-lang]').forEach(el=>{el.classList.toggle('lang-active',el.getAttribute('data-inline-lang')===lang);}); document.querySelectorAll('[data-nav-'+lang+']').forEach(el=>{el.textContent=el.getAttribute('data-nav-'+lang);}); renderProducts();}
+
+const PLACEHOLDER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%23EEF0F3'/%3E%3Ctext x='200' y='155' text-anchor='middle' fill='%239BA5B0' font-size='14' font-family='sans-serif'%3EFoto%3C/text%3E%3C/svg%3E";
+
+const WA_SVG = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+const TEL_SVG = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>`;
+const DOWN_SVG = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>`;
+
+function makeProductCard(p, lang) {
+  const t = translations[lang];
+  const waMsg = encodeURIComponent(`Merhaba, "${p.name}" ürünü için fiyat teklifi almak istiyorum.`);
+  return `
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='${PLACEHOLDER}'">
+        <span class="product-badge">${t.badge}</span>
+      </div>
+      <div class="product-body">
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc[lang]}</div>
+        <div class="product-actions">
+          <a href="${WA}${waMsg}" class="btn-wa">${WA_SVG}${t.orderWa}</a>
+          <a href="${TEL}" class="btn-call">${TEL_SVG}${t.callBtn}</a>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderProducts() {
+  const lang = currentLang;
+  const t = translations[lang];
+  const container = document.getElementById('products-container');
+  let html = '';
+
+  categories.forEach((cat, idx) => {
+    const first3 = cat.products.slice(0, 3);
+    const rest   = cat.products.slice(3);
+    const bg     = idx % 2 !== 0 ? 'style="background:var(--off)"' : '';
+    const hiddenId  = `hidden-${cat.id}`;
+    const showMoreId = `showmore-${cat.id}`;
+
+    let hiddenHtml = '';
+    if (rest.length > 0) {
+      hiddenHtml = `
+        <div class="hidden-products" id="${hiddenId}" style="display:none; grid-template-columns: repeat(3,1fr); gap:22px;">
+          ${rest.map(p => makeProductCard(p, lang)).join('')}
+        </div>`;
+    }
+
+    let showMoreHtml = '';
+    if (rest.length > 0) {
+      showMoreHtml = `
+        <div class="show-more-wrap">
+          <button class="btn-show-more" id="${showMoreId}" onclick="toggleMore('${hiddenId}','${showMoreId}')">
+            <span>${t.showMore}</span>${DOWN_SVG}
+          </button>
+        </div>`;
+    }
+
+    html += `
+      <section class="products-section" id="${cat.id}" ${bg}>
+        <div class="container">
+          <div class="section-header">
+            <div class="section-tag">${cat.names[lang]}</div>
+            <h2 class="section-title">${cat.names[lang]} <span>${t.products}</span></h2>
+            <span class="section-divider"></span>
+          </div>
+          <div class="products-grid">
+            ${first3.map(p => makeProductCard(p, lang)).join('')}
+          </div>
+          ${hiddenHtml}
+          ${showMoreHtml}
+        </div>
+      </section>`;
+  });
+
+  container.innerHTML = html;
+}
+
+function toggleMore(hiddenId, btnId) {
+  const hidden = document.getElementById(hiddenId);
+  const btn    = document.getElementById(btnId);
+  if (!hidden || !btn) return;
+  const t = translations[currentLang];
+  const isHidden = hidden.style.display === 'none' || hidden.style.display === '';
+  if (isHidden) {
+    hidden.style.display = 'grid';
+    btn.querySelector('span').textContent = t.showLess;
+    btn.querySelector('svg').style.transform = 'rotate(180deg)';
+  } else {
+    hidden.style.display = 'none';
+    btn.querySelector('span').textContent = t.showMore;
+    btn.querySelector('svg').style.transform = '';
+  }
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
+  });
+
+  document.querySelectorAll('[data-inline-lang]').forEach(el => {
+    el.classList.toggle('lang-active', el.getAttribute('data-inline-lang') === lang);
+  });
+
+  ['tr','en','de'].forEach(l => {
+    document.querySelectorAll(`[data-nav-${l}]`).forEach(el => {
+      el.textContent = el.getAttribute(`data-nav-${lang}`) || el.textContent;
+    });
+  });
+
+  renderProducts();
+}
+
+// Active nav on scroll
+const navLinks = document.querySelectorAll('.nav-link');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+
+function observeSections() {
+  document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+}
+
 renderProducts();
+observeSections();
 </script>
 </body>
 </html>
