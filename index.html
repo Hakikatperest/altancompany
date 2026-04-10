@@ -42,6 +42,54 @@ body {
   line-height: 1.6;
 }
 
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.93);
+  transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* stagger delays for grid children */
+.stagger > *:nth-child(1) { transition-delay: 0s; }
+.stagger > *:nth-child(2) { transition-delay: 0.08s; }
+.stagger > *:nth-child(3) { transition-delay: 0.16s; }
+.stagger > *:nth-child(4) { transition-delay: 0.24s; }
+.stagger > *:nth-child(5) { transition-delay: 0.32s; }
+.stagger > *:nth-child(6) { transition-delay: 0.4s; }
+.stagger > *:nth-child(7) { transition-delay: 0.48s; }
+.stagger > *:nth-child(8) { transition-delay: 0.56s; }
+
 /* ── PROMO BAR ── */
 .promo-bar {
   background: var(--red);
@@ -86,7 +134,13 @@ header {
   height: 68px;
   gap: 20px;
 }
-.logo-wrap { display: flex; flex-direction: column; line-height: 1.15; }
+.logo-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  text-decoration: none;
+  cursor: pointer;
+}
 .logo-main {
   font-family: var(--heading);
   font-size: 24px;
@@ -122,6 +176,14 @@ header {
   white-space: nowrap;
 }
 .contact-pill:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); }
+.contact-pill .pill-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .contact-pill.wa { background: rgba(37,211,102,0.12); border-color: rgba(37,211,102,0.3); color: #4DE882; }
 .contact-pill.wa:hover { background: rgba(37,211,102,0.22); }
 
@@ -186,20 +248,16 @@ nav::-webkit-scrollbar { display: none; }
   display: block;
   overflow: hidden;
 }
+/* FIX 1: video doğal boyutta, zoom yok */
 .hero-video {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: translate(-50%, -50%) scale(1.05);
+  object-position: center center;
   filter: brightness(0.35) contrast(1.15) saturate(0.8);
-  animation: heroZoom 20s ease-in-out infinite alternate;
-}
-@keyframes heroZoom {
-  from { transform: translate(-50%, -50%) scale(1.05); }
-  to   { transform: translate(-50%, -50%) scale(1.12); }
 }
 .hero-overlay {
   position: absolute;
@@ -325,6 +383,7 @@ nav::-webkit-scrollbar { display: none; }
   transform: translateY(-2px);
 }
 
+/* FIX 3: Sayaç animasyonu için */
 .hero-stats {
   display: flex;
   gap: 1px;
@@ -452,6 +511,27 @@ nav::-webkit-scrollbar { display: none; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
+}
+
+/* FIX 7: mobilde hidden-products grid düzeltmesi */
+.hidden-products {
+  display: none;
+  gap: 22px;
+  margin-top: 22px;
+}
+.hidden-products.open {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 1100px) {
+  .hidden-products.open {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .hidden-products.open {
+    grid-template-columns: 1fr;
+  }
 }
 
 .product-card {
@@ -582,8 +662,7 @@ nav::-webkit-scrollbar { display: none; }
   transition: all 0.2s;
 }
 .btn-show-more:hover { background: var(--navy); color: #fff; }
-
-.hidden-products { display: none; }
+.btn-show-more svg { transition: transform 0.3s; }
 
 /* ── WHY SECTION ── */
 .why-section {
@@ -787,7 +866,7 @@ footer a { color: rgba(255,255,255,0.5); text-decoration: none; transition: colo
 footer a:hover { color: var(--sky); }
 .footer-inner { max-width: 1320px; margin: 0 auto; }
 
-/* ── STICKY BTNS ── */
+/* ── STICKY BTNS + BACK TO TOP ── */
 .sticky-cta {
   position: fixed;
   bottom: 24px; right: 24px;
@@ -802,10 +881,42 @@ footer a:hover { color: var(--sky); }
   box-shadow: 0 4px 20px rgba(0,0,0,0.35);
   transition: all 0.22s;
   position: relative;
+  border: none;
+  cursor: pointer;
 }
 .sticky-btn:hover { transform: scale(1.1); }
 .sticky-wa { background: #25D366; }
 .sticky-call { background: var(--sky); }
+
+/* FIX 5: Premium back-to-top butonu */
+.sticky-top {
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.15);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8) translateY(10px);
+  transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+.sticky-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1) translateY(0);
+}
+.sticky-top:hover {
+  background: var(--sky) !important;
+  border-color: var(--sky) !important;
+  transform: scale(1.12) !important;
+  box-shadow: 0 8px 28px rgba(30,144,212,0.45) !important;
+}
+.sticky-top svg {
+  stroke: #fff;
+  animation: arrowPulse 2s ease infinite;
+}
+@keyframes arrowPulse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
 .sticky-tooltip {
   position: absolute;
   right: 62px;
@@ -868,6 +979,33 @@ footer a:hover { color: var(--sky); }
   color: rgba(255,255,255,0.35);
 }
 
+/* ── PHONE ICON FIX ── */
+/* Tüm buton ikonları için sabit boyut */
+.btn-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  display: block;
+}
+.btn-icon-sm {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  display: block;
+}
+.btn-icon-md {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: block;
+}
+.btn-icon-lg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: block;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1100px) {
   .hero-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -899,6 +1037,11 @@ footer a:hover { color: var(--sky); }
 /* ── INLINE LANG SYSTEM ── */
 .inline-lang { display: none; }
 .inline-lang.lang-active { display: inline; }
+
+/* Sayfa geçiş efekti için section spacing */
+.products-section, .why-section, .contact-section {
+  will-change: auto;
+}
 </style>
 </head>
 <body>
@@ -921,17 +1064,23 @@ footer a:hover { color: var(--sky); }
 <!-- HEADER -->
 <header>
   <div class="header-inner">
-    <div class="logo-wrap">
+    <!-- FIX 6: Logo tıklanınca sayfanın başına git -->
+    <a href="#" class="logo-wrap" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;" style="text-decoration:none;">
       <span class="logo-main">Altan <span class="logo-accent">Company</span></span>
       <span class="logo-sub">Fanex Fan Yetkili Bayii</span>
-    </div>
+    </a>
     <div class="header-contacts">
+      <!-- FIX 2: Telefon ikonları için SVG inline, sabit boyut -->
       <a href="https://wa.me/905422140132" class="contact-pill wa">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
         <span>+90 542 214 01 32</span>
       </a>
       <a href="tel:+905422140132" class="contact-pill">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
         <span>+90 542 214 01 32</span>
       </a>
     </div>
@@ -961,7 +1110,8 @@ footer a:hover { color: var(--sky); }
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="top">
+  <!-- FIX 1: Video zoom kaldırıldı, object-fit: cover ile doğal sığdırma -->
   <video autoplay muted loop playsinline class="hero-video">
     <source src="https://www.altancompany.com/images/fan.mp4" type="video/mp4">
   </video>
@@ -988,21 +1138,26 @@ footer a:hover { color: var(--sky); }
       </p>
       <div class="hero-ctas">
         <a href="https://wa.me/905422140132?text=Merhaba,%20fiyat%20teklifi%20almak%20istiyorum" class="btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <svg class="btn-icon-md" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
           <span class="inline-lang lang-active" data-inline-lang="tr">Fiyat Teklifi Al</span>
           <span class="inline-lang" data-inline-lang="en">Get a Quote</span>
           <span class="inline-lang" data-inline-lang="de">Angebot Anfordern</span>
         </a>
         <a href="tel:+905422140132" class="btn-secondary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <svg class="btn-icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
           <span class="inline-lang lang-active" data-inline-lang="tr">Hemen Ara</span>
           <span class="inline-lang" data-inline-lang="en">Call Now</span>
           <span class="inline-lang" data-inline-lang="de">Jetzt Anrufen</span>
         </a>
       </div>
+      <!-- FIX 3: Sayaçlar artarak animasyon ile gelecek -->
       <div class="hero-stats">
         <div class="hero-stat">
-          <span class="stat-num">500+</span>
+          <span class="stat-num" id="stat-products">0</span>
           <span class="stat-label">
             <span class="inline-lang lang-active" data-inline-lang="tr">Ürün Çeşidi</span>
             <span class="inline-lang" data-inline-lang="en">Product Types</span>
@@ -1010,7 +1165,7 @@ footer a:hover { color: var(--sky); }
           </span>
         </div>
         <div class="hero-stat">
-          <span class="stat-num">%25</span>
+          <span class="stat-num" id="stat-discount">0</span>
           <span class="stat-label">
             <span class="inline-lang lang-active" data-inline-lang="tr">İndirim</span>
             <span class="inline-lang" data-inline-lang="en">Discount</span>
@@ -1018,7 +1173,7 @@ footer a:hover { color: var(--sky); }
           </span>
         </div>
         <div class="hero-stat">
-          <span class="stat-num">7/24</span>
+          <span class="stat-num" id="stat-support">0/7</span>
           <span class="stat-label">
             <span class="inline-lang lang-active" data-inline-lang="tr">Destek</span>
             <span class="inline-lang" data-inline-lang="en">Support</span>
@@ -1089,7 +1244,7 @@ footer a:hover { color: var(--sky); }
 <!-- WHY US -->
 <section class="why-section">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <div class="section-tag" style="background:rgba(30,144,212,0.1);color:var(--sky);border-color:rgba(30,144,212,0.2);">
         <span class="inline-lang lang-active" data-inline-lang="tr">Neden Altan Company?</span>
         <span class="inline-lang" data-inline-lang="en">Why Altan Company?</span>
@@ -1101,8 +1256,8 @@ footer a:hover { color: var(--sky); }
         <span class="inline-lang" data-inline-lang="de">Wählen Sie <span style="color:var(--sky-2)">Uns</span></span>
       </h2>
     </div>
-    <div class="why-grid">
-      <div class="why-card">
+    <div class="why-grid stagger">
+      <div class="why-card reveal">
         <div class="why-icon why-icon-1">🏆</div>
         <div class="why-title">
           <span class="inline-lang lang-active" data-inline-lang="tr">Yetkili Bayi</span>
@@ -1115,7 +1270,7 @@ footer a:hover { color: var(--sky); }
           <span class="inline-lang" data-inline-lang="de">Als offizieller Fanex-Händler bieten wir originale Produktgarantie</span>
         </div>
       </div>
-      <div class="why-card">
+      <div class="why-card reveal">
         <div class="why-icon why-icon-2">💰</div>
         <div class="why-title">
           <span class="inline-lang lang-active" data-inline-lang="tr">Uygun Fiyat</span>
@@ -1128,7 +1283,7 @@ footer a:hover { color: var(--sky); }
           <span class="inline-lang" data-inline-lang="de">Sparen Sie mit 25% Rabatt auf alle Produkte</span>
         </div>
       </div>
-      <div class="why-card">
+      <div class="why-card reveal">
         <div class="why-icon why-icon-3">🚀</div>
         <div class="why-title">
           <span class="inline-lang lang-active" data-inline-lang="tr">Hızlı Teslim</span>
@@ -1141,7 +1296,7 @@ footer a:hover { color: var(--sky); }
           <span class="inline-lang" data-inline-lang="de">Schließen Sie Ihre Projekte mit pünktlicher Liefergarantie ab</span>
         </div>
       </div>
-      <div class="why-card">
+      <div class="why-card reveal">
         <div class="why-icon why-icon-4">📞</div>
         <div class="why-title">
           <span class="inline-lang lang-active" data-inline-lang="tr">7/24 Destek</span>
@@ -1161,7 +1316,7 @@ footer a:hover { color: var(--sky); }
 <!-- CONTACT -->
 <section class="contact-section" id="iletisim">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <div class="section-tag">
         <span class="inline-lang lang-active" data-inline-lang="tr">İletişim</span>
         <span class="inline-lang" data-inline-lang="en">Contact</span>
@@ -1175,7 +1330,7 @@ footer a:hover { color: var(--sky); }
       <span class="section-divider"></span>
     </div>
     <div class="contact-grid">
-      <div>
+      <div class="reveal-left">
         <div class="contact-info-title">
           <span class="inline-lang lang-active" data-inline-lang="tr">Bize Ulaşın</span>
           <span class="inline-lang" data-inline-lang="en">Reach Us</span>
@@ -1214,7 +1369,7 @@ footer a:hover { color: var(--sky); }
           </div>
         </div>
       </div>
-      <div>
+      <div class="reveal-right">
         <div class="contact-cta-block">
           <h3>
             <span class="inline-lang lang-active" data-inline-lang="tr">Hemen Fiyat Teklifi Alın!</span>
@@ -1228,15 +1383,21 @@ footer a:hover { color: var(--sky); }
           </p>
           <div class="contact-cta-btns">
             <a href="https://wa.me/905422140132?text=Merhaba,%20fiyat%20teklifi%20almak%20istiyorum" class="btn-cta-wa">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <svg class="btn-icon-lg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
               WhatsApp
             </a>
             <a href="tel:+905422140132" class="btn-cta-call">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <svg class="btn-icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
               +90 542 214 01 32
             </a>
             <a href="https://www.facebook.com/altancompany" class="btn-cta-fb" target="_blank" rel="noopener">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              <svg class="btn-icon-lg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
               Facebook
             </a>
           </div>
@@ -1260,14 +1421,25 @@ footer a:hover { color: var(--sky); }
   </div>
 </footer>
 
-<!-- STICKY CTA -->
+<!-- STICKY CTA + BACK TO TOP -->
 <div class="sticky-cta">
+  <!-- FIX 5: Premium yukarı çık butonu (en üstte, gizli başlar) -->
+  <button class="sticky-btn sticky-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Sayfanın başına dön">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+    <span class="sticky-tooltip">Yukarı</span>
+  </button>
   <a href="https://wa.me/905422140132?text=Merhaba,%20fiyat%20teklifi%20almak%20istiyorum" class="sticky-btn sticky-wa">
-    <svg width="25" height="25" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <svg width="25" height="25" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
     <span class="sticky-tooltip">WhatsApp</span>
   </a>
   <a href="tel:+905422140132" class="sticky-btn sticky-call">
-    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+    </svg>
     <span class="sticky-tooltip">Ara</span>
   </a>
 </div>
@@ -1366,15 +1538,15 @@ let currentLang = 'tr';
 
 const PLACEHOLDER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%23EEF0F3'/%3E%3Ctext x='200' y='155' text-anchor='middle' fill='%239BA5B0' font-size='14' font-family='sans-serif'%3EFoto%3C/text%3E%3C/svg%3E";
 
-const WA_SVG = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
-const TEL_SVG = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>`;
-const DOWN_SVG = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>`;
+const WA_SVG = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;display:block;" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+const TEL_SVG = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;display:block;" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 3.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.62 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>`;
+const DOWN_SVG = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><polyline points="6 9 12 15 18 9"/></svg>`;
 
 function makeProductCard(p, lang) {
   const t = translations[lang];
   const waMsg = encodeURIComponent(`Merhaba, "${p.name}" ürünü için fiyat teklifi almak istiyorum.`);
   return `
-    <div class="product-card">
+    <div class="product-card reveal">
       <div class="product-img-wrap">
         <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='${PLACEHOLDER}'">
         <span class="product-badge">${t.badge}</span>
@@ -1400,13 +1572,13 @@ function renderProducts() {
     const first3 = cat.products.slice(0, 3);
     const rest   = cat.products.slice(3);
     const bg     = idx % 2 !== 0 ? 'style="background:var(--off)"' : '';
-    const hiddenId  = `hidden-${cat.id}`;
+    const hiddenId   = `hidden-${cat.id}`;
     const showMoreId = `showmore-${cat.id}`;
 
     let hiddenHtml = '';
     if (rest.length > 0) {
       hiddenHtml = `
-        <div class="hidden-products" id="${hiddenId}" style="display:none; grid-template-columns: repeat(3,1fr); gap:22px;">
+        <div class="hidden-products stagger" id="${hiddenId}">
           ${rest.map(p => makeProductCard(p, lang)).join('')}
         </div>`;
     }
@@ -1424,12 +1596,12 @@ function renderProducts() {
     html += `
       <section class="products-section" id="${cat.id}" ${bg}>
         <div class="container">
-          <div class="section-header">
+          <div class="section-header reveal">
             <div class="section-tag">${cat.names[lang]}</div>
             <h2 class="section-title">${cat.names[lang]} <span>${t.products}</span></h2>
             <span class="section-divider"></span>
           </div>
-          <div class="products-grid">
+          <div class="products-grid stagger">
             ${first3.map(p => makeProductCard(p, lang)).join('')}
           </div>
           ${hiddenHtml}
@@ -1439,20 +1611,26 @@ function renderProducts() {
   });
 
   container.innerHTML = html;
+  initReveal();
 }
 
+// FIX 7: toggleMore - hidden-products için open class kullan
 function toggleMore(hiddenId, btnId) {
   const hidden = document.getElementById(hiddenId);
   const btn    = document.getElementById(btnId);
   if (!hidden || !btn) return;
   const t = translations[currentLang];
-  const isHidden = hidden.style.display === 'none' || hidden.style.display === '';
-  if (isHidden) {
-    hidden.style.display = 'grid';
+  const isOpen = hidden.classList.contains('open');
+  if (!isOpen) {
+    hidden.classList.add('open');
     btn.querySelector('span').textContent = t.showLess;
     btn.querySelector('svg').style.transform = 'rotate(180deg)';
+    // Yeni açılan kartları reveal et
+    setTimeout(() => {
+      hidden.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }, 50);
   } else {
-    hidden.style.display = 'none';
+    hidden.classList.remove('open');
     btn.querySelector('span').textContent = t.showMore;
     btn.querySelector('svg').style.transform = '';
   }
@@ -1479,9 +1657,78 @@ function setLang(lang) {
   renderProducts();
 }
 
+// FIX 4: Scroll reveal sistemi
+function initReveal() {
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -60px 0px', threshold: 0.1 });
+
+  revealEls.forEach(el => {
+    if (!el.classList.contains('visible')) {
+      revealObserver.observe(el);
+    }
+  });
+}
+
+// FIX 3: Sayaç animasyonu
+function animateCounter(el, target, duration, suffix, prefix) {
+  const start = performance.now();
+  const update = (now) => {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    // easeOutExpo
+    const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+    const value = Math.round(ease * target);
+    el.textContent = (prefix || '') + value + (suffix || '');
+    if (progress < 1) requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+}
+
+function startCounters() {
+  const prodEl = document.getElementById('stat-products');
+  const discEl = document.getElementById('stat-discount');
+  const supEl  = document.getElementById('stat-support');
+  if (prodEl) animateCounter(prodEl, 500, 1800, '+', '');
+  if (discEl) animateCounter(discEl, 25, 1400, '%', '%');
+  if (supEl) {
+    let frame = 0;
+    const frames = ['0/7','1/7','2/7','3/7','4/7','5/7','6/7','7/7','7/24'];
+    const interval = setInterval(() => {
+      supEl.textContent = frames[frame];
+      frame++;
+      if (frame >= frames.length) clearInterval(interval);
+    }, 160);
+  }
+}
+
+// Sayaçlar görünür olunca başlasın
+const counterObserver = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting) {
+    startCounters();
+    counterObserver.disconnect();
+  }
+}, { threshold: 0.5 });
+const statsEl = document.querySelector('.hero-stats');
+if (statsEl) counterObserver.observe(statsEl);
+
+// FIX 5: Back to top button görünürlüğü
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('backToTop');
+  if (btn) {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }
+}, { passive: true });
+
 // Active nav on scroll
 const navLinks = document.querySelectorAll('.nav-link');
-const observer = new IntersectionObserver(entries => {
+const sectionObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const id = entry.target.id;
@@ -1491,11 +1738,12 @@ const observer = new IntersectionObserver(entries => {
 }, { rootMargin: '-40% 0px -55% 0px' });
 
 function observeSections() {
-  document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+  document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
 }
 
 renderProducts();
 observeSections();
+initReveal();
 </script>
 </body>
 </html>
