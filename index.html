@@ -802,12 +802,26 @@ footer {
 footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
 footer strong { color: rgba(255,255,255,0.8); }
 
-/* RESPONSIVE */
+/* ========== HERO GENEL AYAR ========== */
+.hero {
+  height: 70vh;
+  overflow: hidden;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
   .hero-inner { grid-template-columns: 1fr; gap: 40px; }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
   .products-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
 @media (max-width: 768px) {
   .header-inner { height: auto; padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
   .header-contacts { gap: 8px; }
@@ -815,12 +829,31 @@ footer strong { color: rgba(255,255,255,0.8); }
   .products-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: 1fr 1fr; }
-  .hero { padding: 40px 20px; min-height: auto; }
+
+  /* HERO FIX */
+  .hero {
+    height: 60vh;
+    padding: 40px 20px;
+  }
+
+  .hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: none; /* mobilde zoom kapalı */
+  }
+
   .hero-stats { grid-template-columns: repeat(3, 1fr); }
 }
+
 @media (max-width: 480px) {
   .why-grid { grid-template-columns: 1fr; }
   .hero-stats { grid-template-columns: 1fr; }
+
+  /* ekstra küçük ekran fix */
+  .hero {
+    height: 55vh;
+  }
 }
 
 /* LANGUAGE HIDDEN */
